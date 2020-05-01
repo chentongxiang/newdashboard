@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/basic.css">
+    <link rel="stylesheet" href="css/ad_number.css">
+    <link rel="stylesheet" href="./css/swiper.min.css">
+</head>
+<body>
+<div class="big-box">
+    <div class="header_img">
+        <div class="logo"></div>
+        <div class="title-text">全国广告数据展示</div>
+        <div class="cloud"></div>
+    </div>
+    <div class="content box_flex">
+        <div class="left-box">
+            <div class="left-top swiper-container swiper">
+                <div class="carousel1 swiper-wrapper">
+                    <div class="carousel-chart1 swiper-slide" id="top_advs_content_play"></div>
+                    <div class="carousel-chart2 swiper-slide" id="top_advs_content_play_total"></div>
+                </div>
+            </div>
+            <div class="left-middle swiper-container swiper1">
+                <div class="carousel1 swiper-wrapper">
+                    <div class="carousel-chart2 swiper-slide" id="adv_month_1"></div>
+                    <div class="carousel-chart2 swiper-slide" id="adv_month_2"></div>
+                    <div class="carousel-chart2 swiper-slide" id="adv_year_1"></div>
+                    <div class="carousel-chart2 swiper-slide" id="adv_year_2"></div>
+                    <div class="carousel-chart2 swiper-slide" id="pos_utilization_month"></div>
+                </div>
+            </div>
+            <div class="left-bottom swiper-container swiper-1">
+                <div class="carousel1 swiper-wrapper">
+                    <div class="carousel-chart1 swiper-slide" id="pie_cust_type"></div>
+                    <!--<div class="carousel-chart2 swiper-slide" id="test7"></div>-->
+                </div>
+            </div>
+            <!--<div class="left-bottom" id="sex_advs_audience"></div>-->
+        </div>
+        <div class="center-box">
+            <div class="center-top">
+                <div class="history-text">历史广告曝光频次</div>
+                <div class="this-year">本年曝光频次</div>
+                <div class="data-big-box">
+                    <div class="data-box">
+                        <div class="history-data">数据加载中</div>
+                        <div class="this-year-data">数据加载中</div>
+                    </div>
+                    <!-- <div class="data-box">
+                        <div class="scroll-data">数据加载中</div>
+                    </div> -->
+                </div>
+                <div class="current">
+                    <div class="current-month">
+                        <div>本月</div>
+                        <div id="current-month">275634</div>
+                    </div>
+                    <div class="current-week">
+                        <div id="week-num">W41</div>
+                        <div id="current-week">21312</div>
+                    </div>
+                    <div class="current-day">
+                        <div>当日</div>
+                        <div id="current-day">2754</div>
+                    </div>
+                </div>
+            </div>
+            <div class="center-middle">
+                <div class="china_map" id="china_map"></div>
+            </div>
+            <div class="center-bottom">
+                <div class="bottom-left">
+                    <div class="city-num1">
+                        <div>城市数</div>
+                        <div class="num-text" id="covered-cities">300</div>
+                    </div>
+                    <div class="room-num1">
+                        <div>房间数</div>
+                        <div class="num-text" id="covered-rooms">121243</div>
+                    </div>
+                    <div class="hotel-num1">
+                        <div>酒店数</div>
+                        <div class="num-text" id="covered-hotels">4000</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="right-box">
+            <div class="right-top">
+                <div class="border-bg-small">
+                    <div class="history-num">
+                        <div>历史受众人数</div>
+                        <div class="num-text" id="num_person_history">1212434324</div>
+                    </div>
+                    <div class="mouth-num">
+                        <div>月度受众人数</div>
+                        <div class="num-text" id="num_person_month">3242342</div>
+                    </div>
+                </div>
+            </div>
+            <div class="right-middle swiper-container swiper2">
+                <div class="carousel2 swiper-wrapper">
+                    <div class="carousel-chart4 swiper-slide" id="sex_advs_audience"></div>
+                    <div class="carousel-chart4 swiper-slide" id="top10_city_view"></div>
+                    <div class="carousel-chart3 swiper-slide" id="ages_advs_audience"></div>
+                </div>
+            </div>
+            <div class="right-bottom">
+                <div class="border-small">
+                    <div class="history-num">
+                        <div>人均广告触达频次</div>
+                        <div class="num-text1">
+                            <div id="avg_reach_nums">200</div>
+                            <div class="unit">(次/人)</div>
+                        </div>
+                    </div>
+                    <div class="mouth-num">
+                        <div>人均广告触达时长</div>
+                        <div class="num-text1">
+                            <div class="num-text" id="avg_reach_time">40</div>
+                            <div class="unit">(秒/人)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!--<script src="js/lazyload.js"></script>-->
+
+<script src="js/jquery.js"></script>
+<script src="js/common.js"></script>
+<script src="js/echarts.min.js"></script>
+<script src="js/echarts-gl.min.js"></script>
+<script src="js/china.js"></script>
+<!-- <script src="js/test-scroll.js"></script> -->
+<script src="js/swiper.min.js"></script>
+<script>
+    var adNumber = {
+        fontSizeNum: 18,
+        allEchartObj: {},
+        arrLength: "",
+        history_data:0,
+        this_year_data:0,
+        init: function () {
+            this.windowOnload();
+            //除地图外的echart图数据，接口get_charts_advs
+            this.createEchart();
+            //热力图展示，接口advKanbanHeatData
+            this.chinaMapShow();
+            // 广告曝光频次
+            this.avdDataShow();
+        },
+        windowOnload: function () {
+            var that = this;
+            setRemSize();
+            $(window).resize(function () {          //当浏览器大小变化时
+                setRemSize();
+                location.reload();
+            });
+            //页面定时10分钟刷新
+            var interAn = setInterval(function(){
+                window.location.reload();
+            },1000*60*5);
+            function setRemSize() {
+                that.fontSizeNum = document.documentElement.clientWidth / 1920 * 100;
+                //将得到的rem值复制给根元素的font-size
+                document.documentElement.style.fontSize = that.fontSizeNum + "px";
+            }
+        },
+        createEchart: function () {
+            var that = this;
+            $.post(GPATH.queryChartsAdvs, function (data) {
+                if (data.code==200) {
+                    var content = data.msg;
+                    console.log(content)
+                    $.each(content, function (i, v) {
+                        // var bgData = that.bgData(v.value);  需要柱状图背景图时启用
+                        var domID = v.title_value;
+                        switch (v.title_value) {
+                            case "top_advs_content_play":
+                                var color = ["#7d71b3","#46bdcd"];
+                                v.value.reverse();
+                                // v.label.reverse();
+                                var label=["帅康","蓝月亮","屈臣氏","红旗汽车","科大讯飞"];
+                                var option = options.noBgBarChart(color, label, v.value, that.fontSizeNum);
+                                var bgData = that.bgData(v.value);
+                                option.series[0].data = bgData;
+                                option.title.text = "上刊品牌广告播放情况（万次）";
+                                var echartObj = new EchartObj(domID, option);
+                                echartObj.setOp();
+                                break;
+                            case "top_advs_content_play_total":
+                                var color = ["#34a5c1", "#86c9a4"];
+                                v.value.reverse();
+                                v.label.reverse();
+                                var option = options.noBgBarChart(color, v.label, v.value, that.fontSizeNum);
+                                var bgData = that.bgData(v.value);
+                                option.series[0].data = bgData;
+                                option.title.text = "历史广告播放品牌TOP5（万次）";
+                                var echartObj = new EchartObj(domID, option);
+                                echartObj.setOp();
+                                break;
+                            case "top10_city_view":
+                                var color = ["#7d71b3", "#46bdcd", "#6b59a4", "#46BDCD", "#19CB50", "#3DE7C9", "#B6A2DE"]
+                                // v.value.reverse();
+                                // v.label.reverse();
+                                var newLabel = [];
+                                $.each(v.label,function(i,k){
+                                    newLabel[i]=k.slice(0,2)
+                                })
+                                var option = options.lineChart(color, newLabel, v.value, that.fontSizeNum);
+                                option.title.text = "受众地区分布top10";
+                                var echartObj = new EchartObj(domID, option);
+                                echartObj.setOp();
+                                break;
+                            case "pos_utilization_month":
+                                // var color = ["#FFFFFF", "#08DFDF", "#FFB980", "#5AB1EF", "#19CB50", "#3DE7C9", "#B6A2DE"]
+                                var color = ["#775ba5","#eeb033","#ed767c","#37629f","#70c6cb", ]
+                                var option = options.pieChartOther(color,v.label, v.value, that.fontSizeNum);
+                                // option.legend = null;
+                                option.series[0].radius = ['52%', '59%'],
+                                option.series[0].center = ['30%', '58%'],
+                                option.title.text = "当月广告位资源使用率";
+                                option.legend.x ="55%";
+                                option.legend.y ="32%";
+                                option.graphic.elements[0].style.image = "images/pieChar_bg.png"
+                                var echartObj = new EchartObj(domID,option);
+                                echartObj.setOp();
+                                break;
+                            case "pie_cust_type":
+                                var arr = v.value;
+                                that.arrLength = arr.length;
+                                var color = ["#eeb033", "#ed767c", "#ffffff", "#70c6cb", "#37629f", "#775ba5", "#70c6cb"]
+                                var option = options.pieChartOther(color, v.label, v.value, that.fontSizeNum);
+                                // option.legend = null;
+                                option.series[0].radius = ['52%', '59%'],
+                                option.series[0].center = ['30%', '58%'],
+                                option.title.text = "最近12月合作客户行业分布";
+                                option.graphic.elements[0].style.image = "images/pieChar_bg.png"
+                                var echartObj = new EchartObj(domID, option);
+                                echartObj.setOp();
+                                break;
+
+                            case "top_display_position_month":
+                                var labelArr = v.label;
+                                var valueArr = v.value;
+                                var arr = get_four_arr(labelArr,valueArr);
+                                var lable_arr1=arr[0];
+                                var lable_arr2=arr[1];
+                                var value_arr1=arr[2];
+                                var value_arr2=arr[3];
+
+                                var color = ["#eb5c2f", "#f6b264"];
+                                var option1 = options.noBgBarChart(color, lable_arr1.reverse(), value_arr1.reverse(), that.fontSizeNum);
+                                option1.title.text = "当月广告位播放数据（万次）";
+                                var bgData = that.bgData(value_arr1);
+                                option1.series[0].data = bgData;
+                                var echartObj = new EchartObj("adv_month_1", option1);
+                                echartObj.setOp();
+                                var color = ["#eb5c2f", "#f6b264"];
+                                var option2 = options.noBgBarChart(color, lable_arr2.reverse(), value_arr2.reverse(), that.fontSizeNum);
+                                option2.title.text = "当月广告位播放数据（万次）";
+                                var bgData = that.bgData(value_arr2);
+                                option2.series[0].data = bgData;
+                                var echartObj = new EchartObj("adv_month_2", option2);
+                                echartObj.setOp();
+                                break;
+                            case "top_display_position_12m":
+                                var labelArr = v.label;
+                                var valueArr = v.value;
+                                var arr = get_four_arr(labelArr,valueArr);
+                                var lable_arr1=arr[0];
+                                var lable_arr2=arr[1];
+                                var value_arr1=arr[2];
+                                var value_arr2=arr[3];
+
+                                var color = ["#ab549c", "#e4919c"];
+                                var option1 = options.noBgBarChart(color, lable_arr1.reverse(), value_arr1.reverse(), that.fontSizeNum);
+                                option1.title.text = "近12月广告位播放数据（万次）";
+                                var bgData = that.bgData(value_arr1);
+                                option1.series[0].data = bgData;
+                                var echartObj = new EchartObj("adv_year_1", option1);
+                                echartObj.setOp();
+                                var color = ["#ab549c", "#e4919c"];
+                                var option2 = options.noBgBarChart(color, lable_arr2.reverse(), value_arr2.reverse(), that.fontSizeNum);
+                                option2.title.text = "近12月广告位播放数据（万次）";
+                                var bgData = that.bgData(value_arr2);
+                                option2.series[0].data = bgData;
+                                var echartObj = new EchartObj("adv_year_2", option2);
+                                echartObj.setOp();
+                                break;
+
+                            case "ages_advs_audience":
+                                var color = ["#7d71b3", "#46bdcd", "#eb5c2f", "#f6b264"];
+                                var data = [{
+                                    name: '男性',
+                                    type: 'bar',
+                                    barWidth: '30%',
+                                    data: v.value[0].reverse(),
+                                    itemStyle: {
+                                        normal: {
+                                            label: {
+                                                show: true,		//开启显示
+                                                position: 'right',	//在上方显示
+                                                textStyle: {	    //数值样式
+                                                    color: '#555656',
+                                                    fontSize: that.fontSizeNum ? that.fontSizeNum / 7 : 14
+                                                }
+                                            },
+                                            color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [{
+                                                offset: 0,
+                                                color: color[0] // 0% 处的颜色
+                                            }, {
+                                                offset: 1,
+                                                color: color[1] // 100% 处的颜色
+                                            }], false)
+                                        },
+                                    }
+                                },
+                                    {
+                                        name: '女性',
+                                        type: 'bar',
+                                        barWidth: '30%',
+                                        data: v.value[1].reverse(),
+                                        itemStyle: {
+                                            normal: {
+                                                label: {
+                                                    show: true,		//开启显示
+                                                    position: 'right',	//在上方显示
+                                                    textStyle: {	    //数值样式
+                                                        color: '#555656',
+                                                        fontSize: that.fontSizeNum ? that.fontSizeNum / 7 : 14
+                                                    }
+                                                },
+                                                color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [{
+                                                    offset: 0,
+                                                    color: color[2] // 0% 处的颜色
+                                                }, {
+                                                    offset: 1,
+                                                    color: color[3] // 100% 处的颜色
+                                                }], false)
+                                            }
+                                        }
+                                    },]
+                                v.label.reverse();
+                                var option = options.stackedBarChart(color, v.label, data, that.fontSizeNum);
+                                option.title.text = "年龄受众比例(百人/周)";
+                                var echartObj = new EchartObj(domID, option);
+                                echartObj.setOp();
+                                break;
+                            case "sex_advs_audience":
+                                var color = ["#775ba5","#4ebbab","#775ba5", "#70c6cb"]
+                                var option = options.pieChartOtherOne(color, v.label, v.value, that.fontSizeNum);
+                                option.title.text = "受众性别比例";
+                                // option.series[0].radius = ['39%', '45%'],
+                                // option.series[0].center = ['30%', '50%'],
+                                option.graphic.elements[0].style.image = "images/sexLogo.png"
+                                var echartObj = new EchartObj(domID, option);
+                                echartObj.setOp();
+                                break;
+                        }
+                    })
+                }
+
+            }, "json");
+            function get_four_arr(labelArr,valueArr) {
+                var start_vedio_adv =0 ,start_static_adv=0,screensaver_adv=0,right_side=0,
+                    left_side=0,content_jump=0,pre_film=0,movie_tv_quit=0;
+
+                $.each(labelArr,function (i,v) {
+                    if(v=="开机视频广告"){
+                        start_vedio_adv=valueArr[i]
+                    }else if(v=="开机静态广告"){
+                        start_static_adv = valueArr[i];
+                    }else if(v=="屏保广告"){
+                        screensaver_adv = valueArr[i];
+                    }else if(v=="电视直播主界面广告右侧"||v=="高清影视主界面广告右侧"||
+                        v=="酒店服务主界面广告右侧"||v=="特色美食主界面广告右侧"){
+                        right_side+= valueArr[i];
+                    }else if(v=="电视直播主界面广告左侧"||v=="高清影视主界面广告左侧"||
+                        v=="酒店服务主界面广告左侧"||v=="特色美食主界面广告左侧"){
+                        left_side+=valueArr[i];
+                    }else if(v=="电视直播切屏静态广告"||v=="高清影视跳转切屏静态广告"||
+                        v=="电视直播切屏视频广告"||v=="高清影视跳转切屏视频广告"){
+                        content_jump+=valueArr[i];
+                    }else if(v=="点播电影前贴片静态广告"||v=="点播电影前贴片视频广告"){
+                        pre_film+=valueArr[i];
+                    }else if(v=="点播电影退出静态广告"||v=="高清影视退出静态广告"
+                        ||v=="电视直播退出静态广告"||v=="点播电影暂停广告"){
+                        movie_tv_quit+=valueArr[i];
+                    }
+                })
+                // var newDataObj={
+                //     "开机视频广告位":{num:start_vedio_adv.toFixed(2)},
+                //     "开机静态广告位":{num:start_static_adv.toFixed(2)},
+                //     "屏保广告":{num:screensaver_adv.toFixed(2)},
+                //     "频道主界面右侧图片广告位":{num:right_side.toFixed(2)},
+                //     "频道主界面左侧视频广告位":{num:left_side.toFixed(2)},
+                //     "内容跳转切屏广告位":{num:content_jump.toFixed(2)},
+                //     "电影前贴片广告位":{num:pre_film.toFixed(2)},
+                //     "电视及影视退出广告位":{num:movie_tv_quit.toFixed(2)}
+                // }
+
+                //改为想要显示的名字
+                var newDataObj={
+                    "开机视频广告位":{num:start_vedio_adv.toFixed(2)},
+                    "开机静态广告位":{num:start_static_adv.toFixed(2)},
+                    "屏幕保护广告位":{num:screensaver_adv.toFixed(2)},
+                    "界面静态广告位":{num:right_side.toFixed(2)},
+                    "界面视频广告位":{num:left_side.toFixed(2)},
+                    "跳转切屏广告位":{num:content_jump.toFixed(2)},
+                    "电影贴片广告位":{num:pre_film.toFixed(2)},
+                    "退出暂定广告位":{num:movie_tv_quit.toFixed(2)}
+                }
+                var sorted_lable = Object.keys(newDataObj).sort(function(a,b){
+                    return newDataObj[b].num-newDataObj[a].num;
+                });
+                var sorted_value = []
+                $.each(sorted_lable,function (i,v) {
+                    sorted_value.push(newDataObj[v].num);
+                })
+                var lable_arr1 = sorted_lable.slice(0,5);
+                var lable_arr2 = sorted_lable.slice(3);
+                var value_arr1 = sorted_value.slice(0,5);
+                var value_arr2 = sorted_value.slice(3);
+                var arr = [lable_arr1,lable_arr2,value_arr1,value_arr2];
+                return arr;
+            }
+            var b = 1;
+            setInterval(function () {
+                $historyText = $(".history-text");
+                $thisYear = $(".this-year");
+                $historyData = $(".history-data");
+                $thisYearData = $(".this-year-data");
+                var a = $historyText.css("transform");
+                var arr = ["历史广告曝光频次", "本年"]
+                if (b == 1) {
+                    $historyText.removeClass("flipIn");
+                    $thisYear.removeClass("flipOut");
+                    $historyText.addClass("flipOut");
+                    $thisYear.addClass('flipIn');
+                    // $(".scroll-data").rollNum({
+                    //     deVal:that.this_year_data
+                    // });
+
+                    $historyData.removeClass("flipIn");
+                    $thisYearData.removeClass("flipOut");
+                    $historyData.addClass("flipOut");
+                    $thisYearData.addClass('flipIn');
+                    b = 0;
+                } else {
+                    $historyText.removeClass("flipOut");
+                    $thisYear.removeClass("flipIn");
+                    $historyText.addClass("flipIn");
+                    $thisYear.addClass('flipOut');
+                    // $(".scroll-data").rollNum({
+                    //     deVal:that.history_data
+                    // });
+
+                    $historyData.removeClass("flipOut");
+                    $thisYearData.removeClass("flipIn");
+                    $thisYearData.addClass("flipOut");
+                    $historyData.addClass('flipIn');
+                    b = 1;
+                }
+            }, 10000);
+
+            var mySwiper = new Swiper('.swiper', {
+                // direction: 'vertical', // 垂直切换选项
+                direction: 'horizontal', // 横向切换选项
+                // loop: true, // 循环模式选项
+                speed: 1000,
+                autoplay: {
+                    delay: 11000,//时间 毫秒
+                    disableOnInteraction: false,//用户操作之后是否停止自动轮播默认true
+                },
+                // speed:3000
+            })
+            var mySwiper = new Swiper('.swiper1', {
+                // direction: 'vertical', // 垂直切换选项
+                direction: 'horizontal', // 横向切换选项
+                // loop: true, // 循环模式选项
+                speed: 1000,
+                autoplay: {
+                    delay: 10000,//时间 毫秒
+                    disableOnInteraction: false,//用户操作之后是否停止自动轮播默认true
+                },
+                // speed:3000
+            })
+            var mySwiper = new Swiper('.swiper2', {
+                // direction: 'vertical', // 垂直切换选项
+                direction: 'horizontal', // 横向切换选项
+                // loop: true, // 循环模式选项
+                speed: 1000,
+                autoplay: {
+                    delay: 8000,//时间 毫秒
+                    disableOnInteraction: false,//用户操作之后是否停止自动轮播默认true
+                },
+                // speed:3000
+            })
+        },
+        avdDataShow: function () {
+            var that = this;
+            //获取第几周
+            var getYearWeek = function () {
+                var date = new Date();
+                var year = date.getFullYear();
+                var month = date.getMonth() + 1;
+                var strDate = date.getDate();
+                var date1 = new Date(year, parseInt(month) - 1, strDate),
+                    date2 = new Date(year, 0, 1),
+                    d = Math.round((date1.valueOf() - date2.valueOf()) / 86400000);
+                return Math.ceil((d + ((date2.getDay() + 1) - 1)) / 7);
+            };
+            var week = getYearWeek()
+            $("#week-num").html("W" + week);
+
+            $.ajax({
+                url: GPATH.queryNumbersAdvs,
+                type: "GET",
+                dataType: "json"
+            }).then(function (data) {
+                if(data.code==200){
+                    var data = data.msg;
+                    var totalData = 0;
+                    $.each(data, function (i, v) {
+                        switch (v.label) {
+                            case "total":
+                                $(".history-data").html(toThousands(v.value))
+                                // $(".scroll-data").rollNum({
+                                //     deVal:v.value
+                                // });
+                                // that.history_data = v.value;
+                                totalData = v.value;
+                                break;
+                            case "year_2018":
+                                var thisYearData = totalData - v.value;
+                                $(".this-year-data").html(toThousands(thisYearData))
+                                // that.this_year_data =  thisYearData;
+                                break;
+                            case "month":
+                                $("#current-month").html(toThousands(v.value))
+                                break;
+                            case "week":
+                                $("#current-week").html(toThousands(v.value));
+                                break;
+                            case "coveredRooms":
+                                $("#covered-rooms").html(toThousands(v.value));
+                                break;
+                            case "coveredHotels":
+                                $("#covered-hotels").html(toThousands(v.value));
+                                break;
+                            case "num_person_history":
+                                $("#num_person_history").html(toThousands(v.value));
+                                break;
+                            case "num_person_month":
+                                $("#num_person_month").html(toThousands(v.value));
+                                break;
+                            case "coveredCities":
+                                $("#covered-cities").html(toThousands(v.value));
+                                break;
+                            case "avgReachNums":
+                                $("#avg_reach_nums").html(toThousands(v.value));
+                                break;
+                            case "avgReachTime":
+                                $("#avg_reach_time").html(toThousands(v.value));
+                                break;
+                        }
+                    })
+                }
+                $.ajax({
+                    url: GPATH.advTodayAdvsData,
+                    type: "GET",
+                    dataType: "json"
+                }).then(function (data) {
+                    if (data.res) {
+                        $("#current-day").html(toThousands(data.msg))
+                        if ($("#current-week").html() == 0) {
+                            $("#current-week").html(toThousands(data.msg));
+                        }
+                    }
+                }).catch(function (data) {
+                    console.log(data.res)
+                })
+            })
+            function toThousands(num) {
+                var num = (num || 0).toString(), result = '';
+                while (num.length > 3) {
+                    result = ',' + num.slice(-3) + result;
+                    num = num.slice(0, num.length - 3);
+                }
+                if (num) {
+                    result = num + result;
+                }
+                return result;
+            }
+            //数字动态
+            function num_counter(domID) {
+                var decimal_places = 1;
+                var decimal_factor = decimal_places === 0 ? 1 : decimal_places * 10;
+                $(domID).animateNumber(
+                    {
+                        number: 100 * decimal_factor,
+                        color: 'green',
+                        'font-size': '30px',
+
+                        numberStep: function (now, tween) {
+                            var floored_number = Math.floor(now) / decimal_factor,
+                                target = $(tween.elem);
+                            if (decimal_places > 0) {
+                                floored_number = floored_number.toFixed(decimal_places);
+                            }
+                            target.text(floored_number + ' %');
+                        }
+                    },
+                    15000
+                )
+            }
+        },
+        chinaMapShow: function () {
+            var that = this;
+            var option = options.heatMapChart([], that.fontSizeNum);
+            var domID = "china_map";
+            var echartObj = new EchartObj(domID, option);
+            echartObj.setOp();
+            $.post(GPATH.advKanbanHeatData, function (data) {
+                if (data.res) {
+                    var heatBox = data.msg;
+                    var option = options.heatMapChart(heatBox, that.fontSizeNum);
+                    var domID = "china_map";
+                    var echartObj = new EchartObj(domID, option);
+                    echartObj.setOp();
+                }
+            }, "json");
+        },
+        //柱状图背景色数据函数
+        bgData: function (data) {
+            var max = 0, bgData = [];
+            $.each(data, function (i, v) {
+                if (max < Number(v)) max = v;
+            })
+            $.each(data, function (i, v) {
+                bgData.push(max)
+            })
+            return bgData;
+        }
+    }
+    $(function () {
+        adNumber.init();
+    });
+</script>
+
+
+</body>
+
+</html>

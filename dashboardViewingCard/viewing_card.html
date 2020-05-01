@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/basic.css">
+    <link rel="stylesheet" href="css/ad_number.css">
+    <link rel="stylesheet" href="./css/swiper.min.css">
+</head>
+<body>
+<div class="big-box">
+    <div class="header_img">
+        <div class="logo"></div>
+        <div class="title-text">全国观影卡数据展示<span class="debugging">(调试版本)</span></div>
+    </div>
+    <div class="content box_flex">
+        <div class="left-box">
+            <div class="left-top swiper-container swiper1">
+                <div class="carousel1 swiper-wrapper">
+                    <div class="carousel-chart1 swiper-slide" id="test1"></div>
+                    <div class="carousel-chart2 swiper-slide" id="test2"></div>
+                    <div class="carousel-chart1 swiper-slide" id="test3"></div>
+                </div>
+            </div>
+            <div class="left-middle swiper-container swiper2">
+                <div class="carousel1 swiper-wrapper">
+                    <div class="carousel-chart2 swiper-slide" id="test4"></div>
+                    <div class="carousel-chart2 swiper-slide" id="test5"></div>
+                    <!--<div class="carousel-chart2 swiper-slide" id="test6"></div>-->
+                </div>
+            </div>
+            <div class="left-bottom swiper-container swiper3">
+                <div class="carousel1 swiper-wrapper">
+                    <div class="carousel-chart1 swiper-slide" id="test7"></div>
+                    <div class="carousel-chart2 swiper-slide" id="test8"></div>
+                    <!--<div class="carousel-chart2 swiper-slide" id="test9"></div>-->
+                    <!--<div class="carousel-chart2 swiper-slide" id="test10"></div>-->
+                </div>
+
+            </div>
+            <!--<div class="left-bottom" id="sex_advs_audience"></div>-->
+        </div>
+        <div class="center-box">
+            <div class="center-top">
+                <div class="year-box">
+                    <div class="year-orders">
+                        <div>2020年订单数</div>
+                        <div id="year-orders">27563</div>
+                    </div>
+                    <div class="year-completion">
+                        <div>2020年订单完成度</div>
+                        <div id="year-completion">50%</div>
+                    </div>
+                </div>
+                <div class="current">
+                    <div class="current-month">
+                        <div>今日订单</div>
+                        <div id="current-month">2753</div>
+                    </div>
+                    <div class="current-week">
+                        <div id="week-num">本月订单</div>
+                        <div id="current-week">61312</div>
+                    </div>
+                    <div class="current-day">
+                        <div>本月订单完成度</div>
+                        <div id="current-day">80%</div>
+                    </div>
+                </div>
+            </div>
+            <div class="center-middle" id="china_map"></div>
+            <div class="center-bottom">
+                <div class="bottom-left">
+                    <div class="all-num">
+                        <div>总门店数</div>
+                        <div class="num-text" id="all-num">45600</div>
+                    </div>
+                    <div class="sell-num">
+                        <div>有销量门店数</div>
+                        <div class="num-text" id="covered-rooms">25713</div>
+                    </div>
+                    <div class="already-num">
+                        <div>已刷机未装服务器门店数</div>
+                        <div class="num-text" id="already-num">15260</div>
+                    </div>
+                    <div class="unready-num">
+                        <div>未刷机未装服务器门店数</div>
+                        <div class="num-text" id="unready-num">12560</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="right-box">
+            <div class="right-top swiper-container swiper4">
+                <div class="carousel1 swiper-wrapper">
+                    <div class="carousel-chart1 swiper-slide" id="test9"></div>
+                    <div class="carousel-chart2 swiper-slide" id="test10"></div>
+                    <!--<div class="carousel-chart2 swiper-slide" id="test9"></div>-->
+                    <!--<div class="carousel-chart2 swiper-slide" id="test10"></div>-->
+                </div>
+                <!--<div class="year-visitor">-->
+                    <!--<div>本年访客数</div>-->
+                    <!--<div class="num-text">12121212</div>-->
+                <!--</div>-->
+            </div>
+            <div class="right-middle swiper-container swiper5">
+                <div class="carousel2 swiper-wrapper">
+                    <div class="carousel-chart3 swiper-slide" id="test11"></div>
+                    <div class="carousel-chart3 swiper-slide" id="test12"></div>
+                </div>
+            </div>
+            <div class="right-bottom swiper-container swiper6">
+                <div class="carousel2 swiper-wrapper">
+                    <div class="carousel-chart3 swiper-slide" id="test13"></div>
+                    <!--<div class="carousel-chart3 swiper-slide" id="test15"></div>-->
+                    <div class="carousel-chart3 swiper-slide" id="test14"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<script src="js/jquery.js"></script>
+<script src="js/common.js"></script>
+<script src="js/echarts.min.js"></script>
+<script src="js/echarts-gl.min.js"></script>
+<script src="js/china.js"></script>
+<script src="js/swiper.min.js"></script>
+<script>
+    var adNumber = {
+        fontSizeNum: 18,
+        allEchartObj: {},
+        arrLength: "",
+        init: function () {
+            this.windowOnload();
+            //除地图外的echart图数据，接口get_charts_advs
+            this.createEchart();
+            //热力图展示，接口advKanbanHeatData
+            this.chinaMapShow();
+            // 广告曝光频次
+            this.avdDataShow();
+        },
+        windowOnload: function () {
+            var that = this;
+            setRemSize();
+            $(window).resize(function () {          //当浏览器大小变化时
+                setRemSize();
+                location.reload();
+            });
+            //页面定时10分钟刷新
+            var interAn = setInterval(function(){
+                window.location.reload();
+            },1000*60*5);
+            function setRemSize() {
+                that.fontSizeNum = document.documentElement.clientWidth / 1920 * 100;
+                //将得到的rem值复制给根元素的font-size
+                document.documentElement.style.fontSize = that.fontSizeNum + "px";
+            }
+        },
+        createEchart: function () {
+            var that = this;
+            var bar1 = {
+                chart_type: "bar",
+                label: ["南昌前湖大道南昌大学店", "嘉兴中山东路八佰伴店", "成都双流国际机场店",
+                    "寸里广路浔峰岗地铁站店",   "兰州城关大桥店",  "武汉高铁店"],
+                title_label: "自动播放数据排名(万次)",
+                title_value: "top_play_auto",
+                value:[200, 300, 400, 450, 500,600]
+            }
+            var bar2 = {
+                chart_type: "bar",
+                label: ["南昌前湖大道南昌大学店", "嘉兴中山东路八佰伴店", "成都双流国际机场店",
+                    "寸里广路浔峰岗地铁站店",   "兰州城关大桥店",  "武汉高铁店"],
+                title_label: "自动播放数据排名(万次)",
+                title_value: "top_play_auto",
+                value:[300, 335, 366, 499, 600,788]
+            }
+
+            var bar3 = {
+                chart_type: "bar",
+                label: ["南昌前湖大道南昌大学店", "嘉兴中山东路八佰伴店", "成都双流国际机场店",
+                    "寸里广路浔峰岗地铁站店",   "兰州城关大桥店",  "武汉高铁店"],
+                title_label: "自动播放数据排名(万次)",
+                title_value: "top_play_auto",
+                value:[223, 256, 400, 597, 677,734]
+            }
+
+            var bar4 = {
+                label: ["1月", "2月", "3月",
+                    "4月","5月","6月"],
+                title_label: "自动播放数据排名(万次)",
+                title_value: "top_play_auto",
+                value:[12.4, 13.2, 14.2, 15.4, 16.5,17]
+
+            }
+            var bar5 = {
+                chart_type: "bar",
+                label: ["7月", "8月", "9月",
+                    "10月","11月","12月"],
+                title_label: "自动播放数据排名(万次)",
+                title_value: "top_play_auto",
+                value:[19,20,23,26,28,30]
+            }
+
+            // var bar6 = {
+            //     chart_type: "bar",
+            //     label: ["简约筷筒套装", "鸣盏三合一煮茶器", "创意功夫茶具骨瓷茶具套装",
+            //         "一次性便携浴巾毛巾",     "卡蛙智能便携干衣器"],
+            //     title_label: "自动播放数据排名(万次)",
+            //     title_value: "top_play_auto",
+            //     value:[173660, 227180, 343990, 435035, 548032]
+            // }
+            var bar7 = {
+                chart_type: "bar",
+                label: ["21-22时", "20-21时", "23-25时",
+                    "19-20时","13~14时","16~17时"],
+                title_label: "自动播放数据排名(万次)",
+                title_value: "top_play_auto",
+                value:[174, 204, 234, 283, 312,338]
+            }
+            var bar8 = {
+                chart_type: "bar",
+                label: ["21-22时", "20-21时", "23-25时",
+                    "19-20时","13~14时","16~17时"],
+                title_label: "自动播放数据排名(万次)",
+                title_value: "top_play_auto",
+                value:[174, 204, 234, 283, 312,338]
+            }
+            var bar9 = {
+                label: ["1月", "2月", "3月",
+                    "4月","5月","6月"],
+                title_label: "自动播放数据排名(万次)",
+                title_value: "top_play_auto",
+                value:[133, 230, 249, 154, 333,220]
+            }
+            var bar10 = {
+                chart_type: "bar",
+                label: ["7月", "8月", "9月",
+                    "10月","11月","12月"],
+                title_label: "自动播放数据排名(万次)",
+                title_value: "top_play_auto",
+                value:[113, 210, 219, 354, 431,520]
+            }
+
+            var bar11 = {
+                chart_type: "bar",
+                label:["简约筷筒套装", "鸣盏三合一煮茶器", "创意功夫茶具骨瓷茶具套装",
+                    "一次性便携浴巾毛巾",     "卡蛙智能便携干衣器"],
+                title_label: "自动播放数据排名(万次)",
+                title_value: "top_play_auto",
+                value:[2.3,2.5, 3.6, 4.6, 5.4]
+            }
+
+            var bar12 = {
+                chart_type: "bar",
+                label: ["20-30岁", "30-40岁", "40-50岁",
+                    "50-60岁","60岁以上"],
+                title_label: "自动播放数据排名(万次)",
+                title_value: "top_play_auto",
+                value:[1135, 2105, 3135, 2105, 977]
+
+            }
+
+            var bar13 = {
+                label: ["1月", "2月", "3月",
+                    "4月","5月","6月"],
+                title_label: "自动播放数据排名(万次)",
+                title_value: "top_play_auto",
+                value:[133, 230, 249, 154, 333,220]
+            }
+            var bar14 = {
+                chart_type: "bar",
+                label: ["7月", "8月", "9月",
+                    "10月","11月","12月"],
+                title_label: "自动播放数据排名(万次)",
+                title_value: "top_play_auto",
+                value:[113, 210, 219, 354, 431,520]
+            }
+
+            var pie1 = {
+                chart_type: "pie",
+                label: ["男", "女"],
+                title_label: "性别受众比例",
+                title_value: "top_play_auto",
+                name:["本月","上月"],
+                value:[
+                    {value: "48658", name: "男"},
+                    {value: "17262", name:"女"}
+                ]
+            }
+
+            // $.post(GPATH.queryChartsAdvs, function (data) {
+            //     if (data.res) {
+            //         var content = data.data;
+
+                    var color = ["#e9cd8d", "#fff5b5"];
+                    var option = options.noBgBarChart(color, bar1.label, bar1.value, that.fontSizeNum);
+                    option.title.text = "本月有服务器门店订单数TOP6";
+                    var echartObj = new EchartObj("test1", option);
+                    echartObj.setOp();
+
+                    var color = ["#eb904f", "#f3cf99"];
+                    var option = options.noBgBarChart(color, bar2.label, bar2.value, that.fontSizeNum);
+                    option.title.text = "本月已刷机未装服务器门店订单数TOP6";
+                    var echartObj = new EchartObj("test2", option);
+                    echartObj.setOp();
+
+                    var color = ["#d2a087", "#e3cec1"];
+                    var option = options.noBgBarChart(color, bar3.label, bar3.value, that.fontSizeNum);
+                    option.title.text = "本月未刷机未装服务器门店订单数TOP6";
+                    var echartObj = new EchartObj("test3", option);
+                    echartObj.setOp();
+
+                    var color = ["#e9cd8c", "#fff5b5"];
+                    var option = options.normalBarChart(color, bar4.label, bar4.value, that.fontSizeNum);
+                    option.title.text = "观影卡月度使用率";
+                    var echartObj = new EchartObj("test4", option);
+                    echartObj.setOp();
+
+                    var color = ["#eb904f", "#f3cf99"];
+                    var option = options.normalBarChart(color, bar5.label, bar5.value, that.fontSizeNum);
+                    option.title.text = "观影卡月度使用率";
+                    var echartObj = new EchartObj("test5", option);
+                    echartObj.setOp();
+
+                    // var color = ["#B2D5E0", "#B2D5E0"];
+                    // var option = options.noBgBarChart(color, bar6.label, bar6.value, that.fontSizeNum);
+                    // option.title.text = "本月各商品访客数top5";
+                    // var echartObj = new EchartObj("test6", option);
+                    // echartObj.setOp();
+
+                    var color = ["#e9cd8c", "#eeeeda"];
+                    var option = options.withBgBarChart(color, bar7.label, bar7.value, that.fontSizeNum);
+                    var bgData = that.bgData(bar7.value);
+                    option.series[0].data = bgData;
+                    option.title.text = "本月销量TOP6的时间段";
+                    var echartObj = new EchartObj("test7", option);
+                    echartObj.setOp();
+
+                    var color = ["#eb904f", "#f3cf99"];
+                    var option = options.withBgBarChart(color, bar8.label, bar8.value, that.fontSizeNum);
+                    var bgData = that.bgData(bar8.value);
+                    option.series[0].data = bgData;
+                    option.title.text = "上月销量TOP6的时间段";
+                    var echartObj = new EchartObj("test8", option);
+                    echartObj.setOp();
+
+                    var color =["#fef4b4","#A76423","rgba(224,176,5,.1)"];
+                    var option = options.lineChart(color, bar9.label, bar9.value, that.fontSizeNum);
+                    option.title.text = "月度门店平均订单数";
+                    var echartObj = new EchartObj("test9", option);
+                    echartObj.setOp();
+
+                    var color =["#fef4b4","#FF9639","rgba(224,176,5,.1)"];
+                    var option = options.lineChart(color, bar10.label, bar10.value, that.fontSizeNum);
+                    option.title.text = "月度门店平均订单数";
+                    var echartObj = new EchartObj("test10", option);
+                    echartObj.setOp();
+
+                    var color = ["#f0cc7b", "#fef6c3", "#FFB980", "#5AB1EF", "#19CB50", "#3DE7C9", "#B6A2DE"]
+                    var option = options.pieChartOther(color, pie1.label, pie1.value, that.fontSizeNum);
+                    option.title.text = "受众性别比例";
+                    option.graphic.elements[0].style.image = "images/sex.png"
+                    var echartObj = new EchartObj("test11", option);
+                    echartObj.setOp();
+
+                    var color = ["#fef6c3", "#f0cc7b"];
+                    var option = options.noBgBarChart(color, bar12.label.reverse(), bar12.value, that.fontSizeNum);
+                    option.title.text = "受众年龄分布";
+                    var echartObj = new EchartObj("test12", option);
+                    echartObj.setOp();
+
+                    var color = ["#e9cd8c", "#fff5b5"];
+                    var option = options.normalBarChart(color, bar13.label, bar13.value, that.fontSizeNum);
+                    option.title.text = "月度日均订单数";
+                    option.series[0].itemStyle.normal.barBorderRadius="0";
+                    var echartObj = new EchartObj("test13", option);
+                    echartObj.setOp();
+
+                    var color = ["#eb904f", "#f3cf99"];
+                    var option = options.normalBarChart(color, bar14.label, bar14.value, that.fontSizeNum);
+                    option.title.text = "月度日均订单数";
+                    option.series[0].itemStyle.normal.barBorderRadius="0";
+                    var echartObj = new EchartObj("test14", option);
+                    echartObj.setOp();
+
+
+                    // $.each(content, function (i, v) {
+                    //     // var bgData = that.bgData(v.value);  需要柱状图背景图时启用
+                    //     var domID = v.title_value;
+                    //     switch (v.title_value) {
+                    //         case "top_advs_content_play":
+                    //             var color = ["#3DE7C9", "#3DE7C9"];
+                    //             v.value.reverse();
+                    //             v.label.reverse();
+                    //             var option = options.noBgBarChart(color, v.label, v.value, that.fontSizeNum);
+                    //             option.title.text = "月度主流广告产品播放频次(万次)";
+                    //             var echartObj = new EchartObj(domID, option);
+                    //             that.allEchartObj[domID] = echartObj;
+                    //             echartObj.setOp();
+                    //             break;
+                    //         case "top_play_act":
+                    //             var color = ["#00BAFF", "#00BAFF"];
+                    //             v.value.reverse();
+                    //             v.label.reverse();
+                    //             var option = options.noBgBarChart(color, v.label, v.value, that.fontSizeNum);
+                    //             option.title.text = "用户交互数据排名(万次)";
+                    //             var echartObj = new EchartObj(domID, option);
+                    //             that.allEchartObj[domID] = echartObj;
+                    //             echartObj.setOp();
+                    //             break;
+                    //         case "pie_cust_type":
+                    //             var arr = v.value;
+                    //             that.arrLength = arr.length;
+                    //
+                    //             var color = ["#FFFFFF", "#08DFDF", "#FFB980", "#5AB1EF", "#19CB50", "#3DE7C9", "#B6A2DE"]
+                    //             var option = options.pieChartOther(color, v.label, v.value, that.fontSizeNum);
+                    //             option.legend = null;
+                    //             option.series[0].radius = ['40%', '50%'],
+                    //                 option.series[0].center = ['46%', '60%'],
+                    //                 option.title.text = "合作客户行业分布";
+                    //             var echartObj = new EchartObj(domID, option);
+                    //             that.allEchartObj[domID] = echartObj;
+                    //             echartObj.setOp();
+                    //             break;
+                    //         case "ages_advs_audience":
+                    //             var color = ["#01AFF3", "#3DE7C9"];
+                    //             var data = [{
+                    //                 name: '男性',
+                    //                 type: 'bar',
+                    //                 barWidth: '30%',
+                    //                 data: v.value[0].reverse(),
+                    //                 itemStyle: {
+                    //                     normal: {
+                    //                         label: {
+                    //                             show: true,		//开启显示
+                    //                             position: 'right',	//在上方显示
+                    //                             textStyle: {	    //数值样式
+                    //                                 color: '#fff',
+                    //                                 fontSize: that.fontSizeNum ? that.fontSizeNum / 7 : 14
+                    //                             }
+                    //                         }
+                    //                     }
+                    //                 }
+                    //             },
+                    //                 {
+                    //                     name: '女性',
+                    //                     type: 'bar',
+                    //                     barWidth: '30%',
+                    //                     data: v.value[1].reverse(),
+                    //                     itemStyle: {
+                    //                         normal: {
+                    //                             label: {
+                    //                                 show: true,		//开启显示
+                    //                                 position: 'right',	//在上方显示
+                    //                                 textStyle: {	    //数值样式
+                    //                                     color: '#fff',
+                    //                                     fontSize: that.fontSizeNum ? that.fontSizeNum / 7 : 14
+                    //                                 }
+                    //                             }
+                    //                         }
+                    //                     }
+                    //                 },]
+                    //             v.label.reverse();
+                    //             var option = options.stackedBarChart(color, v.label, data, that.fontSizeNum);
+                    //             option.title.text = "年龄受众比例(百人/周)";
+                    //             var echartObj = new EchartObj(domID, option);
+                    //             that.allEchartObj[domID] = echartObj;
+                    //             echartObj.setOp();
+                    //             break;
+                    //         case "top_play_auto":
+                    //             var color = ["#3DE7C9", "#1FCF25"];
+                    //             v.value.reverse();
+                    //             v.label.reverse();
+                    //             var option = options.noBgBarChart(color, v.label, v.value, that.fontSizeNum);
+                    //             option.title.text = "自动播放数据排名(万次)";
+                    //             var echartObj = new EchartObj(domID, option);
+                    //             that.allEchartObj[domID] = echartObj;
+                    //             echartObj.setOp();
+                    //             break;
+                    //         case "top_province_view":
+                    //             var color = ["#00BAFF", "#00BAFF"];
+                    //             var option = options.normalBarChart(color, v.label, v.value, that.fontSizeNum);
+                    //             option.title.text = "入住浓度地区分布TOP5";
+                    //             option.series[0].itemStyle.normal.label.show = true;
+                    //             var echartObj = new EchartObj(domID, option);
+                    //             that.allEchartObj[domID] = echartObj;
+                    //             echartObj.setOp();
+                    //             break;
+                    //         case "sex_advs_audience":
+                    //             var color = ["#FFFFFF", "#08DFDF", "#FFB980", "#5AB1EF", "#19CB50", "#3DE7C9", "#B6A2DE"]
+                    //             var option = options.pieChartOther(color, v.label, v.value, that.fontSizeNum);
+                    //             option.title.text = "受众性别比例";
+                    //             option.graphic.elements[0].style.image = "images/sex.png"
+                    //             var echartObj = new EchartObj(domID, option);
+                    //             that.allEchartObj[domID] = echartObj;
+                    //             echartObj.setOp();
+                    //             break;
+                    //     }
+                    // })
+
+
+
+
+
+
+
+            //     }
+            //
+            // }, "json");
+            var a=1,b = 1;
+            setInterval(function () {
+                $historyText = $("#day_visitor");
+                $thisYear = $("#week_visitor");
+                $historyData = $("#day_visitor_data");
+                $thisYearData = $("#week_visitor_data");
+
+                if (b == 1) {
+                    $historyText.removeClass("flipIn");
+                    $thisYear.removeClass("flipOut");
+                    $historyText.addClass("flipOut");
+                    $thisYear.addClass('flipIn');
+
+                    $historyData.removeClass("flipIn");
+                    $thisYearData.removeClass("flipOut");
+                    $historyData.addClass("flipOut");
+                    $thisYearData.addClass('flipIn');
+                    b = 0;
+                } else {
+                    $historyText.removeClass("flipOut");
+                    $thisYear.removeClass("flipIn");
+                    $historyText.addClass("flipIn");
+                    $thisYear.addClass('flipOut');
+
+                    $historyData.removeClass("flipOut");
+                    $thisYearData.removeClass("flipIn");
+                    $thisYearData.addClass("flipOut");
+                    $historyData.addClass('flipIn');
+                    b = 1;
+                }
+            }, 10000);
+            setInterval(function () {
+                $historyText = $("#month_visitor");
+                $thisYear = $("#year_visitor");
+                $historyData = $("#month_visitor_data");
+                $thisYearData = $("#year_visitor_data");
+
+                if (a == 1) {
+                    $historyText.removeClass("flipIn");
+                    $thisYear.removeClass("flipOut");
+                    $historyText.addClass("flipOut");
+                    $thisYear.addClass('flipIn');
+
+                    $historyData.removeClass("flipIn");
+                    $thisYearData.removeClass("flipOut");
+                    $historyData.addClass("flipOut");
+                    $thisYearData.addClass('flipIn');
+                    a = 0;
+                } else {
+                    $historyText.removeClass("flipOut");
+                    $thisYear.removeClass("flipIn");
+                    $historyText.addClass("flipIn");
+                    $thisYear.addClass('flipOut');
+
+                    $historyData.removeClass("flipOut");
+                    $thisYearData.removeClass("flipIn");
+                    $thisYearData.addClass("flipOut");
+                    $historyData.addClass('flipIn');
+                    a = 1;
+                }
+            }, 11000);
+            var mySwiper = new Swiper('.swiper1', {
+                // direction: 'vertical', // 垂直切换选项
+                direction: 'horizontal', // 横向切换选项
+                // loop: true, // 循环模式选项
+                speed: 1000,
+                autoplay: {
+                    delay: 13000,//时间 毫秒
+                    disableOnInteraction: false,//用户操作之后是否停止自动轮播默认true
+                },
+                // speed:3000
+            })
+            var mySwiper = new Swiper('.swiper2', {
+                // direction: 'vertical', // 垂直切换选项
+                direction: 'vertical', // 横向切换选项
+                // loop: true, // 循环模式选项
+                speed: 1000,
+                autoplay: {
+                    delay: 15000,//时间 毫秒
+                    disableOnInteraction: false,//用户操作之后是否停止自动轮播默认true
+                },
+                // speed:3000
+            })
+
+            var mySwiper = new Swiper('.swiper3', {
+                // direction: 'vertical', // 垂直切换选项
+                direction: 'horizontal', // 横向切换选项
+                // loop: true, // 循环模式选项
+                speed: 1000,
+                autoplay: {
+                    delay: 10000,//时间 毫秒
+                    disableOnInteraction: false,//用户操作之后是否停止自动轮播默认true
+                },
+                // speed:3000
+            })
+
+            var mySwiper = new Swiper('.swiper4', {
+                // direction: 'vertical', // 垂直切换选项
+                direction: 'vertical', // 横向切换选项
+                // loop: true, // 循环模式选项
+                speed: 1000,
+                autoplay: {
+                    delay: 11000,//时间 毫秒
+                    disableOnInteraction: false,//用户操作之后是否停止自动轮播默认true
+                },
+                // speed:3000
+            })
+
+            var mySwiper = new Swiper('.swiper5', {
+                // direction: 'vertical', // 垂直切换选项
+                direction: 'horizontal', // 横向切换选项
+                // loop: true, // 循环模式选项
+                speed: 1000,
+                autoplay: {
+                    delay: 14000,//时间 毫秒
+                    disableOnInteraction: false,//用户操作之后是否停止自动轮播默认true
+                },
+                // speed:3000
+            })
+            var mySwiper = new Swiper('.swiper6', {
+                // direction: 'vertical', // 垂直切换选项
+                direction: 'vertical', // 横向切换选项
+                // loop: true, // 循环模式选项
+                speed: 1000,
+                autoplay: {
+                    delay: 17000,//时间 毫秒
+                    disableOnInteraction: false,//用户操作之后是否停止自动轮播默认true
+                },
+                // speed:3000
+            })
+        },
+        avdDataShow: function () {
+            var that = this;
+            //获取第几周
+            var getYearWeek = function () {
+                var date = new Date();
+                var year = date.getFullYear();
+                var month = date.getMonth() + 1;
+                var strDate = date.getDate();
+                var date1 = new Date(year, parseInt(month) - 1, strDate),
+                    date2 = new Date(year, 0, 1),
+                    d = Math.round((date1.valueOf() - date2.valueOf()) / 86400000);
+                return Math.ceil((d + ((date2.getDay() + 1) - 1)) / 7);
+            };
+            var week = getYearWeek()
+            // $("#week-num").html("W" + week);
+
+            $.ajax({
+                url: GPATH.queryNumbersAdvs,
+                type: "GET",
+                dataType: "json"
+            }).then(function (data) {
+                $.each(data, function (i, v) {
+                    switch (v.label) {
+                        case "total":
+                            // $(".history-data").html(toThousands(v.value))
+                            // break;
+                        // case "year_2018":
+                        //     var thisYearData = data[1].value - v.value;
+                        //     $(".this-year-data").html(toThousands(thisYearData))
+                        //     break;
+                        // case "month":
+                        //     $("#current-month").html(toThousands(v.value))
+                        //     break;
+                        // case "week":
+                        //     $("#current-week").html(toThousands(v.value));
+                        //     break;
+                        // case "coveredRooms":
+                        //     $("#covered-rooms").html(toThousands(v.value));
+                        //     break;
+                        // case "coveredHotels":
+                        //     $("#covered-hotels").html(toThousands(v.value));
+                        //     break;
+                        // case "num_person_history":
+                        //     $("#num_person_history").html(toThousands(v.value));
+                        //     break;
+                        // case "num_person_month":
+                        //     $("#num_person_month").html(toThousands(v.value));
+                        //     break;
+                    }
+                })
+
+                $.ajax({
+                    url: GPATH.advTodayAdvsData,
+                    type: "GET",
+                    dataType: "json"
+                }).then(function (data) {
+                    if (data.res) {
+                        // $("#current-day").html(toThousands(data.msg))
+                        // if ($("#current-week").html() == 0) {
+                        //     $("#current-week").html(toThousands(data.msg));
+                        // }
+                    }
+                }).catch(function (data) {
+                    console.log(data.res)
+                })
+            })
+
+            function toThousands(num) {
+                var num = (num || 0).toString(), result = '';
+                while (num.length > 3) {
+                    result = ',' + num.slice(-3) + result;
+                    num = num.slice(0, num.length - 3);
+                }
+                if (num) {
+                    result = num + result;
+                }
+                return result;
+            }
+
+            //数字动态
+            function num_counter(domID) {
+                var decimal_places = 1;
+                var decimal_factor = decimal_places === 0 ? 1 : decimal_places * 10;
+                $(domID).animateNumber(
+                    {
+                        number: 100 * decimal_factor,
+                        color: 'green',
+                        'font-size': '30px',
+
+                        numberStep: function (now, tween) {
+                            var floored_number = Math.floor(now) / decimal_factor,
+                                target = $(tween.elem);
+                            if (decimal_places > 0) {
+                                floored_number = floored_number.toFixed(decimal_places);
+                            }
+                            target.text(floored_number + ' %');
+                        }
+                    },
+                    15000
+                )
+            }
+        },
+        chinaMapShow: function () {
+            var that = this;
+            var option = options.heatMapChart([], that.fontSizeNum);
+            var domID = "china_map";
+            var echartObj = new EchartObj(domID, option);
+            echartObj.setOp();
+            $.post(GPATH.advKanbanHeatData, function (data) {
+                if (data.res) {
+                    var heatBox = data.msg;
+                    var option = options.heatMapChart(heatBox, that.fontSizeNum);
+                    var domID = "china_map";
+                    var echartObj = new EchartObj(domID, option);
+                    echartObj.setOp();
+                }
+            }, "json");
+        },
+
+        //柱状图背景色数据函数
+        bgData: function (data) {
+            var max = 0, bgData = [];
+            $.each(data, function (i, v) {
+                if (max < Number(v)) max = v;
+            })
+            $.each(data, function (i, v) {
+                bgData.push(max)
+            })
+            return bgData;
+        }
+    }
+    $(function () {
+        adNumber.init();
+    });
+</script>
+
+
+</body>
+
+</html>

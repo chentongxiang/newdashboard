@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/basic.css">
+    <link rel="stylesheet" href="css/ad_number.css">
+    <link rel="stylesheet" href="./css/swiper.min.css">
+</head>
+<body>
+<div class="big-box">
+    <div class="header_img">
+        <div class="logo"></div>
+        <div class="title-text">全国影视数据展示<span class="debugging"></span></div>
+    </div>
+    <div class="content">
+        <div class="left-box">
+            <div class="left-top swiper-container swiper1" >
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide" id="top10_max_payment_by_movie"></div>
+                    <div class="swiper-slide" id="top10_max_payment_by_movie_last_month"></div>
+                </div>
+            </div>
+            <div class="left-middle swiper-container swiperBig">
+                <div class="swiperBig-wrapper swiper-wrapper">
+                    <div class="swiperBig-slide swiper-slide">
+                        <div class="title">
+                            最近7天被浏览最多的电影排行Top 10
+                        </div>
+                        <div class="swiper-container swiperSmall-1">
+                            <div class="swiperSmall-wrapper swiper-wrapper" id="top10_max_browse_by_movie">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiperBig-slide swiper-slide">
+                        <div class="title">
+                            最近一个月浏览最多的电影排行Top 10
+                        </div>
+                        <div class="swiper-container swiperSmall-2">
+                            <div class="swiperSmall-wrapper swiper-wrapper" id="top10_max_browse_by_movie_last_month">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="left-bottom swiper-container swiper3">
+                <div class="carousel1 swiper-wrapper">
+                    <div class="carousel-chart2 swiper-slide" id="income_contrast_week"></div>
+                    <div class="carousel-chart3 swiper-slide" id="income_contrast_month"></div>
+                </div>
+            </div>
+        </div>
+        <div class="center-box">
+            <div class="center-top">
+                <div class="money-room-box">
+                    <div class="month-money">
+                        <div>日收益</div>
+                        <div id="income_by_day">加载中</div>
+                    </div>
+                    <div class="day-money">
+                        <div>月收益</div>
+                        <div id="income_by_month">加载中</div>
+                    </div>
+                    <div class="rooms">
+                        <div id="1">日均转化率</div>
+                        <div id="conversion_rate">加载中</div>
+                    </div>
+                </div>
+            </div>
+            <div class="center-middle" id="china_map"></div>
+            <div class="center-bottom">
+                <div class="aiqiyi">
+                    <div class="current">
+                        <div class="current-month">
+                            <div>心跳房间数</div>
+                            <div id="active_room">加载中</div>
+                        </div>
+                        <div class="current-week">
+                            <div id="week-num">浏览房间数</div>
+                            <div id="browse_room_num">加载中</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="fengtingxun">
+                    <div class="current">
+                        <div class="current-month">
+                            <div>观影房间数</div>
+                            <div id="watch_room_num">加载中</div>
+                        </div>
+                        <div class="current-week">
+                            <div id="week-num">付费订单</div>
+                            <div id="paid_num">加载中</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="right-box">
+            <div class="right-top">
+                <div class="box-top">
+                    <div class="current">
+                        <div class="current-month">
+                            <div>昨日浏览房间数</div>
+                            <div id="browse_room_num_yesterday">加载中</div>
+                        </div>
+                        <div class="current-week">
+                            <div id="week-num">昨日观影房间数</div>
+                            <div id="watch_room_num_yesterday">加载中</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-bottom">
+                    <div class="current">
+                        <div class="current-month">
+                            <div>上周浏览房间数</div>
+                            <div id="browse_room_num_last_week">加载中</div>
+                        </div>
+                        <div class="current-week">
+                            <div id="week-num">上周观影房间数</div>
+                            <div id="watch_room_num_last_week">加载中</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="right-middle swiper-container swiper5">
+                <div class="carousel2 swiper-wrapper">
+                    <div class="carousel-chart3 swiper-slide" id="brand_paid_num_by_week"></div>
+                    <div class="carousel-chart4 swiper-slide" id="brand_paid_num_by_month"></div>
+                    <div class="carousel-chart4 swiper-slide" id="paid_amount_num_by_week"></div>
+                    <div class="carousel-chart4 swiper-slide" id="paid_amount_num_by_month"></div>
+                </div>
+            </div>
+            <div class="right-bottom swiper-container swiper6">
+                <div class="carousel-wrapper swiper-wrapper">
+                    <div class="carousel-chart3 swiper-slide" id="sex_proportion_last_week"></div>
+                    <div class="carousel-chart4 swiper-slide" id="sex_proportion_last_month"></div>
+                    <div class="carousel-chart4 swiper-slide" id="sex_paid_yesterday"></div>
+                    <div class="carousel-chart4 swiper-slide" id="sex_paid_last_week"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/jquery.js"></script>
+<script src="js/common.js"></script>
+<script src="js/echarts.min.js"></script>
+<script src="js/echarts-gl.min.js"></script>
+<script src="js/china.js"></script>
+<!-- <script src="js/swiper.min.js"></script> -->
+<script src="js/swiper.js"></script>
+<script src="js/jquery.vticker-min.js"></script>
+<script>
+
+    var adNumber = {
+        fontSizeNum: 18,
+        allEchartObj: {},
+        arrLength: "",
+        yellowColor:"#E7C501",
+        blueColor:"#0CF5FF",
+        init: function () {
+            this.windowOnload();
+            //除地图外的echart图数据，接口get_charts_advs
+            this.createEchart();
+            //热力图展示，接口advKanbanHeatData
+            this.chinaMapShow();
+            // 广告曝光频次
+            this.avdDataShow();
+            this.threeDRotate();
+        },
+        windowOnload: function () {
+            var that = this;
+            setRemSize();
+            $(window).resize(function () {          //当浏览器大小变化时
+                setRemSize();
+                location.reload();
+            });
+            //页面定时10分钟刷新
+            var interAn = setInterval(function(){
+                window.location.reload();
+            },1000*60*5);
+            function setRemSize() {
+                that.fontSizeNum = document.documentElement.clientWidth / 1920 * 100;
+                //将得到的rem值复制给根元素的font-size
+                document.documentElement.style.fontSize = that.fontSizeNum + "px";
+            }
+        },
+        threeDRotate:function(){
+            var that = this;
+            var deg=0;
+            var rate = (that.fontSizeNum/100).toFixed(3);
+            /* Storing all the images into a variable */
+            var images	= $('#stage .part').removeClass('default').addClass('animationReady');
+           
+            var dim		= { width:images.width(),height:images.height()};  //图片的宽高
+            var cnt = images.length;  //多少张图片
+
+            var centerX = $('#stage').width()/2;  //外部stagge的一半
+            var centerY = $('#stage').height()/2 - dim.height/2; //stage的一半减去图片高度的一半
+            
+
+            function rotate(step,total){ //调整step可以调整每次旋转的角度
+                var that=this;
+                deg+=step;
+                var eSin,eCos,newWidth,newHeight,q;
+                for(var i=0;i<cnt;i++){
+                    q = ((360/cnt)*i+deg)*Math.PI/180;
+                    eSin = Math.sin(q);
+                    eCos = Math.cos(q);
+                    q = (0.6+eSin*0.1);
+                    newWidth  = q*dim.width;
+                    newHeight = q*dim.height;
+                    images.eq(i).css({
+                        top			: centerY+eSin*80*rate,
+                        left		: centerX+180*eCos*rate,
+                        opacity		: 0.8+eSin*0.2,
+                        marginLeft	: -newWidth/1.8,  //调整旋转模块的位置
+                        zIndex		: Math.round(80+eSin*20),
+                        "display": "flex",
+                        "flex-direction": "column",
+                        "justify-content": "center",
+                        "align-items": "center",
+                        "fontSize":newWidth/7,
+                    }).width(newWidth).height(newHeight);
+                }
+                total-=Math.abs(step);
+                if(total<=0) return false;
+            
+                setTimeout(function(){rotate(step,total)},40);  
+            }
+            rotate(20,360/cnt);
+            var timer=null;
+            var $topText = $('#stage .round-bg')
+            var index=2;
+            timer=setInterval(function(){
+                rotate(18,360/cnt);
+                if(index>cnt){
+                    index =1;
+                    $topText.html("TOP"+index)
+                }else{
+                    $topText.html("TOP"+index)
+                }
+                index++;
+            },5000);
+        },
+        createEchart: function () {
+            var that = this;
+            
+            var bar1 = {
+                    chart_type: "bar",
+                    label: ["西游记", "叶问4", "只有芸知道", "魔镜奇缘","误杀",
+                        "唐顿庄园", "冰雪奇缘2", "被光抓走的人", "父子拳王","天·火"],
+                    title_label: "自动播放数据排名(万次)",
+                    title_value: "top_play_auto",
+                    value:[173,200,210,220,290,327,343,350,480,500]
+            }
+            var  bar2 = {
+                chart_type: "bar",
+                label: ["西游记", "叶问4", "只有芸知道", "魔镜奇缘","误杀",
+                    "唐顿庄园", "冰雪奇缘2", "被光抓走的人", "父子拳王","天·火"],
+                title_label: "自动播放数据排名(万次)",
+                title_value: "top_play_auto",
+                value:[273,300,310,320,390,427,443,450,580,600]
+            }
+            var bar3 = {
+                chart_type: "bar",
+                label: ["西游记", "叶问4", "只有芸知道", "魔镜奇缘","误杀",
+                    "唐顿庄园", "冰雪奇缘2", "被光抓走的人", "父子拳王","天·火"],
+                title_label: "自动播放数据排名(万次)",
+                title_value: "top_play_auto",
+                value:[573,600,610,620,690,727,743,750,880,900]
+            }
+            var bar4 = {
+                chart_type: "bar",
+                label: ["西游记", "叶问4", "只有芸知道", "魔镜奇缘","误杀",
+                    "唐顿庄园", "冰雪奇缘2", "被光抓走的人", "父子拳王","天·火"],
+                title_label: "自动播放数据排名(万次)",
+                title_value: "top_play_auto",
+                value:[123,130,150,220,290,291,343,370,600,700]
+            }
+            var bar5 = {
+                chart_type: "bar",
+                label: ["西游记", "叶问4", "只有芸知道", "魔镜奇缘","误杀",
+                    "唐顿庄园", "冰雪奇缘2", "被光抓走的人", "父子拳王","天·火"],
+                title_label: "自动播放数据排名(万次)",
+                title_value: "top_play_auto",
+                value:[223,230,250,320,390,391,443,470,700,800]
+            }
+            var bar6 = {
+                chart_type: "bar",
+                label: ["西游记", "叶问4", "只有芸知道", "魔镜奇缘","误杀",
+                    "唐顿庄园", "冰雪奇缘2", "被光抓走的人", "父子拳王","天·火"],
+                title_label: "自动播放数据排名(万次)",
+                title_value: "top_play_auto",
+                value:[323,330,350,420,490,491,543,570,800,900]
+            }
+            var bar7 = {
+                chart_type: "bar",
+                label: ["酒店1", "酒店2", "酒店3", "酒店4","酒店5",
+                    "酒店6", "酒店7", "酒店8", "酒店9","酒店10"],
+                title_label: "自动播放数据排名(万次)",
+                title_value: "top_play_auto",
+                value:[323,456,478,500,532,543,557,800,900,1000]
+            }
+            var  bar8 = {
+                chart_type: "bar",
+                label: ["星期一", "星期二", "星期三", "星期四","星期五",
+                    "星期六", "星期日"],
+                title_label: "自动播放数据排名(万次)",
+                title_value: "top_play_auto",
+                value:[
+                        [8, 9.9, 13.6, 17, 12, 23, 14],
+                        [8, 17, 6, 11, 18, 23, 19],
+                      ],
+                legendData:["本周","上周"]
+            }
+
+            var  bar9 = {
+                chart_type: "bar",
+                label: ["1", "5", "10", "15", "20",
+                    "25", "30"],
+                title_label: "自动播放数据排名(万次)",
+                title_value: "top_play_auto",
+                value: [
+                    [8, 9.9, 13.6, 17, 12, 23, 14],
+                    [8, 17, 6, 11, 18],
+                ],
+                legendData: ["本月", "上月"]
+            }
+
+            var bar10 = {
+                chart_type: "bar",
+                label: ["酒店1", "酒店2", "酒店3", "酒店4","酒店5",
+                    "酒店6", "酒店7", "酒店8", "酒店9","酒店10"],
+                title_label: "自动播放数据排名(万次)",
+                title_value: "top_play_auto",
+                value:[7.6,8,8.8,9,9.6,10,12,13,14,15]
+            }
+
+            var bar11 = {
+                chart_type: "bar",
+                label: ["星期1", "星期2", "星期3", "星期4","星期5", "星期6", "星期日"],
+                title_label: "自动播放数据排名(万次)",
+                title_value: "top_play_auto",
+                name:["本周","上周"],
+                value:[
+                    [21311,12133,62343,23432,18472,46737,23443],
+                    [12124,22133,32343,12432,28472,36737,43443]
+                ]
+            }
+
+            var bar12 = {
+                chart_type: "bar",
+                label: ["第一周", "第二周", "第三周", "第四周"],
+                title_label: "自动播放数据排名(万次)",
+                title_value: "top_play_auto",
+                name:["本月","上月"],
+                value:[
+                    [121311,212133,362343,223432],
+                    [212124,322133,432343,512432]
+                ]
+            }
+            var pie1 = {
+                chart_type: "pie",
+                label: ["男", "女"],
+                title_label: "性别受众比例",
+                title_value: "top_play_auto",
+                name:["本月","上月"],
+                value:[
+                    {value: "48658", name: "男"},
+                    {value: "17262", name:"女"}
+                ]
+            }
+            var pie2 = {
+                chart_type: "pie",
+                label: ["男", "女"],
+                title_label: "性别受众比例",
+                title_value: "top_play_auto",
+                name:["本月","上月"],
+                value:[
+                    {value: "58658", name: "男"},
+                    {value: "37262", name:"女"}
+                ]
+            }
+            var pie3 = {
+                chart_type: "pie",
+                label: ["男", "女"],
+                title_label: "性别受众比例",
+                title_value: "top_play_auto",
+                name:["本月","上月"],
+                value:[
+                    {value: "58658", name: "男"},
+                    {value: "27262", name:"女"}
+                ]
+            }
+            var bar14 = {
+                chart_type: "bar",
+                label: ["广东省", "北京市", "上海市",
+                    "湖北省", "浙江省"],
+                title_label: "自动播放数据排名(万次)",
+                title_value: "top_play_auto",
+                value:[5211, 4125, 2930, 2450,1600]
+            }
+
+            var bar15 = {
+                chart_type: "bar",
+                label: ["广东省", "北京市", "上海市",
+                    "湖北省", "浙江省"],
+                title_label: "自动播放数据排名(万次)",
+                title_value: "top_play_auto",
+                value:[15211, 13125, 11930, 9950,7600]
+            }
+            var bar16 = {
+                chart_type: "bar",
+                label: ["维也纳", "麗枫", "东呈", "iu"],
+                title_label: "上周品牌酒店点播占比",
+                title_value: "top_play_auto",
+                name:[],
+                value:[
+                    { value: 10, name: 'iu' },
+                    { value: 15, name: '东呈' },
+                    { value: 25, name: '麗枫' },
+                    { value: 20, name: '维也纳' },
+                ]
+            }
+            var bar17 = {
+                chart_type: "bar",
+                label: ["维也纳", "麗枫", "东呈", "iu"],
+                title_label: "上周品牌酒店点播占比",
+                title_value: "top_play_auto",
+                name: [],
+                value: [
+                    { value: 10, name: 'iu' },
+                    { value: 15, name: '东呈' },
+                    { value: 25, name: '麗枫' },
+                    { value: 20, name: '维也纳' },
+                ]
+            }
+            var bar18 = {
+                chart_type: "bar",
+                label: ["¥9.9", "¥19.9", "¥15.0", "¥17.9" ,'¥18.5'],
+                title_label: "上周电影点播价格占比",
+                title_value: "top_play_auto",
+                name: [],
+                value: [
+                    { value: 10, name: '¥9.9' },
+                    { value: 15, name: '¥19.9' },
+                    { value: 25, name: '¥15.0' },
+                    { value: 20, name: '¥17.9' },
+                    { value: 27, name: '¥18.5' },
+                ]
+            }
+
+            var bar19 = {
+                chart_type: "bar",
+                label: ["¥9.9", "¥19.9", "¥15.0", "¥17.9", '¥18.5'],
+                title_label: "上周电影点播价格占比",
+                title_value: "top_play_auto",
+                name: [],
+                value: [
+                    { value: 10, name: '¥9.9' },
+                    { value: 15, name: '¥19.9' },
+                    { value: 25, name: '¥15.0' },
+                    { value: 20, name: '¥17.9' },
+                    { value: 27, name: '¥18.5' },
+                ]
+            }
+            var bar20 = {
+                chart_type: "pie",
+                label: ["男", "女"],
+                title_label: "性别受众比例",
+                title_value: "top_play_auto",
+                name: ["男性", "女性"],
+                value: [
+                    { value: "48658", name: "男" },
+                    { value: "17262", name: "女" }
+                ]
+            }
+
+            var bar21 = {
+                chart_type: "pie",
+                label: ["男", "女"],
+                title_label: "性别受众比例",
+                title_value: "top_play_auto",
+                name: ["男性", "女性"],
+                value: [
+                    { value: "48658", name: "男" },
+                    { value: "17262", name: "女" }
+                ]
+            }
+
+            var bar22 = {
+                chart_type: "pie",
+                label: ["男", "女"],
+                title_label: "性别受众比例",
+                title_value: "top_play_auto",
+                name: ["男性", "女性"],
+                value: [
+                    { value: "48658", name: "男" },
+                    { value: "17262", name: "女" }
+                ]
+            }
+
+            var bar23 = {
+                chart_type: "pie",
+                label: ["男", "女"],
+                title_label: "性别受众比例",
+                title_value: "top_play_auto",
+                name: ["男性", "女性"],
+                value: [
+                    { value: "48658", name: "男" },
+                    { value: "17262", name: "女" }
+                ]
+            }
+                $.post(GPATH.queryChartsMovie, function (data) {
+                if (data.res) {
+                    var content = data.data;
+                    $.each(content, function (i, v) {
+                        // var bgData = that.bgData(v.value);  需要柱状图背景图时启用
+                        switch (v.title_value) {
+                            case "top10_max_payment_by_movie":
+                                var color = ["#51D7FF", "#51D7FF"];
+                                var option = options.normalBarChart(color, v.label, v.value, that.fontSizeNum);
+                                option.title.text = "最近7天电影付费排行Top10";
+                                option.series[0].itemStyle.normal.label.show = true;
+                                var echartObj = new EchartObj("top10_max_payment_by_movie", option);
+                                echartObj.setOp();
+                                break;
+                            case "top10_max_payment_by_movie_last_month":
+                                var color = ["#13949A", "#13949A"];
+                                var option = options.withBgBarChart(color, v.label, v.value, that.fontSizeNum);
+                                var bgData = that.bgData(v.value);
+                                option.series[0].data = bgData;
+                                option.title.text = "最近一个月的电影付费排行 TOP10";
+                                var echartObj = new EchartObj("top10_max_payment_by_movie_last_month", option);
+                                echartObj.setOp();
+                                break;
+                            case "top10_max_browse_by_movie":
+                                var html = "";
+                                for (i = 0; i < 10; i++) {
+                                    html += "<div class=\"swiperSmall-slide swiper-slide\">\n" +
+                                        "                                <div class=\"img\" style=\"\">"+(i+1)+"</div>\n" +
+                                        "                                <div class=\"content-box\">\n" +
+                                        "                                    <div class=\"text\">" + v.label[i] + "</div>\n" +
+                                        "                                    <div class=\"bar-box\">\n" +
+                                        "                                        <div class=\"bar\" style=\"width:" + v.value[i] * 80 / v.value[0] + "%;background-color: #50FEC1;border-radius:5px;\"></div>\n" +
+                                        "                                        <div class=\"value\">" + v.value[i] + "</div>\n" +
+                                        "                                    </div>\n" +
+                                        "                                </div>\n" +
+                                        "                            </div>\n"
+                                }
+                                $("#top10_max_browse_by_movie").html(html);
+                                break;
+                            case "top10_max_browse_by_movie_last_month":
+                                var html = "";
+                                for (i = 0; i < 10; i++) {
+                                    html += "<div class=\"swiperSmall-slide swiper-slide\">\n" +
+                                        "                                <div class=\"img\" style=\"\">" + (i + 1) + "</div>\n" +
+                                        "                                <div class=\"content-box\">\n" +
+                                        "                                    <div class=\"text\">" + v.label[i] + "</div>\n" +
+                                        "                                    <div class=\"bar-box\">\n" +
+                                        "                                        <div class=\"bar\" style=\"width:" + v.value[i] * 80 / v.value[0] + "%;background-color: #00F8FF;border-radius:5px;\"></div>\n" +
+                                        "                                        <div class=\"value\">" + v.value[i] + "</div>\n" +
+                                        "                                    </div>\n" +
+                                        "                                </div>\n" +
+                                        "                            </div>\n"
+                                }
+                                $("#top10_max_browse_by_movie_last_month").html(html);
+                                break;
+                            case "income_contrast_week":
+                                var color = ["#F19149", "#00B7EE", "#E9E227", "#228FFE", "#F75CAD"];
+                                var legendData =v.value[2].lengndData;
+                                var label = ["第1天", "第2天", "第3天", "第4天", "第5天", "第6天", "第7天",]
+                                var option = options.multipleLineChart(color, legendData, label, v.value, that.fontSizeNum);
+                                option.title.text = "最近7天与过去7天收益对比";
+                                var echartObj = new EchartObj("income_contrast_week", option);
+                                echartObj.setOp();
+                                break;
+                            case "income_contrast_month":
+                                 var color = ["#FED000", "#44F0FF", "#E9E227", "#228FFE", "#F75CAD"];
+                                 var legendData = v.value[2].lengndData;
+                                var option = options.multipleLineChart(color, legendData, v.label, v.value, that.fontSizeNum);
+                                option.title.text = "本月与上月收益对比";
+                                option.series[0].areaStyle = {
+                                    normal: {
+                                        //颜色渐变函数 前四个参数分别表示四个位置依次为左、下、右、上
+                                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                            offset: 0,
+                                            color: "#194E66"
+                                        }, {
+                                            offset: 1,
+                                            color: "#07132F"
+                                        }])
+                                    }
+                                }
+                                var echartObj = new EchartObj("income_contrast_month", option);
+                                echartObj.setOp();
+                                break;
+                            case "brand_paid_num_by_week":
+                                var color = ["#A859FF", "#FF9745", "#34ABFF", "#6B89FF"];
+                                var valueArr = [];
+                                $.each(v.value,function(j,k){
+                                    valueArr.push({
+                                        "value":k,
+                                        "name": v.label[j]   
+                                    })
+                                })
+                                var option = options.pieChartSolid(color,v.label,valueArr,that.fontSizeNum);
+                                option.title.text = "上周品牌酒店点播占比";
+                                var echartObj = new EchartObj("brand_paid_num_by_week", option);
+                                echartObj.setOp();
+                                break;
+                            case "brand_paid_num_by_month":
+                                 var color = ["#FED000", "#A859FF", "#FF4747", "#50FEC1"];
+                                var valueArr = [];
+                                $.each(v.value, function (j, k) {
+                                    valueArr.push({
+                                        "value": k,
+                                        "name": v.label[j]
+                                    })
+                                })
+                                var option = options.pieChartSolid(color, v.label, valueArr, that.fontSizeNum);
+                                option.title.text = "上月品牌酒店点播占比";
+                                var echartObj = new EchartObj("brand_paid_num_by_month", option);
+                                echartObj.setOp();
+                                break; 
+                            case "paid_amount_num_by_week":
+                                var color = ["#FFC750", "#50FEC1","#DCE548", "#FF4747",  "#0464E5" ,"#34ABFF"];
+                                var valueArr = [];
+                                $.each(v.value, function (j, k) {
+                                    valueArr.push({
+                                        "value": k,
+                                        "name": v.label[j]
+                                    })
+                                })
+                                var option = options.pieChartOther(color, v.label, valueArr, that.fontSizeNum);
+                                option.title.text = "上周电影点播价格占比";
+                                var echartObj = new EchartObj("paid_amount_num_by_week", option);
+                                echartObj.setOp();
+                                break;
+                            case "paid_amount_num_by_month":
+                                var color = ["#FED000", "#5AD6EC", "#FF4747", "#50FEC1","##F25085","#AA4FFF"];
+                                var valueArr = [];
+                                $.each(v.value, function (j, k) {
+                                    valueArr.push({
+                                        "value": k==null?0:k,
+                                        "name": v.label[j]
+                                    })
+                                })
+                                var option = options.pieChartOther(color, bar18.label, bar18.value, that.fontSizeNum);
+                                option.title.text = "上月电影点播价格占比";
+                                var echartObj = new EchartObj("paid_amount_num_by_month", option);
+                                echartObj.setOp();
+                                break;
+                            case "sex_proportion_last_week":
+                                var color = ["#F03980", "#0464E5"];
+                                var option = options.pieChart(color, v.label, v.value, that.fontSizeNum);
+                                option.title.text = "上周男女入住比例";
+                                option.graphic.elements[0].style.image = "images/sex.png"
+                                var echartObj = new EchartObj("sex_proportion_last_week", option);
+                                echartObj.setOp();
+                                break;
+                            case "sex_proportion_last_month":
+                                var color = ["#AA4FFF", "#4CD6FF"];
+                                var option = options.pieChart(color, v.label, v.value, that.fontSizeNum);
+                                option.title.text = "上月男女入住比例";
+                                option.graphic.elements[0].style.image = "images/sex.png"
+                                var echartObj = new EchartObj("sex_proportion_last_month", option);
+                                echartObj.setOp();
+                                break;
+                            case "sex_paid_yesterday":
+                                var color = ["#50FEC1", "#FED000"];
+                                var option = options.pieChart(color, v.label, v.value, that.fontSizeNum);
+                                option.title.text = "昨日付费男女比例";
+                                option.graphic.elements[0].style.image = "images/sex.png"
+                                var echartObj = new EchartObj("sex_paid_yesterday", option);
+                                echartObj.setOp();
+                                break;
+                            case "sex_paid_last_week":
+                                var color = ["#FED000", "#FF4747"];
+                                var option = options.pieChart(color, v.label, v.value, that.fontSizeNum);
+                                option.title.text = "上周付费男女比例";
+                                option.graphic.elements[0].style.image = "images/sex.png"
+                                var echartObj = new EchartObj("sex_paid_last_week", option);
+                                echartObj.setOp();
+                                break;
+                        }
+                    })
+                      //html先补齐才启动轮播
+                    var mySwiper = new Swiper('.swiperSmall-1', {
+                        direction: 'vertical',
+                        slidesPerView: 5, // 每页显示几个slide
+                        spaceBetween: 0, // slide的间距px
+                        followFinger: false, // 
+                        speed: 1000, // 速度
+                        // roundLengths : true,
+                        loop: $(".swiperSmall-1 .swiper-slide").length > 2, // 循环
+                        autoplay: {
+                            delay: 1000,
+                            stopOnLastSlide: false,
+                            disableOnInteraction: true,
+                        },
+                    });
+                     var mySwiper = new Swiper('.swiperSmall-2', {
+                        direction: 'vertical',
+                        slidesPerView: 5, // 每页显示几个slide
+                        spaceBetween: 0, // slide的间距px
+                        followFinger: false, // 
+                        speed: 1000, // 速度
+                        // roundLengths : true,
+                        loop: $(".swiperSmall-2 .swiper-slide").length > 2, // 循环
+                        autoplay: {
+                            delay: 1000,
+                            stopOnLastSlide: false,
+                            disableOnInteraction: true,
+                        },
+                    });
+                }
+
+            }, "json");
+
+            var mySwiper = new Swiper('.swiperSmall-3', {
+                direction: 'vertical',
+                slidesPerView: 5, // 每页显示几个slide
+                spaceBetween: 0, // slide的间距px
+                followFinger : false, // 
+                speed: 1000, // 速度
+                // roundLengths : true,
+                loop: $(".swiperSmall-3 .swiper-slide").length > 2, // 循环
+                autoplay: {
+                    delay: 1000,
+                    stopOnLastSlide: false,
+                    disableOnInteraction: true,
+                },
+            });
+            var mySwiper = new Swiper('.swiperBig', {
+                // direction: 'vertical', // 垂直切换选项
+                direction: 'horizontal', // 横向切换选项
+                // loop: true, // 循环模式选项
+                speed: 1000,
+                autoplay: {
+                    delay: 10000,//时间 毫秒
+                    disableOnInteraction: false,//用户操作之后是否停止自动轮播默认true
+                },
+                // speed:3000
+            })
+            var mySwiper = new Swiper('.swiper1', {
+                // direction: 'vertical', // 垂直切换选项
+                direction: 'horizontal', // 横向切换选项
+                // loop: true, // 循环模式选项
+                roundLengths : true,
+                speed: 1000,
+                autoplay: {
+                    delay: 8000,//时间 毫秒
+                    disableOnInteraction: false,//用户操作之后是否停止自动轮播默认true
+                },
+                // speed:3000
+            })
+
+            var mySwiper = new Swiper('.swiper3', {
+                // direction: 'vertical', // 垂直切换选项
+                direction: 'horizontal', // 横向切换选项
+                // loop: true, // 循环模式选项
+                roundLengths : true,
+                speed: 1000,
+                autoplay: {
+                    delay: 10000,//时间 毫秒
+                    disableOnInteraction: false,//用户操作之后是否停止自动轮播默认true
+                },
+                // speed:3000
+            })
+            var mySwiper = new Swiper('.swiper4', {
+                // direction: 'vertical', // 垂直切换选项
+                direction: 'vertical', // 横向切换选项
+                // loop: true, // 循环模式选项
+                roundLengths : true,
+                speed: 1000,
+                autoplay: {
+                    delay: 13000,//时间 毫秒
+                    disableOnInteraction: false,//用户操作之后是否停止自动轮播默认true
+                },
+                // speed:3000
+            })
+            var mySwiper = new Swiper('.swiper5', {
+                // direction: 'vertical', // 垂直切换选项
+                direction: 'horizontal', // 横向切换选项
+                // loop: true, // 循环模式选项
+                roundLengths : true,
+                speed: 1000,
+                autoplay: {
+                    delay: 11000,//时间 毫秒
+                    disableOnInteraction: false,//用户操作之后是否停止自动轮播默认true
+                },
+                // speed:3000
+            })
+            var mySwiper = new Swiper('.swiper6', {
+                // direction: 'vertical', // 垂直切换选项
+                direction: 'vertical', // 横向切换选项
+                // loop: true, // 循环模式选项
+                roundLengths : true,
+                speed: 1000,
+                autoplay: {
+                    delay: 8000,//时间 毫秒
+                    disableOnInteraction: false,//用户操作之后是否停止自动轮播默认true
+                },
+                // speed:3000
+            })
+        },
+        avdDataShow: function () {
+            var that = this;
+            //获取第几周
+            // var getYearWeek = function () {
+            //     var date = new Date();
+            //     var year = date.getFullYear();
+            //     var month = date.getMonth() + 1;
+            //     var strDate = date.getDate();
+            //     var date1 = new Date(year, parseInt(month) - 1, strDate),
+            //         date2 = new Date(year, 0, 1),
+            //         d = Math.round((date1.valueOf() - date2.valueOf()) / 86400000);
+            //     return Math.ceil((d + ((date2.getDay() + 1) - 1)) / 7);
+            // };
+            // var week = getYearWeek()
+            // $("#week-num").html("W" + week);
+
+            $.ajax({
+                url: GPATH.queryNumbersMovie,
+                type: "GET",
+                dataType: "json"
+            }).then(function (data) {
+                $.each(data, function (i, v) {
+                     if ($("#" + v.label)) { //存在ID
+                        if(v.label== "conversion_rate"){
+                            $("#" + v.label).html(v.value)
+                        }else{
+                            $("#" + v.label).html(toThousands(v.value))
+                        }
+                    }
+                })
+            })
+
+            function toThousands(num) {
+                var num = (num || 0).toString(), result = '';
+                while (num.length > 3) {
+                    result = ',' + num.slice(-3) + result;
+                    num = num.slice(0, num.length - 3);
+                }
+                if (num) {
+                    result = num + result;
+                }
+                return result;
+            }
+
+            //数字动态
+            function num_counter(domID) {
+                var decimal_places = 1;
+                var decimal_factor = decimal_places === 0 ? 1 : decimal_places * 10;
+                $(domID).animateNumber(
+                    {
+                        number: 100 * decimal_factor,
+                        color: 'green',
+                        'font-size': '30px',
+
+                        numberStep: function (now, tween) {
+                            var floored_number = Math.floor(now) / decimal_factor,
+                                target = $(tween.elem);
+                            if (decimal_places > 0) {
+                                floored_number = floored_number.toFixed(decimal_places);
+                            }
+                            target.text(floored_number + ' %');
+                        }
+                    },
+                    15000
+                )
+            }
+        },
+        chinaMapShow: function () {
+            var that = this;
+            var option = options.heatMapChart([], that.fontSizeNum);
+            var domID = "china_map";
+            var echartObj = new EchartObj(domID, option);
+            echartObj.setOp();
+            $.post(GPATH.advKanbanHeatData, function (data) {
+                if (data.res) {
+                    var heatBox = data.msg;
+                    var option = options.heatMapChart(heatBox, that.fontSizeNum);
+                    var domID = "china_map";
+                    var echartObj = new EchartObj(domID, option);
+                    echartObj.setOp();
+                }
+            }, "json");
+        },
+
+        //柱状图背景色数据函数
+        bgData: function (data) {
+            var max = 0, bgData = [];
+            $.each(data, function (i, v) {
+                if (max < Number(v)) max = v;
+            })
+            $.each(data, function (i, v) {
+                bgData.push(max)
+            })
+            return bgData;
+        }
+    }
+    $(function () {
+        adNumber.init();
+    });
+</script>
+
+
+</body>
+
+</html>

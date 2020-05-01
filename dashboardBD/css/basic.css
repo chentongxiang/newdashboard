@@ -1,0 +1,68 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+ul{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+i{
+    font-style: normal;
+}
+li{ list-style: none;}
+html,body{
+    margin:0px;
+    width:100%;
+    height:100%;
+}
+@font-face{
+    font-family: number_font;
+    src:url(../css/AgencyFB.ttf);
+}
+@font-face{
+    font-family: main_number_font;
+    src:url(../css/DIN_Condensed_Bold.ttf);
+}
+/*顶部较大字体和右部大数据*/
+/*@font-face{*/
+    /*font-family: main_number_font;*/
+    /*src:url(../css/300-CAI978.ttf);*/
+/*}*/
+
+/*@font-face{*/
+    /*font-family: title_font2;*/
+    /*src:url(../css/msyhbd.ttc);*/
+/*}*/
+
+
+/*@font-face{*/
+    /*font-family: small_title;*/
+    /*src:url(../css/SourceHanSansCN-Bold_0.otf);*/
+/*}*/
+::-webkit-scrollbar {
+    /*滚动条整体样式*/
+    width : 10px;  /*高宽分别对应横竖滚动条的尺寸*/
+    height: 1px;
+
+}
+::-webkit-scrollbar-thumb {
+    /*滚动条里面小方块*/
+    border-radius   : 10px;
+    background-color: #1D2B4B;
+}
+::-webkit-scrollbar-track {
+    /*滚动条里面轨道*/
+    box-shadow   : inset 0 0 5px rgba(0, 0, 0, 0.2);
+    background   : #0C1B30;
+    border-radius: 10px;
+}
+/**{box-sizing:border-box;}*/
+/*html,body{ margin:0px; height:100%; }*/
+/*body,html{*/
+    /*width: 100%;*/
+    /*height:100%;*/
+    /*font-size:20px;*/
+/*}*/

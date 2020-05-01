@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/basic.css">
+    <link rel="stylesheet" href="./css/swiper.min.css">
+</head>
+<body>
+<div class="big-box">
+   <div>
+       <span>年度总营业额:</span><input type="text">
+   </div>
+
+</div>
+
+<script src="js/jquery.js"></script>
+<script src="js/common.js"></script>
+<script src="js/echarts.min.js"></script>
+<script src="js/echarts-gl.min.js"></script>
+<script src="js/china.js"></script>
+<script src="js/swiper.min.js"></script>
+<script>
+var adNumber = {
+    fontSizeNum: 18,
+    allEchartObj: {},
+    arrLength: "",
+    init: function () {
+        this.windowOnload();
+        //除地图外的echart图数据，接口get_charts_advs
+      
+    },
+    
+    windowOnload: function () {
+        var that = this;
+        setRemSize();
+        $(window).resize(function () {          //当浏览器大小变化时
+            setRemSize();
+            location.reload();
+        });
+        //页面定时10分钟刷新
+        var interAn = setInterval(function(){
+            window.location.reload();
+        },1000*60*5);
+        function setRemSize() {
+            that.fontSizeNum = document.documentElement.clientWidth / 1920 * 100;
+            //将得到的rem值复制给根元素的font-size
+            document.documentElement.style.fontSize = that.fontSizeNum + "px";
+            // that.fontSizeNum = 1920 / 1920 * 100;
+            // //将得到的rem值复制给根元素的font-size
+            // document.documentElement.style.fontSize = that.fontSizeNum + "px";
+        }
+    }
+   
+}
+$(function () {
+    adNumber.init();
+});
+</script>
+
+
+</body>
+
+</html>

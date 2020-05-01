@@ -1,0 +1,31 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+ul{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+i{
+    font-style: normal;
+}
+li{ list-style: none;}
+html{
+    font-size: 100px;
+}
+body{
+    width:100%;
+    height:10.8rem;
+    overflow-y: scroll ;
+}
+@font-face{
+    font-family: number_font;
+    src:url(../css/AgencyFB.ttf);
+}
+@font-face{
+    font-family: main_number_font;
+    src:url(../css/DIN_Condensed_Bold.ttf);
+}

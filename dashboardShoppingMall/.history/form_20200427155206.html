@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/basic.css">
+    <link rel="stylesheet" href="css/ad_number.css">
+    <link rel="stylesheet" href="./css/swiper.min.css">
+</head>
+<body>
+<div class="big-box">
+   <div>
+       <span class="year-text">年度总营业额:</span><input type="text">
+   </div>
+</div>
+
+<script src="js/jquery.js"></script>
+<script src="js/common.js"></script>
+<script src="js/echarts.min.js"></script>
+<script src="js/echarts-gl.min.js"></script>
+<script src="js/china.js"></script>
+<script src="js/swiper.min.js"></script>
+<script>
+var adNumber = {
+    fontSizeNum: 18,
+    allEchartObj: {},
+    arrLength: "",
+    init: function () {
+        this.windowOnload();
+        //除地图外的echart图数据，接口get_charts_advs
+      
+    },
+    
+    windowOnload: function () {
+        
+    }
+   
+}
+$(function () {
+    adNumber.init();
+});
+</script>
+
+
+</body>
+
+</html>

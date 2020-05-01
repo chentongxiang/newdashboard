@@ -1,0 +1,53 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+ul{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+i{
+    font-style: normal;
+}
+li{ list-style: none;}
+html{
+    font-size: 50px;
+}
+body{
+    width:100%;
+    height:10.8rem;
+    overflow-y: scroll ;
+}
+.fl {	
+    float:left;
+}
+.fr {	
+    float:right;
+}
+@font-face{
+    font-family: number_font;
+    src:url(../css/AgencyFB.ttf);
+}
+@font-face{
+    font-family: main_number_font;
+    src:url(../css/DIN_Condensed_Bold.ttf);
+}
+@font-face{
+    font-family: font_Digital;
+    src:url(../css/DS-Digital.TTF);
+}
+@font-face{
+    font-family: font_Gayatri;
+    src:url(../css/Gayatri.ttf);
+}
+@font-face{
+    font-family:  font_dongqing_w6;
+    src:url(../css/Hiragino_Sans_GB.ttc);
+}
+@font-face{
+    font-family: font_siyuan;
+    src:url(../css/SourceHanSansCN-Bold.otf);
+}

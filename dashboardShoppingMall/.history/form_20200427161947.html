@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/basic.css">
+    <link rel="stylesheet" href="css/ad_number.css">
+    <link rel="stylesheet" href="./css/swiper.min.css">
+</head>
+<body>
+<div class="big-box">
+    <form action="">
+        <div>
+            <span class="year-text">年度总营业额:</span><input name="yearMoney" type="text" class="year-text-put">
+        </div>
+        <div>
+            <span class="month-text">月营业额:</span><input name="monthMoney" type="text" class="year-text-put">
+        </div>
+        <div>
+            <span class="week-text">周营业额:</span><input  name="weekMoney" type="text" class="year-text-put">
+        </div>
+        <div>
+            <span class="day-text">日营业额:</span><input name="dayMoney" type="text" class="year-text-put">
+        </div>
+        <div  class="submit">
+            <input style="width:100%;height:100%;" type='button' value='提交表单' id='submitBtn'/>
+        </div>
+    </form>
+</div>
+
+<script src="js/jquery.js"></script>
+<script src="js/common.js"></script>
+<script src="js/echarts.min.js"></script>
+<script src="js/echarts-gl.min.js"></script>
+<script src="js/china.js"></script>
+<script src="js/swiper.min.js"></script>
+<script>
+ $('#submitBtn').click(function(e){
+    var formData = $('form').serialize();
+    console.log(234)
+    $.post('目标地址',formData,成功/失败回调函数);
+    e.preventDefault();
+});
+</script>
+
+
+</body>
+
+</html>
