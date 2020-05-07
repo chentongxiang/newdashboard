@@ -348,12 +348,12 @@
                   var newNum = parseInt(data.msg);
                   var date = new Date();
                   var minutes = 120;
-                  // date.setTime(date.getTime() + (minutes * 60 * 1000));
+                  date.setTime(date.getTime() + (minutes * 60 * 1000));
                   //设置明天0点过期
-                  date.setDate(date.getDate() + 1);
-                  date.setHours(0);
-                  date.setMinutes(0);
-                  date.setSeconds(0);
+                  // date.setDate(date.getDate() + 1);
+                  // date.setHours(0);
+                  // date.setMinutes(0);
+                  // date.setSeconds(0);
                   $.cookie('realTimeData', newNum, { expires: date });
                   $('#termNumCounter').html(toThousands(newNum));
                 }
@@ -368,11 +368,11 @@
                 if (data) {
                   var date = new Date();
                   var minutes = 120;
-                  // date.setTime(date.getTime() + (minutes * 60 * 1000));
-                  date.setDate(date.getDate() + 1);
-                  date.setHours(0);
-                  date.setMinutes(0);
-                  date.setSeconds(0);
+                  date.setTime(date.getTime() + (minutes * 60 * 1000));
+                  // date.setDate(date.getDate() + 1);
+                  // date.setHours(0);
+                  // date.setMinutes(0);
+                  // date.setSeconds(0);
                   $.cookie('realTimeData', data.num, { expires: date });
                   $('#termNumCounter').html(toThousands(data.num));
                 }
@@ -390,11 +390,11 @@
             if (realTimeData) {
               var date = new Date();
               var minutes = 120;
-              // date.setTime(date.getTime() + (minutes * 60 * 1000));
-              date.setDate(date.getDate() + 1);
-              date.setHours(0);
-              date.setMinutes(0);
-              date.setSeconds(0);
+              date.setTime(date.getTime() + (minutes * 60 * 1000));
+              // date.setDate(date.getDate() + 1);
+              // date.setHours(0);
+              // date.setMinutes(0);
+              // date.setSeconds(0);
               $.cookie('realTimeData', realTimeData, { expires: date });
               $('#termNumCounter').html(toThousands(realTimeData));
             } else {
@@ -406,11 +406,11 @@
                 if (data) {
                   var date = new Date();
                   var minutes = 120;
-                  // date.setTime(date.getTime() + (minutes * 60 * 1000));
-                  date.setDate(date.getDate() + 1);
-                  date.setHours(0);
-                  date.setMinutes(0);
-                  date.setSeconds(0);
+                  date.setTime(date.getTime() + (minutes * 60 * 1000));
+                  // date.setDate(date.getDate() + 1);
+                  // date.setHours(0);
+                  // date.setMinutes(0);
+                  // date.setSeconds(0);
                   $.cookie('realTimeData', data.num, { expires: date });
                   $('#termNumCounter').html(toThousands(data.num));
                 }

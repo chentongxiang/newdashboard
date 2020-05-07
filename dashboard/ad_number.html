@@ -364,7 +364,7 @@
                   $("#covered-hotels").html(toThousands(v.value));
                   break;
                 case "num_person_history":
-                  $("#num_person_history").html(toThousands(v.value * 2.5));
+                  $("#num_person_history").html(toThousands(parseInt(v.value * 2.5)));
                   break;
                 case "num_person_month":
                   $("#num_person_month").html(toThousands(v.value));
