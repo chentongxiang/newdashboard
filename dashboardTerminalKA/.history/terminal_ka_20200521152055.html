@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="./css/basic.css">
+    <link rel="stylesheet" href="./css/terminal_number.css">
+    <link rel="stylesheet" href="./css/swiper.min.css">
+</head>
+<body>
+<div class="big-box">
+    <div class="header_img">
+        <div class="logo"></div>
+        <div class="title-text">终端KA2020看板</div>
+    </div>
+    <div class="content box_flex">
+        <div class="left-box">
+            <div class="left-top">
+                <div class="chart-box">
+                    <div class="title">电视品牌终端在线TOP5</div>
+                    <div class="chart" id="test1">
+                    </div>
+                </div>
+            </div>
+            <div class="left-middle">
+                <div class="chart-box">
+                    <div class="title">电视品牌各省终端在线TOP3</div>
+                    <div class="chart" id="test2">
+                    </div>
+                </div>
+            </div>
+            <div class="left-bottom swiper-container swiper3" >
+                <div class="chart-box">
+                    <div class="title">电视品牌终端增长趋势图
+                    </div>
+                    <div class="chart" id="test3">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="center-box">
+            <div class="center-top-box">
+                <div class="center-top">
+                    <div class="number-text">终端KA上线数量 </div>
+                    <div class="data-box" id="termNumCounter">
+                        <div class="text">加载中</div>
+                    </div>
+                </div>
+                <div class="center-four-data">
+                    <div class="online-rate">
+                        <div class="num-text">昨日在线率</div>
+                        <div class="num-data1" id="avg_online_rate">加载中</div>
+                    </div>
+                    <div class="boot-times">
+                        <div class="num-text">周平均开机次数</div>
+                        <div class="num-data2" id="avg_opennum_everyday">加载中</div>
+                    </div>
+                    <div class="active-terminal">
+                        <div class="num-text">平均活跃终端数</div>
+                        <div class="num-data3" id="avg_termialnum_active">加载中</div>
+                    </div>
+                    <div class="turn-on-time">
+                        <div class="num-text">昨日平均开始时长</div>
+                        <div class="num-data4" id="avg_openlong_yesterday">加载中</div>
+                    </div>
+                </div>
+            </div>
+            <div class="center-middle" id="china_map"></div>
+            <div class="center-bottom">
+                <div class="empty"></div>
+                <!--<div class="new-text">最新动态</div>-->
+                <div class="bg-image">
+                    <ul class="new-data" id="scroll_hotels"></ul>
+                </div>
+            </div>
+        </div>
+        <div class="right-box">
+            <div class="right-top swiper-container swiper-4">
+                <div class="left">
+                    <div>部门指标数量</div>
+                    <div class="num-text" id="target">100000</div>
+                </div>
+                <div class="middle">
+                    <div>实时终端数量</div>
+                    <div class="num-text" id="yesterday_termialnum_active">加载中</div>
+                </div>
+                <div class="right">
+                    <div>指标任务差额</div>
+                    <div class="num-text" id="balance">加载中</div>
+                </div>
+            </div>
+            <div class="right-middle" id="avg_single_open_long">
+                <div class="chart-box">
+                    <div class="title">终端KA部月上线终端趋势图</div>
+                    <div class="chart" id="test4">
+                    </div>
+                </div>
+            </div>
+            <div class="right-bottom" id="avg_single_open_nums">
+                <div class="chart-box">
+                    <div class="title">终端KA部各省市终端TOP10</div>
+                    <div class="chart" id="test5">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script src="js/jquery.js"></script>
+<script src="js/echarts.min.js"></script>
+<script src="js/echarts-gl.min.js"></script>
+<script src="js/china.js"></script>
+<script src="js/swiper.min.js"></script>
+<script src="js/common_terminal.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script>
+
+        var terminalNumber = {
+            fontSizeNum : 18,
+            allEchartObj:{},
+            arrLength:"",
+            markPoint:[],
+            myChartMap:{},
+            init:function () {
+                //尺寸初始化
+                this.windowOnload();
+                //创建echart图,处理query_charts_terminal接口的数据，基本都是生成echart图的数据
+                this.createEchart();
+                //当日实时数据采集量,先判断cookie中有没实时数据，有的话取出来，然后再访问terminalHeartBeat_data，
+                //如果cookie中没有实时数据，则先从terminalInitCollect接口中获取数据变量
+                // this.realTimeData();
+                // 热力图图展示，接口有terminalHeatData
+                this.heatMapShow();
+                // 酒店房间实时数据展示，接口terminal_all_new_room
+                this.hotelDataShow();
+                //活跃终端数量，接口terminal_active_data
+                this.terminalActivedata();
+            },
+
+            //尺寸初始化
+            windowOnload:function () {
+                var that = this;
+                setRemSize();
+                $(window).resize(function () {          //当浏览器大小变化时
+                    setRemSize();
+                    location.reload();
+                });
+                //页面定时5分钟刷新
+                var interAn = setInterval(function(){
+                    window.location.reload();
+                },1000*60*5);
+                function setRemSize(){
+                    
+                    that.fontSizeNum=document.documentElement.clientWidth/1920 * 100;
+                    //将得到的rem值复制给根元素的font-size
+                    document.documentElement.style.fontSize=that.fontSizeNum+"px";
+                    //  that.fontSizeNum = 1920 / 1920 * 100;
+                    // //将得到的rem值复制给根元素的font-size
+                    // document.documentElement.style.fontSize = that.fontSizeNum + "px";
+                }
+
+            },
+            //处理get_charts_terminal接口的数据，基本都是生成echart图的数据
+            createEchart:function () {
+                var that = this;
+                //获取echart图表数据并显示
+                var  bar1 = {
+                    chart_type: "bar",
+                    label: ["TCL","创维", "海信", "康佳", "夏普",],
+                    title_label: "自动播放数据排名(万次)",
+                    title_value: "top_play_auto",
+                    value:[273,300,310,320,400]
+                }
+
+                var  bar2 = {
+                    chart_type: "bar",
+                    label: ["TCL","创维", "海信", "康佳", "夏普"],
+                    title_label: "自动播放数据排名(万次)",
+                    title_value: "top_play_auto",
+                    value:[
+                            {
+                                name: '',
+                                type: 'bar',
+                                barGap: 1,
+                                barWidth: '12%',
+                                // label: labelOption,
+                                data: [420, 432, 401, 434, 490],
+                            },
+                            {
+                                name: '',
+                                type: 'bar',
+                                barWidth: '12%',
+                                // label: labelOption,
+                                data: [320, 382, 391, 334, 390]
+                            },
+                            {
+                                name: '',
+                                type: 'bar',
+                                barWidth: '12%',
+                                // label: labelOption,
+                                data: [250, 232, 201, 254, 290]
+                            },
+                        ],
+                        provinceName:[
+                            ["广东","浙江","广西","上海","北京"],
+                            ["湖南","湖南","浙江","广东","浙江"],
+                            ["四川","浙江","四川","北京","四川"],
+                        ]
+                }
+
+                var bar3 = {
+                            chart_type: "bar",
+                            label: ["1月", "2月", "3月","4月","5月",
+                            "6月"],
+                            legendData:["TCL","创维", "海信", "康佳", "夏普"],
+                            title_label: "自动播放数据排名(万次)",
+                            title_value: "top_play_auto",
+                            value:[
+                                [113, 210, 219, 354, 431,520],
+                                [213, 310, 319, 454, 531,620],
+                                [233, 240, 269, 304, 321,520],
+                                [333, 346, 366, 456, 666,720],
+                                [313, 410, 519, 654, 681,725],
+                            ],
+                            
+                    }
+
+                var bar4 = {
+                    chart_type: "bar",
+                    label: ["7月", "8月", "9月",
+                        "10月","11月","12月"],
+                    title_label: "自动播放数据排名(万次)",
+                    title_value: "top_play_auto",
+                    value:[113, 210, 219, 354, 431,520]
+                }
+
+                var  bar5 = {
+                    chart_type: "bar",
+                    label: ["广东","上海", "河北", "山西", "江苏","浙江","福建", "山东", "辽宁", "吉林"],
+                    title_label: "自动播放数据排名(万次)",
+                    title_value: "top_play_auto",
+                    value:[273,300,310,320,400,450,500,600,650,700]
+                }
+                $.post(GPATH.queryChartsTerminal, function(data){
+                    if(data.code==200){
+                        var content = data.msg;
+                        $.each(content,function(i,v){
+                            switch(v.title_value){
+                                //电视品牌终端在线TOP5
+                                case "top5_brand":
+                                    var color = ["#01D1FF","#2771EA","#063257"];
+                                    var option = options.withBgBarChart(color, v.label.reverse(), v.value.reverse(), that.fontSizeNum);
+                                    var bgData = that.bgData(v.value);
+                                    option.series[0].data = bgData;
+                                    var echartObj = new EchartObj("test1", option);
+                                    echartObj.setOp();
+                                    break;
+                                //电视品牌终端增长趋势图
+                                case "total_trend":
+                                    var label=[],legendData=[],valueArr=[];
+                                    $.each(v.label,function(i,k){
+                                        label.push((parseInt(k.toString().slice(-2))+"月"))
+                                    })
+                                    $.each(v.value.brandName,function(i,k){
+                                        legendData.push(k[0])
+                                    })
+                                    //处理下数据中为null的数据，变为0
+                                    $.each(v.value.value,function(i,k){
+                                        var arr= []
+                                        $.each(k,function(i,h){
+                                            arr.push(h?h:0)
+                                        })
+                                        valueArr.push(arr)
+                                    })
+                                    var color =["#50DF76","#F45E23","#E9E227","#228FFE","#F75CAD"];
+                                    var option = options.multipleLineChart(color,legendData, label, valueArr, that.fontSizeNum);
+                                    var echartObj = new EchartObj("test3", option);
+                                    echartObj.setOp();
+                                    break;
+                                //终端KA部月上线终端趋势图
+                                case "new_trend":
+                                    var label=[];
+                                        $.each(v.label,function(i,k){
+                                            label.push((parseInt(k.toString().slice(-2))+"月"))
+                                        })
+                                    var color =["#6CC9FF","#36ACFE","rgba(54,172,254,.1)"];
+                                    var option = options.lineChart(color, label, v.value, that.fontSizeNum);
+                                    var echartObj = new EchartObj("test4", option);
+                                    echartObj.setOp();
+                                    break;
+                                //终端KA部各省市终端TOP10
+                                case "top10_province":
+                                    var color = ["#01D1FF","#657CA8","#063257"];
+                                    var labelArr = [];
+                                    $.each(v.label,function(i,k){
+                                        labelArr.push(k.slice(0,2))
+                                    })
+                                    var option = options.withBgBarChartVertical(color, labelArr, v.value, that.fontSizeNum);
+                                    var bgData = that.bgData(v.value);
+                                    option.series[0].data = bgData;
+                                    var echartObj = new EchartObj("test5", option);
+                                    echartObj.setOp();
+                                    break;
+                                //电视品牌各省终端在线TOP3
+                                case "top3_province_tb5":
+                                    //处理省份名字为2个
+                                    var provinceName=[];
+                                    $.each(v.value.provinceName,function(i,k){
+                                        var arr= []
+                                        $.each(k,function(i,h){
+                                            // console.log(h)
+                                            arr.push(h.slice(0,2))
+                                        })
+                                        provinceName.push(arr)
+                                    })
+                                    var color = ["#feab65","#ef964b","#af68e6","#8731c9","#50c3ff","#2491fe"];
+                                    var option = options.multipleBarChart(color, v.label, v.value.value, provinceName,that.fontSizeNum);
+                                    var echartObj = new EchartObj("test2", option);
+                                    echartObj.setOp();
+                                    break;
+                            }
+                        })
+                       
+                        //电视品牌终端在线TOP5
+                        // var color = ["#01D1FF","#2771EA","#063257"];
+                        // var option = options.withBgBarChart(color, bar1.label, bar1.value, that.fontSizeNum);
+                        // var bgData = that.bgData(bar1.value);
+                        // option.series[0].data = bgData;
+                        // var echartObj = new EchartObj("test1", option);
+                        // echartObj.setOp();
+
+                        //电视品牌各省终端在线TOP3
+                        // var color = ["#feab65","#ef964b","#af68e6","#8731c9","#50c3ff","#2491fe"];
+                        // var option = options.multipleBarChart(color, bar2.label, bar2.value, bar2.provinceName,that.fontSizeNum);
+                        // var echartObj = new EchartObj("test2", option);
+                        // echartObj.setOp();
+
+                        //电视品牌终端增长趋势图
+                        // var color =["#50DF76","#F45E23","#E9E227","#228FFE","#F75CAD"];
+                        // var option = options.multipleLineChart(color,bar3.legendData, bar3.label, bar3.value, that.fontSizeNum);
+                        // var echartObj = new EchartObj("test3", option);
+                        // echartObj.setOp();
+
+                        //终端KA部月上线终端趋势图
+                        // var color =["#6CC9FF","#36ACFE","rgba(54,172,254,.1)"];
+                        // var option = options.lineChart(color, bar4.label, bar4.value, that.fontSizeNum);
+                        // var echartObj = new EchartObj("test4", option);
+                        // echartObj.setOp();
+
+                        //终端KA部各省市终端TOP10
+                        // var color = ["#01D1FF","#657CA8","#063257"];
+                        // var option = options.withBgBarChartVertical(color, bar5.label, bar5.value, that.fontSizeNum);
+                        // var bgData = that.bgData(bar5.value);
+                        // option.series[0].data = bgData;
+                        // var echartObj = new EchartObj("test5", option);
+                        // echartObj.setOp();
+                    }
+                },"json");
+                // var mySwiper = new Swiper ('.swiper1', {
+                //     // direction: 'vertical', // 垂直切换选项
+                //     direction: 'vertical', // 横向切换选项
+                //     // loop: true, // 循环模式选项
+                //     speed:1000,
+                //     autoplay: {
+                //         delay: 8000,//时间 毫秒
+                //         disableOnInteraction: false,//用户操作之后是否停止自动轮播默认true
+                //     },
+                //     // speed:3000
+                // })
+                // var mySwiper = new Swiper ('.swiper2', {
+                //     // direction: 'vertical', // 垂直切换选项
+                //     direction: 'horizontal', // 横向切换选项
+                //     // loop: true, // 循环模式选项
+                //     speed:1000,
+                //     autoplay: {
+                //         delay: 17000,//时间 毫秒
+                //         disableOnInteraction: false,//用户操作之后是否停止自动轮播默认true
+                //     },
+                //     // speed:3000
+                // })
+                // var mySwiper = new Swiper ('.swiper3', {
+                //     // direction: 'vertical', // 垂直切换选项
+                //     direction: 'vertical', // 横向切换选项
+                //     // loop: true, // 循环模式选项
+                //     speed:1000,
+                //     autoplay: {
+                //         delay: 21000,//时间 毫秒
+                //         disableOnInteraction: false,//用户操作之后是否停止自动轮播默认true
+                //     },
+                //     // speed:3000
+                // })
+            },
+            realTimeData:function(){
+                queryNumHearts();
+                setInterval(function(){
+                    queryNumHearts();
+                },1000*10);
+                function queryNumHearts() {
+                    var realTimeData = $.cookie('realTimeData')
+                    if(realTimeData){
+                        $.post(GPATH.terminalHeartBeat_data,{"currentTotal":realTimeData},function(data){
+                            if(data.res){
+                                var newNum = parseInt(data.msg);
+                                var date = new Date();
+                                var minutes = 120;
+                                date.setTime(date.getTime()+(minutes * 60 * 1000));
+                                $.cookie('realTimeData', newNum,{expires: date});
+                                var html="";
+                                var newNum_arr = newNum.toString().split("");
+                                $.each(newNum_arr,function(i,v){
+                                    html+="<div class='number'>"+v+"</div>";
+                                })
+                                // console.log(html)
+                                $('#termNumCounter').html(html);
+                            }
+                        },"json");
+                    }else{
+                        $.ajax({
+                            url: GPATH.terminalInitCollect,
+                            type: "GET",
+                            dataType:"json"
+                        }).then(function(data){
+                            if(data){
+                                var date = new Date();
+                                var minutes = 120;
+                                date.setTime(date.getTime()+(minutes * 60 * 1000));
+                                $.cookie('realTimeData', data.num, {expires: date});
+                                var html="";
+                                var newNum_arr = newNum.toString().split("");
+                                $.each(newNum_arr,function(i,v){
+                                    html+="<div class='num_bg'>"+v+"</div>";
+                                })
+                                // console.log(html)
+                                $('#termNumCounter').html(html);
+                            }
+                        },function(err){
+                            //错误的回调函数
+                            console.log(err);
+                        });
+                    }
+                }
+                function toThousands(num) {
+                    var num = (num || 0).toString(), result = '';
+                    while (num.length > 3) {
+                        result = ',' + num.slice(-3) + result;
+                        num = num.slice(0, num.length - 3);
+                    }
+                    if (num) { result = num + result; }
+                    return result;
+                }
+            },
+            // 热力图图展示，接口有terminalHeatData
+            heatMapShow:function () {
+                var that = this;
+                var option= options.heatMapChart([],that.fontSizeNum);
+                that.myChartMap = echarts.init(document.getElementById('china_map'));
+                that.myChartMap.setOption(option);
+                $.post(GPATH.terminalHeatData,function(data){
+                    if(data.res){
+                        var heatBox = data.msg;
+                        var option= options.heatMapChart(heatBox,that.fontSizeNum);
+                        that.myChartMap.setOption(option);
+                    }
+                },"json");
+            },
+            //// 酒店房间实时数据展示，接口terminal_all_new_room
+            hotelDataShow:function () {
+                var that = this;
+                var duration = 300;
+                $.post(GPATH.terminalAllNewRoom, {"duration":duration},function(data){
+                    if(data.res){
+                        var dataBox = data.msg;
+                        var newBox = [];
+                        newBox = dataBox.slice(0,300);
+                        var cnew = newBox.length;
+                        // var timeBox = random(50,duration);
+                        var timeBox=[];
+                        for(var i=0;i<300;i++){
+                            if(i%3==0){
+                                timeBox.push(i);
+                            }
+                        }
+                        // timeBox[0] = 1;
+                        if(cnew > 0){
+                            var tmp = 0;
+                            var now = Date.now();
+                            for(var i=0;i<cnew;i++){
+                                var now = Date.now();
+                                var key = now + timeBox[i]*1000;
+                                var item = newBox[i];
+                                var ihtml =  "<li key='"+key+"' lat='"+item['lat']/100000000+"' lng='"+item['lng']/100000000+"' title='"
+                                    +item['hotel']+"'>酒店:"+item['hotel']+",房间号:"+item['room_number']+"</li>";
+                                $("#scroll_hotels").prepend(ihtml);
+                                tmp = timeBox[i];
+                            }
+                        }
+                    }
+                },"json");
+                function random(number,duration) {
+                    var arr = [];
+                    while (arr.length < number) {   //原数组长度为0，每次成功添加一个元素后长度加1，当数组添加最后一个数字之前长度为number即可
+                        var num = Math.floor(Math.random() * duration);   //生成一个0-300的随机整数
+                        if (arr.length === 0) {   //如果数组长度为0则直接添加到arr数组
+                            arr.push(num);
+                        } else {
+                            for (var i = 0; i < arr.length; i++) {   //当新生成的数字与数组中的元素不重合时则添加到arr数组
+                                if (arr.join(',').indexOf(num) < 0) {
+                                    arr.push(num);
+                                }
+                            }
+                        }
+                    }
+
+                    return arr.sort(sortNumber);
+                }
+                function randomBox(num,duration){
+                    var timeBox = [];
+                    for(var i=0;i<num;i++){
+                        var random = Math.floor(Math.random()*(duration));
+                        timeBox[i] = random;
+                    }
+                    return timeBox.sort(sortNumber);
+                }
+                function sortNumber(a,b){
+                    return a - b
+                }
+                var interCr;
+                clearInterval(interCr);
+                var interCr = setInterval(function(){
+                    getCurrentRoom();
+                },1000);
+                // function getCurrentRoom(){
+                //     var now = Date.now();
+                //     $("#scroll_hotels li").each(function(i,v){
+                //         if($(this).attr('key') <= now && $(this).is(":hidden")){
+                //             $(this).show();
+                //             var lat = $(this).attr('lat');
+                //             var lng = $(this).attr('lng');
+                //             var hotel = $(this).attr('title');
+                //             var itemData = [{"name":hotel,"value":[lng,lat]}];
+                //             addMarkPoint(itemData)
+                //         }
+                //     });
+                // }
+                function getCurrentRoom(){
+                    var now = Date.now();
+                    $("#scroll_hotels li").each(function(i,v){
+                        if($(this).attr('key') <= now && $(this).is(":hidden")){
+                            $(this).show();
+                            var lat = $(this).attr('lat');
+                            var lng = $(this).attr('lng');
+                            var hotel = $(this).attr('title');
+                            if(that.markPoint.length>=5){
+                                that.markPoint.splice(0,1);
+                                that.markPoint.push({name:hotel,value:[lng,lat]})
+                            }else{
+                                that.markPoint.push({name:hotel,value:[lng,lat]})
+                            }
+                            addMarkPoint(that.markPoint)
+                        }
+                    });
+                }
+                function addMarkPoint(itemData){
+
+                    var option = that.myChartMap.getOption();
+                    option.series[2] = {
+                        type: 'effectScatter',
+                        coordinateSystem: 'geo',
+                        data: itemData,
+                        symbolSize:that.fontSizeNum?that.fontSizeNum/4.6:14,//闪烁点大小
+                        showEffectOn: 'render',
+                        rippleEffect: {
+                            brushType: 'stroke'
+                        },
+                        hoverAnimation: true,
+                        itemStyle: {
+                            normal: {
+                                color: '#F4E925',
+                                shadowBlur: 10,
+                                shadowColor: '#333'
+                            }
+                        },
+                        zlevel: 1
+                    };
+                    that.myChartMap.clear();
+                    that.myChartMap = echarts.init(document.getElementById('china_map'));
+                    that.myChartMap.setOption(option);
+                }
+            },
+            //柱状图背景色数据函数
+            bgData:function (data) {
+                var max = 0,bgData = [];
+                $.each(data,function (i,v) {
+                    if (max < Number(v)) max = v;
+                })
+                $.each(data,function (i,v) {
+                    bgData.push(max)
+                })
+                return bgData;
+            },
+            //活跃终端数量，接口terminal_active_data
+            terminalActivedata:function () {
+                $.ajax({
+                    url: GPATH.queryNumbersTerminal,
+                    type: "GET",
+                    dataType:"json"
+                }).then(function(data){
+                    if(data){
+                        // console.log(data)
+                        var avg_online_rate = (data[5].value/data[12].value*100).toFixed(2)+"%";
+                        $("#avg_online_rate").html(avg_online_rate);
+                        $.each(data,function (i,v) {
+                            // console.log(v)
+                            if($("#"+v.label)){
+                                //判断是不是 平均每日开机时长，是的话加上MIN
+                                if(v.label=="avg_openlong_yesterday"){
+                                    var html= parseInt(v.value)+"<span class='minute'>Min</span>";
+                                    $("#"+v.label).html(html);
+                                }else if(v.label=="hour_rate_boot"){
+                                    var date = new Date();
+                                    var hour = date.getHours();
+                                    var arr= eval("("+v.value+")");
+                                    //实时终端数量 = 客房涵盖数量*实时开机率
+                                    var html1 = parseInt(data[1].value*arr[hour]*1.5);
+                                    $("#yesterday_termialnum_active").html(html1);
+                                    $("#balance").html($("#target").html()-html1)
+                                }else{
+                                    $("#"+v.label).html(parseInt(v.value));
+                                }
+                                
+                            }
+                        })
+                    }
+                },function(err){
+                    //错误的回调函数
+                    console.log(err);
+                });
+                function toThousands(num) {
+                    var num = (num || 0).toString(), result = '';
+                    while (num.length > 3) {
+                        result = ',' + num.slice(-3) + result;
+                        num = num.slice(0, num.length - 3);
+                    }
+                    if (num) { result = num + result; }
+                    return result;
+                }
+            },
+
+        };
+        $(function() {
+            terminalNumber.init();
+        });
+    
+</script>
+</body>
+</html>

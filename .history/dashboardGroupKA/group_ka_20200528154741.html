@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/basic.css">
+    <link rel="stylesheet" href="css/ka_number.css">
+    <link rel="stylesheet" href="./css/swiper.min.css">
+</head>
+<body>
+<div class="big-box">
+    <div class="header_img">
+        <div class="logo"></div>
+        <div class="title-text">渠道部2020看板<span class="debugging"></span></div>
+    </div>
+    <div class="content box_flex">
+        <div class="left-box">
+            <div class="left-top">
+                <div class="chart-box">
+                    <div class="title">|&nbsp;&nbsp;集团阶段流程管理（占比数）</div>
+                    <div class="chart" id="chart1">
+                    </div>
+                </div>
+            </div>
+            <div class="left-middle swiper-container swiper-1">
+                <div class="carousel1 swiper-wrapper">
+                    <div class="chart-box swiper-slide">
+                        <div class="title">|&nbsp;&nbsp;集团观影卡日销售额</div>
+                        <div class="chart" id="movie_card_yesterday">
+                        </div>
+                    </div>
+                    <div class="chart-box swiper-slide">
+                        <div class="title">|&nbsp;&nbsp;集团观影卡周销售额</div>
+                        <div class="chart" id="movie_card_week">
+                        </div>
+                    </div>
+                    <div class="chart-box swiper-slide">
+                        <div class="title">|&nbsp;&nbsp;集团观影卡月销售额</div>
+                        <div class="chart" id="movie_card_month">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="left-bottom swiper-container">
+                <div class="carousel1 swiper-wrapper">
+                    <div class="chart-box swiper-slide">
+                        <div class="title">|&nbsp;&nbsp;热播电影TOP5</div>
+                        <div class="chart" id="chart3">
+                        </div>
+                    </div>
+                    <!-- <div class="chart-box swiper-slide">
+                        <div class="title">|&nbsp;&nbsp;热销商品top5</div>
+                        <div class="chart" id="chart4">
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+            <!--<div class="left-bottom" id="sex_advs_audience"></div>-->
+        </div>
+        <div class="center-box">
+            <div class="center-top">
+                <div class="number-text">集团酒店屏幕上线总数据</div>
+                <div class="data-box" id="total_screen">
+                </div>
+                <div class="four-data">
+                    <div class="box1">
+                        <div class="text">全国酒店覆盖数字</div>
+                        <div class="number" id="year_ka_total_hotel">加载中</div>
+                    </div>
+                    <div class="box2">
+                        <div class="text">热度酒店数量</div>
+                        <div class="number" id="hotel_active50">加载中</div>
+                    </div>
+                    <div class="box3">
+                        <div class="text">昨日平均开机次数</div>
+                        <div class="number" id="sum_num_open">加载中</div>
+                    </div>
+                    <div class="box4">
+                        <div class="text">昨日平均开始时长</div>
+                        <div class="number" id="sum_time_open">加载中</div>
+                    </div>
+                </div>
+            </div>
+            <div class="center-middle">
+                <div class="china_map" id="china_map"></div>
+            </div>
+            <div class="center-bottom">
+                <div class="title">|&nbsp;&nbsp;重点酒店集团各省上线屏幕TOP2排名</div>
+                <div id="content-text">
+                    
+                </div>
+            </div>
+        </div>
+        <div class="right-box">
+            <div class="right-top swiper-container swiper-4">
+                <div class="swiper-wrapper">
+                    <!-- <div class="swiper-slide swiper-box">
+                        <div class="top">
+                            <div class="box1">
+                                <div class="text">2020屏幕上线目标</div>
+                                <div class="number">100,000</div>
+                            </div>
+                            <div class="box2">
+                                <div class="text">已完成数量</div>
+                                <div class="number" id="new_room_2020">加载中</div>
+                            </div>
+                            <div class="box3">
+                                <div class="text">差额</div>
+                                <div class="number" id="new_room_balance">加载中</div>
+                            </div>
+                        </div>
+                        <div class="bottom">
+                            <div class="box1">
+                                <div class="text">2020客房签约目标</div>
+                                <div class="number">1,000,000</div>
+                            </div>
+                            <div class="box2">
+                                <div class="text">已完成数量</div>
+                                <div class="number" id="signed_room_2020">加载中</div>
+                            </div>
+                            <div class="box3">
+                                <div class="text">差额</div>
+                                <div class="number" id="signed_room_balance">加载中</div>
+                            </div>
+                        </div>
+                    </div> -->
+                    <div class="swiper-slide swiper-box-1">
+                        <div class="title-box">
+                            | 213过往上线数量性能
+                        </div>
+                        <div class="small-box">
+                            <div class="item">
+                                <div class="item-chilren">
+                                    <div class="text-1">昨日</div>
+                                    <div class="data-1" id="past_yesterday">加载中</div>
+                                </div>
+                                <div class="item-chilren">
+                                    <div class="text-2">较上一日</div>
+                                    <div class="data-2">
+                                        <div class="arrow-up" id="past_beforeDay_arrow"></div>
+                                        <div class="data-up" id="past_beforeDay_data">加载中</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="item-chilren">
+                                    <div class="text-1">上周</div>
+                                    <div class="data-1" id="past_lastWeek">加载中</div>
+                                </div>
+                                <div class="item-chilren">
+                                    <div class="text-2">较上一周</div>
+                                    <div class="data-2">
+                                        <div class="arrow-up" id="past_beforeWeek_arrow"></div>
+                                        <div class="data-up" id="past_beforeWeek_data">加载中</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="item-chilren">
+                                    <div class="text-1">上月</div>
+                                    <div class="data-1" id="past_lastMonth">加载中</div>
+                                </div>
+                                <div class="item-chilren">
+                                    <div class="text-2">较上一月</div>
+                                    <div class="data-2">
+                                        <div class="arrow-up" id="past_beforeMonth_arrow"></div>
+                                        <div class="data-up" id="past_beforeMonth_data">222</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide swiper-box-1">
+                        <div class="title-box">
+                            | 实时上线数量
+                        </div>
+                        <div class="small-box">
+                            <div class="item">
+                                <div class="item-chilren">
+                                    <div class="text-1">今日</div>
+                                    <div class="data-1"  id="real_today">加载中</div>
+                                </div>
+                                <div class="item-chilren">
+                                    <div class="text-2">较上一日</div>
+                                    <div class="data-2">
+                                        <div class="arrow-up" id="real_beforeDay_arrow"></div>
+                                        <div class="data-up" id="real_beforeDay_data">加载中</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="item-chilren">
+                                    <div class="text-1">本周</div>
+                                    <div class="data-1" id="real_week">加载中</div>
+                                </div>
+                                <div class="item-chilren">
+                                    <div class="text-2">较上一周</div>
+                                    <div class="data-2">
+                                        <div class="arrow-up" id="real_beforeWeek_arrow"></div>
+                                        <div class="data-up" id="real_beforeWeek_data">加载中</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="item-chilren">
+                                    <div class="text-1">本月</div>
+                                    <div class="data-1" id="real_month">加载中</div>
+                                </div>
+                                <div class="item-chilren">
+                                    <div class="text-2">较上一月</div>
+                                    <div class="data-2">
+                                        <div class="arrow-up" id="real_beforeMonth_arrow"></div>
+                                        <div class="data-up" id="real_beforeMonth_data">加载中</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="right-middle swiper-container swiper-2">
+                <div class="carousel1 swiper-wrapper">
+                    <div class="chart-box swiper-slide">
+                        <div class="title">|&nbsp;&nbsp;当日集团分配比例</div>
+                        <div class="chart" id="chart5">
+                        </div>
+                    </div>
+                    <div class="chart-box swiper-slide">
+                        <div class="title">|&nbsp;&nbsp;当周集团分配比例</div>
+                        <div class="chart" id="chart6">
+                        </div>
+                    </div>
+                    <div class="chart-box swiper-slide">
+                        <div class="title">|&nbsp;&nbsp;当月集团分配比例</div>
+                        <div class="chart" id="chart7">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="right-bottom swiper-container swiper-3">
+                <div class="carousel1 swiper-wrapper">
+                    <div class="chart-box swiper-slide">
+                        <div class="title">|&nbsp;&nbsp;各酒店集团实时在线率（%）</div>
+                        <div class="chart" id="hour_act_room">
+                        </div>
+                    </div>
+                    <div class="chart-box swiper-slide">
+                        <div class="title">|&nbsp;&nbsp;各集团酒店广告播出数据</div>
+                        <div class="chart" id="advs_month_group">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/jquery.js"></script>
+<script src="js/common.js"></script>
+<script src="js/echarts.min.js"></script>
+<script src="js/echarts-gl.min.js"></script>
+<script src="js/china.js"></script>
+<script src="js/swiper.min.js"></script>
+<script>
+    var adNumber = {
+        fontSizeNum: 18,
+        allEchartObj: {},
+        arrLength: "",
+        history_data:0,
+        this_year_data:0,
+        myChartMap:"",
+        init: function () {
+            this.windowOnload();
+            //除地图外的echart图数据，接口get_charts_advs
+            this.createEchart();
+            //热力图展示，接口advKanbanHeatData
+            // this.chinaMapShow();
+            // 广告曝光频次
+            this.kaDataShow();
+        },
+        windowOnload: function () {
+            var that = this;
+            setRemSize();
+            $(window).resize(function () {          //当浏览器大小变化时
+                setRemSize();
+                location.reload();
+            });
+            //页面定时10分钟刷新
+            var interAn = setInterval(function(){
+                window.location.reload();
+            },1000*60*5);
+            function setRemSize() {
+                that.fontSizeNum = document.documentElement.clientWidth / 1920 * 100;
+                //将得到的rem值复制给根元素的font-size
+                document.documentElement.style.fontSize = that.fontSizeNum + "px";
+            }
+        },
+        createEchart: function () {
+            var that = this;
+            var bar1 = {
+                chart_type: "pie",
+                label: ["立项跟踪", "呈报方案", "UI定案", "商务流程", "已签约",
+                 "协议流程", "存量清单", "导入样板店", "存量店建档", "筹建店清单", "存量店导入"],
+                title_label: "自动播放数据排名(万次)",
+                title_value: "top_play_auto",
+                value:[
+                    {value: "2", name: "立项跟踪"},
+                    {value: "2", name: "呈报方案"},
+                    {value: "2", name: "UI定案"},
+                    {value: "2", name: "商务流程"},
+                    {value: "2", name: "已签约"},
+                    {value: "2", name: "协议流程"},
+                    {value: "2", name: "存量清单"},
+                    {value: "2", name: "导入样板店"},
+                    {value: "2", name: "存量店建档"},
+                    {value: "2", name: "筹建店清单"},
+                    {value: "2", name: "存量店导入"},
+                ]
+            }
+            var  bar2 = {
+                chart_type: "bar",
+                label: ["麗枫", "尚美", "喆啡", "其他",],
+                title_label: "自动播放数据排名(万次)",
+                title_value: "top_play_auto",
+                value:[273,300,310,320]
+            }
+
+            var bar3 = {
+                    chart_type: "bar",
+                    label: ["西游记", "叶问4", "只有芸知道", "魔镜奇缘","误杀"],
+                    title_label: "自动播放数据排名(万次)",
+                    title_value: "top_play_auto",
+                    value:[173,200,210,220,290]
+            }
+
+            var bar4 = {
+                    chart_type: "bar",
+                    label: ["可乐", "坚果", "红牛", "乳酸菌","饼干"],
+                    title_label: "自动播放数据排名(万次)",
+                    title_value: "top_play_auto",
+                    value:[173,200,210,220,290]
+            }
+
+            var  bar5 = {
+                chart_type: "bar",
+                label: ["麗枫", "尚美", "喆啡", "维也纳","东呈"],
+                title_label: "自动播放数据排名(万次)",
+                title_value: "top_play_auto",
+                value:[273,300,310,320,500]
+            }
+            var  bar6 = {
+                chart_type: "bar",
+                label: ["麗枫", "尚美", "喆啡", "维也纳","东呈"],
+                title_label: "自动播放数据排名(万次)",
+                title_value: "top_play_auto",
+                value:[2730,3000,3100,3200,5000]
+            }
+
+            var  bar7 = {
+                chart_type: "bar",
+                label: ["麗枫", "尚美", "喆啡", "维也纳","东呈"],
+                title_label: "自动播放数据排名(万次)",
+                title_value: "top_play_auto",
+                value:[21,25,30,33,39]
+            }
+
+            var  bar8 = {
+                chart_type: "bar",
+                label: ["麗枫", "尚美", "喆啡", "维也纳","东呈"],
+                title_label: "自动播放数据排名(万次)",
+                title_value: "top_play_auto",
+                value:[44899496, 1377724, 876, 3018159, 278354]
+            }
+            var pie = {
+                chart_type: "bar",
+                label: ["立项跟踪", "呈报方案", "UI定案", "商务流程", "协议流程", "已签约", "导入样板店", "存量店清单", "存量店建档", "存量店导入", "筹建店清单"],
+                title_label: "自动播放数据排名(万次)",
+                title_value: "top_play_auto",
+                value: [
+                    { value: "10", name: "立项跟踪" },
+                    { value: "200", name: "呈报方案" },
+                    { value: "20", name: "UI定案" },
+                    { value: "10", name: "商务流程" },
+                    { value: "10", name: "协议流程" },
+                    { value: "10", name: "已签约" },
+                    { value: "10", name: "导入样板店" },
+                    { value: "12", name: "存量店清单" },
+                    { value: "15", name: "存量店建档" },
+                    { value: "10", name: "存量店导入" },
+                    { value: "20", name: "筹建店清单" }
+                    ]
+            }
+            $.post(GPATH.queryChartsGroupKA, function (data) {
+                if (data.code==200) {
+                    var content = data.msg;
+                    console.log(content)
+                    $.each(content,function(i,v){
+                        switch(v.title_value){
+                            //集团阶段流程管理（占比数）
+                            case "process_period_info":
+                                var color = ["#DFDFDF", "#BD00FC", "#2FC4FF","#04FDFF", "#F86F56", "#F03A75", "#4CD964", 
+                                "#8854EF", "#8593F4", "#FF7C00", "#3865FE"]
+                                var option = options.pieChartOther(color, v.label, v.value, that.fontSizeNum);
+                                option.series[0].radius = ['0%', '65%'];
+                                option.series[0].center = ['30%', '53%'];
+                                var echartObj = new EchartObj("chart1", option);
+                                echartObj.setOp();
+                            break;
+                            //集团观影卡日销售额
+                            case "movie_card_yesterday":
+                                var color = ["#395EFE", "#2FC4FF"];
+                                var option = options.noBgBarChart(color, v.label, v.value, that.fontSizeNum);
+                                var echartObj = new EchartObj("movie_card_yesterday", option);
+                                echartObj.setOp();
+                            break;
+                            //集团观影卡周销售额
+                            case "movie_card_week":
+                                var color = ["#24d4e1", "#7bc281"];
+                                var option = options.noBgBarChart(color, v.label, v.value, that.fontSizeNum);
+                                var echartObj = new EchartObj("movie_card_week", option);
+                                echartObj.setOp();
+                            break;
+                            //集团观影卡月销售额
+                            case "movie_card_month":
+                                var color = ["#ffc16f", "#fa568a"];
+                                var option = options.noBgBarChart(color, v.label, v.value, that.fontSizeNum);
+                                var echartObj = new EchartObj("movie_card_month", option);
+                                echartObj.setOp();
+                            break;
+                            //地图
+                            case "top2_province_screen":
+                                var valueArr = v.value;
+                                var option = options.heatMapChart([], that.fontSizeNum);
+                                var domID = "china_map";
+                                var echartObj = new EchartObj(domID, option);
+                                var locationArr = valueArr.location;
+                                // 将2维数组变一维数组，es5语法
+                                var locationArr = locationArr.reduce(function (a, b) { return a.concat(b)} );
+                                var newArr =[],colorArr=['#00ff9c', '#00ff9c','#ff7444', '#ff7444', '#fbef5d', '#fbef5d',
+                                 '#2fc4ff', '#2fc4ff','#BC00FC', '#BC00FC']
+                                $.each(locationArr,function(i,v){
+                                    newArr.push({
+                                        name:i,
+                                        value:v.reverse(),
+                                        itemStyle:{
+                                            normal: { color: colorArr[i] }
+                                        }
+                                    })
+                                })
+                                addMarkPoint(newArr, option)
+                                echartObj.myChart.setOption(option);
+                                function addMarkPoint(locationArr, option) {
+                                    option.series[2] = {
+                                        type: 'effectScatter',
+                                        coordinateSystem: 'geo',
+                                        data: locationArr,
+                                        symbolSize: that.fontSizeNum ? that.fontSizeNum / 5 : 14,//闪烁点大小
+                                        showEffectOn: 'render',
+                                        rippleEffect: {
+                                            brushType: 'stroke'
+                                        },
+                                        hoverAnimation: true,
+                                        itemStyle: {
+                                            normal: {
+                                                color: '#F4E925',
+                                                shadowBlur: 10,
+                                                shadowColor: '#333'
+                                            }
+                                        },
+                                        zlevel: 1
+                                    };
+                                }
+                                // 底部文字显示
+                                var html = "";
+                                $.each(v.label,function(i,v){
+                                    html+="<div>"
+                                                +"<span class='group'>"+ v+" : </span>"
+                                                +"<span class='province'>"+ valueArr.province[i].toString()+"</span>"
+                                            "</div >"
+                                })
+                                $("#content-text").html(html)
+                            break;
+                            //各集团酒店广告播出数据
+                             case "advs_month_group":
+                                var color = ["#c100fd", "#c100fd"];
+                                var new_value = that.bgData(v.value.reverse());
+                                var option = options.normalBarChartOther(color, v.label, new_value, that.fontSizeNum, v.value);
+                                for (i = 0, arr = []; i < new_value.length; i++) {
+                                    arr.push({
+                                        symbol: "circle",
+                                        symbolSize: that.fontSizeNum * 0.15,
+                                        symbolOffset: [0, "35%"],
+                                        coord: [i, v.value[i]],
+                                        itemStyle: {
+                                            color: "#f2f2f2"
+                                        }
+                                    })
+                                }
+                                option.series[0].markPoint.data = arr;
+                                option.series[0].itemStyle.normal.label.show = true;
+                                var echartObj = new EchartObj("advs_month_group", option);
+                                echartObj.setOp();
+                            break;
+                            //hour_act_room
+                            case "hour_act_room":
+                                 var color = ["#BF00FC", "rgba(191,0,252,.6)", "rgba(191,0,252,0.1)"];
+                                var option = options.lineChart(color, v.label, v.value, that.fontSizeNum);
+                                var echartObj = new EchartObj("hour_act_room", option);
+                                echartObj.setOp(); 
+                            break;
+                            case "movie_top5_week":
+                                var color = ["#BC00FC", "#BC00FC"];
+                                var option = options.normalBarChart(color, v.label, v.value, that.fontSizeNum);
+                                var echartObj = new EchartObj("chart3", option);
+                                echartObj.setOp();
+                            break;
+                            case "history_start_terminal":
+                                $("#past_yesterday").html(v.value[0]);
+                                $("#past_lastWeek").html(v.value[1]);
+                                $("#past_lastMonth").html(v.value[2]);
+                                if(v.value[3]>=0){
+                                    $("#past_beforeDay_arrow").removeClass("arrow-down").addClass("arrow-up")
+                                    $("#past_beforeDay_data").html(v.value[3]+"%").removeClass("data-down").addClass("data-up")
+                                }else{
+                                    $("#past_beforeDay_arrow").removeClass("arrow-up").addClass("arrow-down")
+                                    $("#past_beforeDay_data").html(-1*v.value[3]+"%").removeClass("data-up").addClass("data-down")
+                                }
+                                if(v.value[4]>=0){
+                                    $("#past_beforeWeek_arrow").removeClass("arrow-down").addClass("arrow-up")
+                                    $("#past_beforeWeek_data").html(v.value[4]+"%").removeClass("data-down").addClass("data-up")
+                                }else{
+                                    $("#past_beforeWeek_arrow").removeClass("arrow-up").addClass("arrow-down")
+                                    $("#past_beforeWeek_data").html(-1*v.value[4]+"%").removeClass("data-up").addClass("data-down")
+                                }
+                                if(v.value[5]>=0){
+                                    $("#past_beforeMonth_arrow").removeClass("arrow-down").addClass("arrow-up")
+                                    $("#past_beforeMonth_data").html(v.value[5]+"%").removeClass("data-down").addClass("data-up")
+                                }else{
+                                    $("#past_beforeMonth_arrow").removeClass("arrow-up").addClass("arrow-down")
+                                    $("#past_beforeMonth_data").html(-1*v.value[5]+"%").removeClass("data-up").addClass("data-down")
+                                }
+                            break;
+                            case "real_time_start_terminal":
+                            $("#real_today").html(v.value[0]);
+                                $("#real_week").html(v.value[1]);
+                                $("#real_month").html(v.value[2]);
+                                if(v.value[3]>=0){
+                                    $("#real_beforeDay_arrow").removeClass("arrow-down").addClass("arrow-up")
+                                    $("#real_beforeDay_data").html(v.value[3]+"%").removeClass("data-down").addClass("data-up")
+                                }else{
+                                    $("#real_beforeDay_arrow").removeClass("arrow-up").addClass("arrow-down")
+                                    $("#real_beforeDay_data").html(-1*v.value[3]+"%").removeClass("data-up").addClass("data-down")
+                                }
+                                if(v.value[4]>=0){
+                                    $("#real_beforeWeek_arrow").removeClass("arrow-down").addClass("arrow-up")
+                                    $("#real_beforeWeek_data").html(v.value[4]+"%").removeClass("data-down").addClass("data-up")
+                                }else{
+                                    $("#real_beforeWeek_arrow").removeClass("arrow-up").addClass("arrow-down")
+                                    $("#real_beforeWeek_data").html(-1*v.value[4]+"%").removeClass("data-up").addClass("data-down")
+                                }
+                                if(v.value[5]>=0){
+                                    $("#real_beforeMonth_arrow").removeClass("arrow-down").addClass("arrow-up")
+                                    $("#real_beforeMonth_data").html(v.value[5]+"%").removeClass("data-down").addClass("data-up")
+                                }else{
+                                    $("#real_beforeMonth_arrow").removeClass("arrow-up").addClass("arrow-down")
+                                    $("#real_beforeMonth_data").html(-1*v.value[5]+"%").removeClass("data-up").addClass("data-down")
+                                }
+                                break;
+                            case "terminal_distr_proportion_day":
+                                var color = ["#8378EA", "#E7BCF3", "#FF9F7F", "#FFDB5C", "#9FE6B8", "#32C5E9", "#1D9DFF",
+                                "#8854EF", "#8593F4", "#FF7C00", "#3865FE"]
+                                var option = options.pieChartOther_1(color, v.label, v.value, that.fontSizeNum);
+                                option.series[0].radius = ['40%', '50%'];
+                                option.series[0].center = ['50%', '50%'];
+                                var echartObj = new EchartObj("chart5", option);
+                                echartObj.setOp();
+                                break;
+                            case "terminal_distr_proportion_week":
+                                var color = ["#8378EA", "#E7BCF3", "#FF9F7F", "#FFDB5C", "#9FE6B8", "#32C5E9", "#1D9DFF",
+                                "#8854EF", "#8593F4", "#FF7C00", "#3865FE"]
+                                var option = options.pieChartOther_1(color, v.label, v.value, that.fontSizeNum);
+                                option.series[0].radius = ['40%', '50%'];
+                                option.series[0].center = ['50%', '50%'];
+                                var echartObj = new EchartObj("chart6", option);
+                                echartObj.setOp();
+                                break;
+                            case "terminal_distr_proportion_month":
+                                var color = ["#8378EA", "#E7BCF3", "#FF9F7F", "#FFDB5C", "#9FE6B8", "#32C5E9", "#1D9DFF",
+                                "#8854EF", "#8593F4", "#FF7C00", "#3865FE"]
+                                var option = options.pieChartOther_1(color, v.label, v.value, that.fontSizeNum);
+                                option.series[0].radius = ['40%', '50%'];
+                                option.series[0].center = ['50%', '50%'];
+                                var echartObj = new EchartObj("chart7", option);
+                                echartObj.setOp();
+                                break;
+                        }
+                        
+                    })
+
+                        //  var color = ["#8378EA", "#E7BCF3", "#FF9F7F", "#FFDB5C", "#9FE6B8", "#32C5E9", "#1D9DFF",
+                        // "#8854EF", "#8593F4", "#FF7C00", "#3865FE"]
+                        // var option = options.pieChartOther_1(color, pie.label, pie.value, that.fontSizeNum);
+                        // option.series[0].radius = ['40%', '50%'];
+                        // option.series[0].center = ['50%', '50%'];
+                        // var echartObj = new EchartObj("chart5", option);
+                        // echartObj.setOp();
+
+                    //      var color = ["#8378EA", "#E7BCF3", "#FF9F7F", "#FFDB5C", "#9FE6B8", "#32C5E9", "#1D9DFF",
+                    //     "#8854EF", "#8593F4", "#FF7C00", "#3865FE"]
+                    //     var option = options.pieChartOther_1(color, pie.label, pie.value, that.fontSizeNum);
+                    //      option.series[0].radius = ['40%', '50%'];
+                    //     option.series[0].center = ['50%', '50%'];
+                    //     var echartObj = new EchartObj("chart6", option);
+                    //     echartObj.setOp();
+                     
+                    //    var color = ["#8378EA", "#E7BCF3", "#FF9F7F", "#FFDB5C", "#9FE6B8", "#32C5E9", "#1D9DFF",
+                    //     "#8854EF", "#8593F4", "#FF7C00", "#3865FE"]
+                    //     var option = options.pieChartOther_1(color, pie.label, pie.value, that.fontSizeNum);
+                    //     option.series[0].radius = ['40%', '50%'];
+                    //     option.series[0].center = ['50%', '50%'];
+                    //     var echartObj = new EchartObj("chart7", option);
+                    //     echartObj.setOp();
+                }
+            }, "json");
+          
+            var mySwiper = new Swiper('.swiper-1', {
+                // direction: 'vertical', // 垂直切换选项
+                direction: 'horizontal', // 横向切换选项
+                // loop: true, // 循环模式选项
+                speed: 1000,
+                autoplay: {
+                    delay: 15000,//时间 毫秒
+                    disableOnInteraction: false,//用户操作之后是否停止自动轮播默认true
+                },
+                // speed:3000
+            })
+            var mySwiper = new Swiper('.swiper-2', {
+                // direction: 'vertical', // 垂直切换选项
+                direction: 'horizontal', // 横向切换选项
+                // loop: true, // 循环模式选项
+                speed: 1000,
+                autoplay: {
+                    delay: 15000,//时间 毫秒
+                    disableOnInteraction: false,//用户操作之后是否停止自动轮播默认true
+                },
+                // speed:3000
+            })
+            var mySwiper = new Swiper('.swiper-3', {
+                // direction: 'vertical', // 垂直切换选项
+                direction: 'horizontal', // 横向切换选项
+                // loop: true, // 循环模式选项
+                speed: 1000,
+                autoplay: {
+                    delay: 15000,//时间 毫秒
+                    disableOnInteraction: false,//用户操作之后是否停止自动轮播默认true
+                },
+                // speed:3000
+            })
+             var mySwiper = new Swiper('.swiper-4', {
+                // direction: 'vertical', // 垂直切换选项
+                direction: 'horizontal', // 横向切换选项
+                // loop: true, // 循环模式选项
+                speed: 1000,
+                autoplay: {
+                    delay: 15000,//时间 毫秒
+                    disableOnInteraction: false,//用户操作之后是否停止自动轮播默认true
+                },
+                // speed:3000
+            })
+        },
+        kaDataShow: function () {
+            var that = this;
+            $.ajax({
+                url: GPATH.queryNumbersGroupKA,
+                type: "GET",
+                dataType: "json"
+            }).then(function (data) {
+                if(data.code==200){
+                    var data = data.msg;
+                    console.log(data)
+                    $.each(data, function (i, v) {
+                        switch (v.label) {
+                            case "total_screen":
+                                var html="";
+                                var newNum_arr = v.value.toString().split("");
+                                $.each(newNum_arr,function(i,v){
+                                    html+="<div class='number'>"+v+"</div>";
+                                })
+                                $('#total_screen').html(html);
+                                break;
+                            case "year_ka_total_hotel":
+                                $('#year_ka_total_hotel').html(toThousands(v.value));
+                                break;
+                            case "hotel_active50":
+                                $("#hotel_active50").html(toThousands(v.value))
+                                break;
+                            case "avg_num_open":
+                                $("#avg_num_open").html(v.value);
+                                break;
+                            case "avg_time_open":
+                                $("#avg_time_open").html(v.value);
+                                break;
+                            case "new_room_2020":
+                                $("#new_room_2020").html(toThousands(v.value));
+                                $("#new_room_balance").html(toThousands(100000-v.value));
+                                break;
+                            case "signed_room_2020":
+                                $("#signed_room_2020").html(toThousands(v.value));
+                                $("#signed_room_balance").html(toThousands(1000000-v.value));
+                                break;
+                            case "sum_num_open":
+                                $("#sum_num_open").html((v.value/data[0].value).toFixed(2));
+                                break;
+                            case "sum_time_open":
+                                $("#sum_time_open").html((v.value / data[0].value).toFixed(2));
+                                break;
+                            case "avgReachNums":
+                                $("#avg_reach_nums").html(toThousands(v.value));
+                                break;
+                            case "avgReachTime":
+                                $("#avg_reach_time").html(toThousands(v.value));
+                                break;
+                        }
+                    })
+                }
+            })
+            function toThousands(num) {
+                var num = (num || 0).toString(), result = '';
+                while (num.length > 3) {
+                    result = ',' + num.slice(-3) + result;
+                    num = num.slice(0, num.length - 3);
+                }
+                if (num) {
+                    result = num + result;
+                }
+                return result;
+            }
+            //数字动态
+            function num_counter(domID) {
+                var decimal_places = 1;
+                var decimal_factor = decimal_places === 0 ? 1 : decimal_places * 10;
+                $(domID).animateNumber(
+                    {
+                        number: 100 * decimal_factor,
+                        color: 'green',
+                        'font-size': '30px',
+
+                        numberStep: function (now, tween) {
+                            var floored_number = Math.floor(now) / decimal_factor,
+                                target = $(tween.elem);
+                            if (decimal_places > 0) {
+                                floored_number = floored_number.toFixed(decimal_places);
+                            }
+                            target.text(floored_number + ' %');
+                        }
+                    },
+                    15000
+                )
+            }
+        },
+        //柱状图背景色数据函数
+        bgData: function (data) {
+            var max = 0, bgData = [];
+            $.each(data, function (i, v) {
+                if (max < Number(v)) max = v;
+            })
+            $.each(data, function (i, v) {
+                bgData.push(max)
+            })
+            return bgData;
+        }
+    }
+    $(function () {
+        adNumber.init();
+    });
+</script>
+</body>
+</html>

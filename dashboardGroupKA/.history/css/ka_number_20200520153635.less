@@ -1,0 +1,502 @@
+@chart-bg-color: #201A69;
+@chart-border:#6268DB;
+@-webkit-keyframes flipOutYtest {
+  from {
+    -webkit-transform: perspective(1400px);
+    transform: perspective(1400px);
+  }
+
+  40% {
+    -webkit-transform: perspective(1400px) rotate3d(0, 1, 0, 60deg);
+    transform: perspective(1400px) rotate3d(0, 1, 0, 60deg);
+    opacity: 1;
+  }
+
+  50% {
+    -webkit-transform: perspective(1400px) rotate3d(0, 1, 0, 90deg);
+    transform: perspective(1400px) rotate3d(0, 1, 0, 90deg);
+    opacity: 0;
+  }
+
+  to {
+    -webkit-transform: perspective(1400px) rotate3d(0, 1, 0, 180deg);
+    transform: perspective(1400px) rotate3d(0, 1, 0, 180deg);
+    opacity: 0;
+  }
+}
+
+.flipOut{
+  -webkit-animation: flipOutYtest 0.75s linear;
+  animation: flipOutYtest 0.75s linear;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+
+@-webkit-keyframes flipInYtest {
+  from {
+    -webkit-transform: perspective(1400px) rotate3d(0, 1, 0, -180deg);
+    transform: perspective(1400px) rotate3d(0, 1, 0, -180deg);
+    opacity: 0;
+  }
+
+  50% {
+    -webkit-transform: perspective(1400px) rotate3d(0, 1, 0, -90deg);
+    transform: perspective(1400px) rotate3d(0, 1, 0, -90deg);
+    opacity: 0;
+  }
+
+  60% {
+    -webkit-transform: perspective(1400px) rotate3d(0, 1, 0, -60deg);
+    transform: perspective(1400px) rotate3d(0, 1, 0, -60deg);
+    opacity: 1;
+  }
+
+  to {
+    -webkit-transform: perspective(1400px);
+    transform: perspective(1400px);
+    opacity: 1;
+  }
+}
+
+.flipIn{
+  -webkit-animation: flipInYtest 0.75s linear;
+  animation: flipInYtest 0.75s linear;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+.big-box{
+  width: 100%;
+  height: 100%;
+  background:#0F0B2F;
+  font-family: "Microsoft YaHei";
+  .flex-box{
+    display: flex;
+    justify-content: space-between;
+    &:before,
+    &:after {
+      content: '';
+      display: block;
+    }
+  }
+  .header_img{
+    width:100%;
+    height:.81rem;
+    // text-align: center;
+    line-height:.8rem;
+    font-size:0.3rem;
+    color:#fff;
+    // letter-spacing:.03rem;
+    // font-weight:bold;
+    background-image: url(../images/header.png);
+    background-repeat: no-repeat;
+    background-size:100% 100%;
+    background-position:center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .title-text{
+      // border:1px solid red;
+      padding-left:.1rem;
+      .debugging{
+        font-size: .22rem;
+      }
+    }
+    .logo{
+      width:.87rem;
+      height:.51rem;
+      display: inline-block;
+      background-image: url(../images/logo.png);
+      background-repeat: no-repeat;
+      background-size:100% 100%;
+      background-position:center;
+      margin-left:-0.1rem;
+    }
+  }
+  .content{
+    width: 100%;
+    height: 90%;
+    .flex-box;
+    .left-box{
+      width: 27%;
+      height:100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      .left-top{
+        width:100%;
+        height: 42%;;
+        background-color: @chart-bg-color;
+        border:1px solid @chart-border;
+        .chart-box{
+          width:100%;
+          height:100%;
+          .title{
+            width:90%;
+            height:15;
+            // border:1px solid red;
+            font-size: .2rem;
+            color:#fff;
+            padding:0.2rem 0 0 0.2rem;
+          }
+          .chart{
+            width:100%;
+            height:85%;
+            // border:1px solid red;
+          }
+        }
+      }
+      .left-middle{
+        width:100%;
+        height: 28%;;
+        background-color: @chart-bg-color;
+        border:1px solid @chart-border;
+        .chart-box{
+          width:100%;
+          height:100%;
+          .title{
+            width:90%;
+            height:15;
+            // border:1px solid red;
+            font-size: .2rem;
+            color:#fff;
+            padding:0.2rem 0 0 0.2rem;
+          }
+          .chart{
+            width:100%;
+            height:85%;
+            // border:1px solid red;
+          }
+        }
+      }
+      .left-bottom{
+        width:100%;
+        height: 28%;
+        background-color: @chart-bg-color;
+        border:1px solid @chart-border;
+        .carousel1{
+          width:100%;
+          height:100%;
+          .chart-box{
+            width:100%;
+            height:100%;
+            .title{
+              width:90%;
+              height:15;
+              // border:1px solid red;
+              font-size: .2rem;
+              color:#fff;
+              padding:0.2rem 0 0 0.2rem;
+            }
+            .chart{
+              width:100%;
+              height:85%;
+              // border:1px solid red;
+            }
+          }
+        }
+        
+      }
+    }
+    .center-box{
+      width:42%;
+      height:100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      // background-color: @chart-bg-color;
+      .center-top{
+        width:100%;
+        height:27%;
+        // border:1px solid yellow;
+        // background-image: url(../images/middle_top_bg.png);
+        // background-repeat: no-repeat;
+        // background-size:100% 100%;
+        // background-position:center;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        .number-text{
+          width:80%;
+          height:.35rem;
+          // border:1px solid red;
+          text-align: center;
+          font-size: .24rem;
+          color:#FFFF00;
+          line-height: .45rem;
+        }
+        .data-box{
+          width:90%;
+          height:1rem;
+          // border:1px solid blue;
+          margin:0 auto;
+          font-size: .7rem;
+          display: flex;
+          justify-content: center;
+          .number{
+            width:.8rem;
+            height:1rem;
+            // border:1px solid red;
+            color:#FFFF00;
+            text-align: center;
+            background-image: url(../images/number_border.png);
+            background-repeat: no-repeat;
+            background-size:100% 100%;
+            background-position:center;
+          }
+        }
+        .four-data{
+          width: 100%;
+          height:1rem;
+          display: flex;
+          justify-content: space-around;
+          // border:1px solid red;
+          .box1{
+            width:22%;
+            height: 1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-image: url(../images/border1.png);
+            background-repeat: no-repeat;
+            background-size:100% 100%;
+            background-position:center;
+            // border: 1px dashed #fff;
+            .text{
+              font-size:.18rem;
+              color:#fff;
+            }
+            .number{
+              font-size:.4rem;
+              color:#04FDFF;
+            }
+          }
+          .box2{
+            .box1;
+            width:25%;
+            background-image: url(../images/border2.png);
+          }
+          .box3{
+            .box1;
+            width:23%;
+            background-image: url(../images/border3.png);
+          }
+          .box4{
+            .box1;
+            width:23%;
+            background-image: url(../images/border4.png);
+          }
+        }
+      }
+      .center-middle{
+        width:100%;
+        height:52%;
+        background-color: @chart-bg-color;
+        border:1px solid @chart-border;
+        .china_map{
+          width:80%;
+          height:100%;
+          margin:0 auto;
+        }
+     
+        
+      }
+      .center-bottom{
+        width: 100%;
+        height:18%;
+        font-size: .18rem;
+        color: #04FDFF;
+        padding:.1rem 0 0 0.3rem;
+        background-color: @chart-bg-color;
+        border:1px solid @chart-border;
+        .title{
+          width:100%;
+          height:.2rem;
+          line-height: .2rem;
+          color:#fff;
+          font-size: .2rem;
+          margin-bottom:.05rem;
+          // border:1px solid red;
+        }
+      }
+    }
+    .right-box{
+      width:27%;
+      height:100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      // border:1px solid red;
+      .right-top{
+        width:100%;
+        height:33%;
+        background-image: url(../images/right_hengxian.png);
+        background-repeat: no-repeat;
+        background-size:100% 100%;
+        background-position:center;
+        display: flex;
+        flex-direction: column;
+        justify-content:center;
+        align-items: center;
+        background-color: @chart-bg-color;
+        border:1px solid @chart-border;
+        .swiper-box{
+          .top{
+            width: 100%;
+            height:50%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            .box1{
+              width: 40%;
+              height: 100%;
+              // border:1px solid red;
+              display: flex;
+              flex-direction: column;
+              justify-content:center;
+              .text{
+                text-align: center;
+                font-size:.22rem;
+                color:#fff;
+              }
+              .number{
+                margin-top:0.05rem;
+                // border:1px solid red;
+                text-align: center;
+                font-size:.34rem;
+                // line-height: .3rem;
+                color: #BF00FE;
+              }
+            }
+            .box2{
+              .box1;
+              width: 30%;
+              .number{
+                color: #04FDFF;
+              }
+            }
+            .box3{
+              .box1;
+              width: 30%;
+              .number{
+                color: #F03A75;
+              }
+            }
+          }
+          .bottom{
+            .top;
+          }
+          .title{
+            width:100%;
+            height: 20%;
+            border:1px solid red;
+            font-size: .22rem;
+            color:#fff;
+            line-height: .6rem;
+            padding-left: .2rem;
+          }
+          .small-box{
+            background-color: #201A69;
+            width: 100%;
+            height:80%;
+            border:1px solid red;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            .item{
+              width:30%;
+              height:90%;
+              border:1px solid red;
+              display: flex;
+              flex-direction: column;
+              justify-content: space-around;
+              font-size: 0.24rem;
+                color:#fff;
+
+              .text-1{
+                color:#fff;
+              }
+              .data-1{
+                color: #04FDFF;
+                font-size: .3rem;
+              }
+              .text-2{
+              }
+              .data-2{
+                .arrow-up{
+                  float: left;;
+                  width: 0.16rem;
+                  height:0.19rem;
+                  background-image: url(../images/up.png);
+                  background-repeat: no-repeat;
+                  background-size: 100% 100%;
+                  background-position: center;
+                  margin:.1rem 0 0 .1rem;
+                        }
+              }
+            }
+          }
+        }
+        
+        
+      }
+      .right-middle{
+        width:100%;
+        height:33%;
+        // background-color: #0E3163;
+        background-color: @chart-bg-color;
+        border:1px solid @chart-border;
+        .carousel1{
+          width:100%;
+          height:100%;
+          .chart-box{
+            width:100%;
+            height:100%;
+            .title{
+              width:90%;
+              height:15;
+              // border:1px solid red;
+              font-size: .2rem;
+              color:#fff;
+              padding:0.2rem 0 0 0.2rem;
+            }
+            .chart{
+              width:100%;
+              height:85%;
+              // border:1px solid red;
+            }
+          }
+        }
+      }
+      .right-bottom{
+        width:100%;
+        height:33%;
+        background-color: @chart-bg-color;
+        border:1px solid @chart-border;
+        .carousel1{
+          width:100%;
+          height:100%;
+          .chart-box{
+            width:100%;
+            height:100%;
+            .title{
+              width:90%;
+              height:15;
+              // border:1px solid red;
+              font-size: .2rem;
+              color:#fff;
+              padding:0.2rem 0 0 0.2rem;
+            }
+            .chart{
+              width:100%;
+              height:85%;
+              // border:1px solid red;
+            }
+          }
+        }
+      }
+    }
+  }
+}

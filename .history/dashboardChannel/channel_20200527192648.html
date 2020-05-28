@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="./css/basic.css">
+    <link rel="stylesheet" href="./css/terminal_number.css">
+    <link rel="stylesheet" href="./css/swiper.min.css">
+</head>
+<body>
+<div class="big-box">
+    <div class="header_img">
+        <div class="logo"></div>
+        <div class="title-text">渠道部2020看板<span class="debugging"></span></div>
+    </div>
+    <div class="content box_flex">
+        <div class="left-box">
+            <div class="left-top swiper-container swiper3">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide chart-box">
+                        <div class="title">
+                            <div class="img"></div>
+                            <div class="text">
+                                华东屏幕上线数
+                            </div>
+                        </div>
+                        <div class="box1">
+                            <div class="text">华东现屏幕总数</div>
+                            <div class="number" id="num_2020_huadong">加载中</div>
+                        </div>
+                        <div class="box2">
+                            <div class="text">2020目标屏幕数</div>
+                            <div class="number" id="huadong_target">100000</div>
+                        </div>
+                        <div class="box3">
+                            <div class="text">差距数</div>
+                            <div class="number" id="huadong_balance">加载中</div>
+                        </div>
+                    </div>
+                    
+                    <div class="swiper-slide chart-box">
+                        <div class="title">
+                            <div class="img"></div>
+                            <div class="text">
+                                华北屏幕上线数
+                            </div>
+                        </div>
+                        <div class="box1">
+                            <div class="text">华北现屏幕总数</div>
+                            <div class="number" id="num_2020_huabei">加载中</div>
+                        </div>
+                        <div class="box2">
+                            <div class="text">2020目标屏幕数</div>
+                            <div class="number" id="huabei_target">100000</div>
+                        </div>
+                        <div class="box3">
+                            <div class="text">差距数</div>
+                            <div class="number" id="huabei_balance">加载中</div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide chart-box">
+                        <div class="title">
+                            <div class="img"></div>
+                            <div class="text">
+                                西南屏幕上线数
+                            </div>
+                        </div>
+                        <div class="box1">
+                            <div class="text">西南现屏幕总数</div>
+                            <div class="number" id="num_2020_xinan">加载中</div>
+                        </div>
+                        <div class="box2">
+                            <div class="text">2020目标屏幕数</div>
+                            <div class="number" id="xinan_target">100000</div>
+                        </div>
+                        <div class="box3">
+                            <div class="text">差距数</div>
+                            <div class="number" id="xinan_balance">加载中</div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide chart-box">
+                        <div class="title">
+                            <div class="img"></div>
+                            <div class="text">
+                                中南屏幕上线数
+                            </div>
+                        </div>
+                        <div class="box1">
+                            <div class="text">中南现屏幕总数</div>
+                            <div class="number"  id="num_2020_zhongnan">加载中</div>
+                        </div>
+                        <div class="box2">
+                            <div class="text">2020目标屏幕数</div>
+                            <div class="number" id="zhongnan_target">100000</div>
+                        </div>
+                        <div class="box3">
+                            <div class="text">差距数</div>
+                            <div class="number" id="zhongnan_balance">加载中</div>
+                        </div>
+                    </div>
+                    <!-- 渠道KA -->
+                    <div class="swiper-slide chart-box">
+                        <div class="title">
+                            <div class="img"></div>
+                            <div class="text">
+                                渠道KA
+                            </div>
+                        </div>
+                        <!-- 第一条 -->
+                        <div class="box-new">
+                            <div>
+                                <div class="text lf">累计完成数:</div>
+                                <span class="number lf" id="channel_all">加载中</span>
+                            </div>
+                        </div>
+                        <!-- 第二条 -->
+                        <div class="box-new">
+                            <div class="box-new-left">
+                                <div class="text">今日:</div>
+                                <div class="number" id="channel_today">加载中</div>
+                            </div>
+                            <div  class="box-new-right">
+                                <div class="text-1">较上一日:</div>
+                                <div class="up-arrow" id="channel_beforeToday_arrow"></div>
+                                <div class="number-up" id="channel_beforeToday">加载中</div>
+                            </div>
+                        </div>
+                        <!-- 第三条 -->
+                        <div class="box-new">
+                            <div class="box-new-left">
+                                <div class="text">本周:</div>
+                                <div class="number" id="channel_week">加载中</div>
+                            </div>
+                            <div  class="box-new-right">
+                                <div class="text-1">较上一周:</div>
+                                <div class="up-arrow" id="channel_beforeWeek_arrow"></div>
+                                <div class="number-up" id="channel_beforeWeek">加载中</div>
+                            </div>
+                        </div>
+                        <!-- 第四条 -->
+                        <div class="box-new">
+                            <div class="box-new-left">
+                                <div class="text">本月:</div>
+                                <div class="number" id="channel_month">加载中</div>
+                            </div>
+                            <div  class="box-new-right">
+                                <div class="text-1">较上一月:</div>
+                                <div class="up-arrow" id="channel_beforeMonth_arrow"></div>
+                                <div class="number-up" id="channel_beforeMonth">加载中</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 前端KA -->
+                    <div class="swiper-slide chart-box">
+                        <div class="title">
+                            <div class="img"></div>
+                            <div class="text">
+                                前端KA
+                            </div>
+                        </div>
+                        <!-- 第一条 -->
+                        <div class="box-new">
+                            <div>
+                                <div class="text lf">累计完成数:</div>
+                                <span class="number lf" id="front_all">加载中</span>
+                            </div>
+                        </div>
+                        <!-- 第二条 -->
+                        <div class="box-new">
+                            <div class="box-new-left">
+                                <div class="text">今日:</div>
+                                <div class="number" id="front_today">加载中</div>
+                            </div>
+                            <div  class="box-new-right">
+                                <div class="text-1">较上一日:</div>
+                                <div class="up-arrow" id="front_beforeToday_arrow"></div>
+                                <div class="number-up" id="front_beforeToday">加载中</div>
+                            </div>
+                        </div>
+                        <!-- 第三条 -->
+                        <div class="box-new">
+                            <div class="box-new-left">
+                                <div class="text">本周:</div>
+                                <div class="number" id="front_week">加载中</div>
+                            </div>
+                            <div  class="box-new-right">
+                                <div class="text-1">较上一周:</div>
+                                <div class="up-arrow" id="front_beforeWeek_arrow"></div>
+                                <div class="number-up" id="front_beforeWeek">加载中</div>
+                            </div>
+                        </div>
+                        <!-- 第四条 -->
+                        <div class="box-new">
+                            <div class="box-new-left">
+                                <div class="text">本月:</div>
+                                <div class="number" id="front_month">加载中</div>
+                            </div>
+                            <div  class="box-new-right">
+                                <div class="text-1">较上一月:</div>
+                                <div class="up-arrow" id="front_beforeMonth_arrow"></div>
+                                <div class="number-up" id="front_beforeMonth">加载中</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 聚屏KA -->
+                    <div class="swiper-slide chart-box">
+                        <div class="title">
+                            <div class="img"></div>
+                            <div class="text">
+                                聚屏KA
+                            </div>
+                        </div>
+                        <!-- 第一条 -->
+                        <div class="box-new">
+                            <div>
+                                <div class="text lf">累计完成数:</div>
+                                <span class="number lf" id="gather_all">加载中</span>
+                            </div>
+                        </div>
+                        <!-- 第二条 -->
+                        <div class="box-new">
+                            <div class="box-new-left">
+                                <div class="text">今日:</div>
+                                <div class="number" id="gather_today">加载中</div>
+                            </div>
+                            <div  class="box-new-right">
+                                <div class="text-1">较上一日:</div>
+                                <div class="up-arrow" id="gather_beforeToday_arrow"></div>
+                                <div class="number-up" id="gather_beforeToday">加载中</div>
+                            </div>
+                        </div>
+                        <!-- 第三条 -->
+                        <div class="box-new">
+                            <div class="box-new-left">
+                                <div class="text">本周:</div>
+                                <div class="number" id="gather_week">加载中</div>
+                            </div>
+                            <div  class="box-new-right">
+                                <div class="text-1">较上一周:</div>
+                                <div class="up-arrow" id="gather_beforeWeek_arrow"></div>
+                                <div class="number-up" id="gather_beforeWeek">加载中</div>
+                            </div>
+                        </div>
+                        <!-- 第四条 -->
+                        <div class="box-new">
+                            <div class="box-new-left">
+                                <div class="text">本月:</div>
+                                <div class="number" id="gather_month">加载中</div>
+                            </div>
+                            <div  class="box-new-right">
+                                <div class="text-1">较上一月:</div>
+                                <div class="up-arrow" id="gather_beforeMonth_arrow"></div>
+                                <div class="number-up" id="gather_beforeMonth">加载中</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="left-middle swiper-container swiper1">
+                <div class="swiper-wrapper">
+                    <div class="chart-box swiper-slide">
+                        <div class="title">
+                            <div class="img"></div>
+                            <div class="text">
+                                当日各省屏幕上线数TOP5
+                            </div>
+                        </div>
+                        <div class="chart" id="new_province_day">
+                        </div>
+                    </div>
+                    <div class="chart-box swiper-slide">
+                        <div class="title">
+                            <div class="img"></div>
+                            <div class="text">
+                                当周各省屏幕上线数TOP5
+                            </div>
+                        </div>
+                        <div class="chart" id="new_province_week">
+                        </div>
+                    </div>
+                    <div class="chart-box swiper-slide">
+                        <div class="title">
+                            <div class="img"></div>
+                            <div class="text">
+                                当月各省屏幕月上线数TOP5
+                            </div>
+                        </div>
+                        <div class="chart" id="new_province_month">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="left-bottom swiper-container swiper2" >
+                <div class="swiper-wrapper">
+                    <div class="chart-box-1 swiper-slide">
+                        <div class="title">
+                            <div class="img"></div>
+                            <div class="text">
+                                当日各市屏幕上线数TOP5
+                            </div>
+                        </div>
+                        <div class="chart" id="new_city_day">
+                        </div>
+                    </div>
+                    <div class="chart-box-2 swiper-slide">
+                        <div class="title">
+                            <div class="img"></div>
+                            <div class="text">
+                                当周各市屏幕上线数TOP5
+                            </div>
+                        </div>
+                        <div class="chart" id="new_city_week">
+                        </div>
+                    </div>
+                    <div class="chart-box-2 swiper-slide">
+                        <div class="title">
+                            <div class="img"></div>
+                            <div class="text">
+                                当月各市屏幕上线数TOP5
+                            </div>
+                        </div>
+                        <div class="chart" id="new_city_month">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="center-box">
+            <div class="center-top-box">
+                <div class="center-top">
+                    <div class="number-text">全国2020上线总数</div>
+                    <div class="data-box" id="total_screen">
+                        <div class="text">加载中</div>
+                    </div>
+                </div>
+                <div class="center-four-data">
+                    <div class="online-rate">
+                        <div class="num-text">2020年新增酒店数</div>
+                        <div class="num-data1" id="total_hotel">加载中</div>
+                    </div>
+                    <div class="boot-times">
+                        <div class="num-text">热度酒店数量</div>
+                        <div class="num-data2" id="hotel_active50">加载中</div>
+                    </div>
+                    <div class="active-terminal">
+                        <div class="num-text">昨日平均开机次数</div>
+                        <div class="num-data3" id="sum_num_open">加载中</div>
+                    </div>
+                    <div class="turn-on-time">
+                        <div class="num-text">昨日平均开机时长</div>
+                        <div class="num-data4" id="sum_time_open">加载中</div>
+                    </div>
+                </div>
+            </div>
+            <div class="center-middle" id="china_map"></div>
+            <div class="center-bottom">
+                <div class="empty"></div>
+                <!--<div class="new-text">最新动态</div>-->
+                <div class="bg-image">
+                    <ul class="new-data" id="scroll_hotels"></ul>
+                </div>
+            </div>
+        </div>
+        <div class="right-box">
+            <div class="right-top swiper-container swiper1">
+                <div class="carousel1 swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="title">
+                            <div class="img"></div>
+                            <div class="text">
+                                渠道KA总指标
+                            </div>
+                        </div>
+                        <div class="box1">
+                            <div class="text">2020年总指标</div>
+                            <div class="number">24597521</div>
+                        </div>
+                        <div class="box2">
+                            <div class="text">已完成数字</div>
+                            <div class="number" id="year_terminal_channel_start_total">24597521</div>
+                        </div>
+                        <div class="box3">
+                            <div class="text">差额</div>
+                            <div class="number">24597521</div>
+                        </div>
+                    </div>
+                    <!-- <div class="swiper-slide">
+                        <div class="title">
+                            <div class="img"></div>
+                            <div class="text">
+                                渠道KA季度考核指标
+                            </div>
+                        </div>
+                        <div class="box1">
+                            <div class="text">计划数量</div>
+                            <div class="number">24597521</div>
+                        </div>
+                        <div class="box2">
+                            <div class="text">已完成数字</div>
+                            <div class="number">24597521</div>
+                        </div>
+                        <div class="box3">
+                            <div class="text">差额</div>
+                            <div class="number">24597521</div>
+                        </div>
+                    </div> -->
+                    <div class="swiper-slide">
+                        <div class="title">
+                            <div class="img"></div>
+                            <div class="text">
+                                过往上线数量
+                            </div>
+                        </div>
+                        <!-- 第一条 -->
+                        <div class="box-new">
+                            <div>
+                                <div class="text lf">累计完成数:</div>
+                                <span class="number lf" id="past_all">加载中</span>
+                            </div>
+                        </div>
+                        <!-- 第二条 -->
+                        <div class="box-new">
+                            <div class="box-new-left">
+                                <div class="text">昨日:</div>
+                                <div class="number" id="past_day">加载中</div>
+                            </div>
+                            <div  class="box-new-right">
+                                <div class="text-1">较上一日:</div>
+                                <div class="up-arrow" id="past_beforeDay_arrow"></div>
+                                <div class="number-up" id="past_beforeDay">加载中</div>
+                            </div>
+                        </div>
+                        <!-- 第三条 -->
+                        <div class="box-new">
+                            <div class="box-new-left">
+                                <div class="text">上周:</div>
+                                <div class="number" id="past_Week">加载中</div>
+                            </div>
+                            <div  class="box-new-right">
+                                <div class="text-1">较上一周:</div>
+                                <div class="up-arrow" id="past_beforeWeek_arrow"></div>
+                                <div class="number-up" id="past_beforeWeek">加载中</div>
+                            </div>
+                        </div>
+                        <!-- 第四条 -->
+                        <div class="box-new">
+                            <div class="box-new-left">
+                                <div class="text">上月:</div>
+                                <div class="number" id="past_Month">加载中</div>
+                            </div>
+                            <div  class="box-new-right">
+                                <div class="text-1">较上一月:</div>
+                                <div class="down-arrow" id="past_beforeMonth_arrow"></div>
+                                <div class="number-down" id="past_beforeMonth">加载中</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="title">
+                            <div class="img"></div>
+                            <div class="text">
+                                实时上线数量  
+                            </div>
+                        </div>
+                        <!-- 第一条 -->
+                        <div class="box-new">
+                            <div>
+                                <div class="text lf">累计完成数:</div>
+                                <span class="number lf" id="real_all">加载中</span>
+                            </div>
+                        </div>
+                        <!-- 第二条 -->
+                        <div class="box-new">
+                            <div class="box-new-left">
+                                <div class="text">今日:</div>
+                                <div class="number" id="real_day">加载中</div>
+                            </div>
+                            <div  class="box-new-right">
+                                <div class="text-1">较上一日:</div>
+                                <div class="up-arrow" id="real_beforeDay_arrow"></div>
+                                <div class="number-up" id="real_beforeDay">加载中</div>
+                            </div>
+                        </div>
+                        <!-- 第三条 -->
+                        <div class="box-new">
+                            <div class="box-new-left">
+                                <div class="text">本周:</div>
+                                <div class="number" id="real_week">加载中</div>
+                            </div>
+                            <div  class="box-new-right">
+                                <div class="text-1">较上一周:</div>
+                                <div class="up-arrow" id="real_beforeWeek_arrow"></div>
+                                <div class="number-up" id="real_beforeWeek">加载中</div>
+                            </div>
+                        </div>
+                        <!-- 第四条 -->
+                        <div class="box-new">
+                            <div class="box-new-left">
+                                <div class="text">本月:</div>
+                                <div class="number" id="real_month">加载中</div>
+                            </div>
+                            <div  class="box-new-right">
+                                <div class="text-1">较上一月:</div>
+                                <div class="down-arrow" id="real_beforeMonth_arrow"></div>
+                                <div class="number-down" id="real_beforeMonth">加载中</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="title">
+                            <div class="img"></div>
+                            <div class="text">
+                                BD当日完成指标
+                            </div>
+                        </div>
+                        <div class="chart" id="test16">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="title">
+                            <div class="img"></div>
+                            <div class="text">
+                                BD当周完成指标
+                            </div>
+                        </div>
+                        <div class="chart" id="test17">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="title">
+                            <div class="img"></div>
+                            <div class="text">
+                                BD当月完成指标
+                            </div>
+                        </div>
+                        <div class="chart" id="test18">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="right-middle swiper-container swiper4">
+                <div class="carousel1 swiper-wrapper">
+                    <div class="swiper-slide chart-box">
+                        <div class="title">
+                            <div class="img"></div>
+                            <div class="text">
+                                核心渠道商上线指标 TOP5
+                            </div>
+                        </div>
+                        <div class="chart" id="test19">
+                        </div>
+                    </div>
+                    <div class="swiper-slide chart-box">
+                        <div class="title">
+                            <div class="img"></div>
+                            <div class="text">
+                                核心渠道商上线指标Last5
+                            </div>
+                        </div>
+                        <div class="chart" id="test20">
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="right-bottom swiper-container swiper2" id="">
+                <div class="swiper-wrapper">
+                    <div class="chart-box swiper-slide">
+                        <div class="title">
+                            <div class="img"></div>
+                            <div class="text">
+                                昨日在线率统计
+                            </div>
+                        </div>
+                        <div class="chart" id="hour_act_room">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script src="js/jquery.js"></script>
+<script src="js/echarts.min.js"></script>
+<script src="js/echarts-gl.min.js"></script>
+<script src="js/china.js"></script>
+<script src="js/swiper.min.js"></script>
+<script src="js/common_terminal.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script>
+
+        var terminalNumber = {
+            fontSizeNum : 18,
+            allEchartObj:{},
+            arrLength:"",
+            markPoint:[],
+            myChartMap:{},
+            init:function () {
+                //尺寸初始化
+                this.windowOnload();
+                //创建echart图,处理query_charts_terminal接口的数据，基本都是生成echart图的数据
+                this.createEchart();
+                //当日实时数据采集量,先判断cookie中有没实时数据，有的话取出来，然后再访问terminalHeartBeat_data，
+                // 热力图图展示，接口有terminalHeatData
+                this.heatMapShow();
+                // 酒店房间实时数据展示，接口terminal_all_new_room
+                this.hotelDataShow();
+                //活跃终端数量，接口terminal_active_data
+                this.queryNumbersChannel();
+            },
+
+            //尺寸初始化
+            windowOnload:function () {
+                var that = this;
+                setRemSize();
+                $(window).resize(function () {          //当浏览器大小变化时
+                    setRemSize();
+                    location.reload();
+                });
+                //页面定时5分钟刷新
+                var interAn = setInterval(function(){
+                    window.location.reload();
+                },1000*60*5);
+                function setRemSize(){
+                    that.fontSizeNum=document.documentElement.clientWidth/1920 * 100;
+                    //将得到的rem值复制给根元素的font-size
+                    document.documentElement.style.fontSize=that.fontSizeNum+"px";
+                }
+
+            },
+            //处理get_charts_terminal接口的数据，基本都是生成echart图的数据
+            createEchart:function () {
+                var that = this;
+                //获取echart图表数据并显示
+                //静态数据，测试用
+                var  bar2 = {
+                    chart_type: "bar",
+                    label: ["卡哇智能便携干衣器","一次性便携浴巾毛巾", "创意功夫茶具骨瓷套装", "名盏三合一煮茶器", "简约筷筒套装"],
+                    title_label: "自动播放数据排名(万次)",
+                    title_value: "top_play_auto",
+                    value:[400,320,310,300,273]
+                }
+                var bar3 = {
+                    chart_type: "bar",
+                    label: ["成都","西安", "长沙","昆明"],
+                    title_label: "自动播放数据排名(万次)",
+                    title_value: "top_play_auto",
+                    value:[273,300,310,320]
+                }
+                var  bar8 = {
+                chart_type: "bar",
+                label: ["麗枫", "尚美", "喆啡", "维也纳","东呈"],
+                title_label: "自动播放数据排名(万次)",
+                title_value: "top_play_auto",
+                value:[5221,4521,3054,2545,2005]
+                }
+                var  bar10 = {
+                chart_type: "bar",
+                label: ["广东", "湖南 ", "福建", "吉林","山东"],
+                title_label: "自动播放数据排名(万次)",
+                title_value: "top_play_auto",
+                value:[522,452,305,255,200]
+                }
+                var  bar11 = {
+                chart_type: "bar",
+                label: ["广东", "湖南 ", "福建", "吉林","山东"],
+                title_label: "自动播放数据排名(万次)",
+                title_value: "top_play_auto",
+                value:[522*7,452*7,305*7,255*7,200*7]
+
+                }
+                var  bar12 = {
+                chart_type: "bar",
+                label: ["广东", "湖南 ", "福建", "吉林","山东"],
+                title_label: "自动播放数据排名(万次)",
+                title_value: "top_play_auto",
+                value:[522*30,452*30,305*30,255*30,200*30]
+
+                }
+                var  bar13 = {
+                chart_type: "bar",
+                label: ["广州市", "昆明市 ", "长沙市", "西安市","成都市"],
+                title_label: "自动播放数据排名(万次)",
+                title_value: "top_play_auto",
+                value:[52,45,30,25,20]
+
+                }
+                var  bar14 = {
+                chart_type: "bar",
+                label: ["广州市", "昆明市 ", "长沙市", "西安市","成都市"],
+
+                title_label: "自动播放数据排名(万次)",
+                title_value: "top_play_auto",
+                value:[52*7,45*7,30*7,25*7,20*7]
+
+                }
+                var  bar15 = {
+                chart_type: "bar",
+                label: ["广州市", "昆明市 ", "长沙市", "西安市","成都市"],
+                title_label: "自动播放数据排名(万次)",
+                title_value: "top_play_auto",
+                value:[52*30,45*30,30*30,25*30,20*30]
+
+                }
+
+                var  bar16 = {
+                chart_type: "bar",
+                label: ["BD1", "BD2", "BD3", "BD4","BD5","BD6", "BD7", "BD8", "BD9","BD10"],
+                title_label: "自动播放数据排名(万次)",
+                title_value: "top_play_auto",
+                value:[88,80,72,65,58,52,45,30,25,20]
+
+                }
+                var  bar17 = {
+                chart_type: "bar",
+                label: ["BD1", "BD2", "BD3", "BD4","BD5","BD6", "BD7", "BD8", "BD9","BD10"],
+                title_label: "自动播放数据排名(万次)",
+                title_value: "top_play_auto",
+                value:[88*7,80*7,72*7,65*7,58*7,52*7,45*7,30*7,25*7,20*7]
+
+
+                }
+                var  bar18 = {
+                chart_type: "bar",
+                label: ["BD1", "BD2", "BD3", "BD4","BD5","BD6", "BD7", "BD8", "BD9","BD10"],
+                title_label: "自动播放数据排名(万次)",
+                title_value: "top_play_auto",
+                value:[88*30,80*30,72*30,65*30,58*30,52*30,45*30,30*30,25*30,20*30]
+
+
+                }
+                var  bar19 = {
+                chart_type: "bar",
+                label: ["广州市", "昆明市 ", "长沙市", "西安市","成都市"],
+                title_label: "自动播放数据排名(万次)",
+                title_value: "top_play_auto",
+                value:[52*30,45*30,30*30,25*30,20*30]
+
+                }
+                var  bar20 = {
+                chart_type: "bar",
+                label: ["广州市", "昆明市 ", "长沙市", "西安市","成都市"],
+                title_label: "自动播放数据排名(万次)",
+                title_value: "top_play_auto",
+                value:[52*30,45*30,30*30,25*30,20*30]
+
+                }
+                $.post(GPATH.queryChartsChannel, function(data){
+                    if(data.code==200){
+                        var content = data.msg;
+                        console.log(content)
+                        $.each(content,function(i,v){
+                            switch(v.title_value){
+                                //当日各省屏幕上线数TOP5
+                                case "new_province_day":
+                                    var color = ["rgba(0, 255, 246, 1)","rgba(0, 255, 246, 0)"];
+                                    var option = options.normalBarChart(color, v.label, v.value, that.fontSizeNum);
+                                    var echartObj = new EchartObj("new_province_day", option);
+                                    echartObj.setOp();
+                                    break;
+                                //当周各省屏幕上线数TOP5
+                                case "new_province_week":
+                                    var color = ["rgba(76, 244, 187,1)","rgba(76, 244, 187,0)"];
+                                    var option = options.normalBarChart(color, v.label, v.value, that.fontSizeNum);
+                                    var echartObj = new EchartObj("new_province_week", option);
+                                    echartObj.setOp();
+                                    break;
+                                //当月各省屏幕上线数TOP5
+                                case "new_province_month":
+                                    var color = ["rgba(77, 206, 245,1)","rgba(77, 206, 245,0)"];
+                                    var option = options.normalBarChart(color, v.label, v.value, that.fontSizeNum);
+                                    var echartObj = new EchartObj("new_province_month", option);
+                                    echartObj.setOp();
+                                    break; 
+                                //昨日在线率统计
+                                case "hour_act_room":
+                                    var color = ["#01AFF3", "rgba(1,175,243,.6)", "rgba(1,175,243,.1)"];
+                                    var option = options.lineChart(color, v.label,v.value, that.fontSizeNum);
+                                    var echartObj = new EchartObj("hour_act_room", option);
+                                    echartObj.setOp(); 
+                                    break;
+                                //当日各市屏幕上线数TOP5
+                                case "new_city_day":
+                                    var color = ["#54C9FF","#54C9FF"];
+                                    v.label.reverse();
+                                    v.value.reverse();
+                                    var option = options.noBgBarChart(color, v.label, v.value, that.fontSizeNum);
+                                    var echartObj = new EchartObj("new_city_day", option);
+                                    echartObj.setOp();
+                                    break;
+                                //当周各市屏幕上线数TOP5
+                                case "new_city_week":
+                                    var color = ["#50FEC1","#50FEC1"];
+                                    v.label.reverse();
+                                    v.value.reverse();
+                                    var option = options.noBgBarChart(color, v.label, v.value, that.fontSizeNum);
+                                    var echartObj = new EchartObj("new_city_week", option);
+                                    echartObj.setOp();
+                                    break;
+                                //当月各市屏幕上线数TOP5
+                                case "new_city_month":
+                                    var color = ["#00F8FF","#00F8FF"];
+                                    v.label.reverse();
+                                    v.value.reverse();
+                                    var option = options.noBgBarChart(color, v.label, v.value, that.fontSizeNum);
+                                    var echartObj = new EchartObj("new_city_month", option);
+                                    echartObj.setOp();
+                                    break;
+                                //左一板块  渠道KA
+                                case "":
+                                    $("#channel_today").html(v.value[0]);
+                                    $("#channel_week").html(v.value[1]);
+                                    $("#channel_month").html(v.value[2]);
+                                    if(v.value[3]>=0){
+                                        $("#channel_beforeToday_arrow").removeClass("down-arrow").addClass("up-arrow")
+                                        $("#channel_beforeToday").html(v.value[3]+"%").removeClass("number-down").addClass("number-up")
+                                    }else{
+                                        $("#channel_beforeToday_arrow").removeClass("up-arrow").addClass("down-arrow")
+                                        $("#channel_beforeToday").html(-1*v.value[3]+"%").removeClass("number-up").addClass("number-down")
+                                    }
+                                    if(v.value[4]>=0){
+                                        $("#channel_beforeWeek_arrow").removeClass("down-arrow").addClass("up-arrow")
+                                        $("#channel_beforeWeek").html(v.value[4]+"%").removeClass("number-down").addClass("number-up")
+                                    }else{
+                                        $("#channel_beforeWeek_arrow").removeClass("up-arrow").addClass("down-arrow")
+                                        $("#channel_beforeWeek").html(-1*v.value[4]+"%").removeClass("number-up").addClass("number-down")
+                                    }
+                                    if(v.value[5]>=0){
+                                        $("#channel_beforeMonth_arrow").removeClass("down-arrow").addClass("up-arrow")
+                                        $("#channel_beforeMonth").html(v.value[5]+"%").removeClass("number-down").addClass("number-up")
+                                    }else{
+                                        $("#channel_beforeMonth_arrow").removeClass("up-arrow").addClass("down-arrow")
+                                        $("#channel_beforeMonth").html(-1*v.value[5]+"%").removeClass("number-up").addClass("number-down")
+                                    }
+                                
+                                    break; 
+                                //左一板块  前端KA
+                                case "":
+                                    $("#front_today").html(v.value[0]);
+                                    $("#front_week").html(v.value[1]);
+                                    $("#front_month").html(v.value[2]);
+                                    if(v.value[3]>=0){
+                                        $("#front_beforeToday_arrow").removeClass("down-arrow").addClass("up-arrow")
+                                        $("#front_beforeToday").html(v.value[3]+"%").removeClass("number-down").addClass("number-up")
+                                    }else{
+                                        $("#front_beforeToday_arrow").removeClass("up-arrow").addClass("down-arrow")
+                                        $("#front_beforeToday").html(-1*v.value[3]+"%").removeClass("number-up").addClass("number-down")
+                                    }
+                                    if(v.value[4]>=0){
+                                        $("#front_beforeWeek_arrow").removeClass("down-arrow").addClass("up-arrow")
+                                        $("#front_beforeWeek").html(v.value[4]+"%").removeClass("number-down").addClass("number-up")
+                                    }else{
+                                        $("#front_beforeWeek_arrow").removeClass("up-arrow").addClass("down-arrow")
+                                        $("#front_beforeWeek").html(-1*v.value[4]+"%").removeClass("number-up").addClass("number-down")
+                                    }
+                                    if(v.value[5]>=0){
+                                        $("#front_beforeMonth_arrow").removeClass("down-arrow").addClass("up-arrow")
+                                        $("#front_beforeMonth").html(v.value[5]+"%").removeClass("number-down").addClass("number-up")
+                                    }else{
+                                        $("#front_beforeMonth_arrow").removeClass("up-arrow").addClass("down-arrow")
+                                        $("#front_beforeMonth").html(-1*v.value[5]+"%").removeClass("number-up").addClass("number-down")
+                                    }
+                                    break;
+                                //左一板块  聚屏KA
+                                case "":
+                                    $("#gather_today").html();
+                                    $("#gather_week").html(v.value[1]);
+                                    $("#gather_month").html(v.value[2]);
+                                    if(v.value[3]>=0){
+                                        $("#gather_beforeToday_arrow").removeClass("down-arrow").addClass("up-arrow")
+                                        $("#gather_beforeToday").html(v.value[3]+"%").removeClass("number-down").addClass("number-up")
+                                    }else{
+                                        $("#gather_beforeToday_arrow").removeClass("up-arrow").addClass("down-arrow")
+                                        $("#gather_beforeToday").html(-1*v.value[3]+"%").removeClass("number-up").addClass("number-down")
+                                    }
+                                    if(v.value[4]>=0){
+                                        $("#gather_beforeWeek_arrow").removeClass("down-arrow").addClass("up-arrow")
+                                        $("#gather_beforeWeek").html(v.value[4]+"%").removeClass("number-down").addClass("number-up")
+                                    }else{
+                                        $("#gather_beforeWeek_arrow").removeClass("up-arrow").addClass("down-arrow")
+                                        $("#gather_beforeWeek").html(-1*v.value[4]+"%").removeClass("number-up").addClass("number-down")
+                                    }
+                                    if(v.value[5]>=0){
+                                        $("#gather_beforeMonth_arrow").removeClass("down-arrow").addClass("up-arrow")
+                                        $("#gather_beforeMonth").html(v.value[5]+"%").removeClass("number-down").addClass("number-up")
+                                    }else{
+                                        $("#gather_beforeMonth_arrow").removeClass("up-arrow").addClass("down-arrow")
+                                        $("#gather_beforeMonth").html(-1*v.value[5]+"%").removeClass("number-up").addClass("number-down")
+                                    }
+                                break;
+                                //过往上线数量
+                                case "history_start_terminal":
+                                    $("#past_all").html();
+                                    $("#past_day").html(v.value[0]);
+                                    $("#past_Week").html(v.value[1]);
+                                    $("#past_Month").html(v.value[2]);
+                                    if(v.value[3]>=0){
+                                        $("#past_beforeDay_arrow").removeClass("down-arrow").addClass("up-arrow")
+                                        $("#past_beforeDay").html(v.value[3]+"%").removeClass("number-down").addClass("number-up")
+                                    }else{
+                                        $("#past_beforeDay_arrow").removeClass("up-arrow").addClass("down-arrow")
+                                        $("#past_beforeDay").html(-1*v.value[3]+"%").removeClass("number-up").addClass("number-down")
+                                    }
+                                    if(v.value[4]>=0){
+                                        $("#past_beforeWeek_arrow").removeClass("down-arrow").addClass("up-arrow")
+                                        $("#past_beforeWeek").html(v.value[4]+"%").removeClass("number-down").addClass("number-up")
+                                    }else{
+                                        $("#past_beforeWeek_arrow").removeClass("up-arrow").addClass("down-arrow")
+                                        $("#past_beforeWeek").html(-1*v.value[4]+"%").removeClass("number-up").addClass("number-down")
+                                    }
+                                    if(v.value[5]>=0){
+                                        $("#past_beforeMonth_arrow").removeClass("down-arrow").addClass("up-arrow")
+                                        $("#past_beforeMonth").html(v.value[5]+"%").removeClass("number-down").addClass("number-up")
+                                    }else{
+                                        $("#past_beforeMonth_arrow").removeClass("up-arrow").addClass("down-arrow")
+                                        $("#past_beforeMonth").html(-1*v.value[5]+"%").removeClass("number-up").addClass("number-down")
+                                    }
+                                break;
+                                //实时上线数量
+                                case "real_time_start_terminal":
+                                    $("#real_all").html(v.value[0]);
+                                    $("#real_day").html(v.value[0]);
+                                    $("#real_week").html(v.value[1]);
+                                    $("#real_month").html(v.value[2]);
+                                    if(v.value[3]>=0){
+                                        $("#real_beforeDay_arrow").removeClass("down-arrow").addClass("up-arrow")
+                                        $("#real_beforeDay").html(v.value[3]+"%").removeClass("number-down").addClass("number-up")
+                                    }else{
+                                        $("#real_beforeDay_arrow").removeClass("up-arrow").addClass("down-arrow")
+                                        $("#real_beforeDay").html(-1*v.value[3]+"%").removeClass("number-up").addClass("number-down")
+                                    }
+                                    if(v.value[4]>=0){
+                                        $("#real_beforeWeek_arrow").removeClass("down-arrow").addClass("up-arrow")
+                                        $("#real_beforeWeek").html(v.value[4]+"%").removeClass("number-down").addClass("number-up")
+                                    }else{
+                                        $("#real_beforeWeek_arrow").removeClass("up-arrow").addClass("down-arrow")
+                                        $("#real_beforeWeek").html(-1*v.value[4]+"%").removeClass("number-up").addClass("number-down")
+                                    }
+                                    if(v.value[5]>=0){
+                                        $("#real_beforeMonth_arrow").removeClass("down-arrow").addClass("up-arrow")
+                                        $("#real_beforeMonth").html(v.value[5]+"%").removeClass("number-down").addClass("number-up")
+                                    }else{
+                                        $("#real_beforeMonth_arrow").removeClass("up-arrow").addClass("down-arrow")
+                                        $("#real_beforeMonth").html(-1*v.value[5]+"%").removeClass("number-up").addClass("number-down")
+                                    }
+                                break;
+                                //各个BD的完成指标(日)
+                                case "account_manager_start_terminal_day":
+                                    var color = ["#51D7FF","#51D7FF"];
+                                    var option = options.normalBarChart(color, v.label, v.value, that.fontSizeNum);
+                                    var echartObj = new EchartObj("test16", option);
+                                    echartObj.setOp();
+                                    break;
+                                //各个BD的完成指标(周)
+                                case "account_manager_start_terminal_week":
+                                    var color = ["#50FEC1","#50FEC1"];
+                                    var option = options.normalBarChart(color, v.label, v.value, that.fontSizeNum);
+                                    var echartObj = new EchartObj("test17", option);
+                                    echartObj.setOp();
+                                    break;
+                                //各个BD的完成指标(月)
+                                case "account_manager_start_terminal_month":
+                                    var color = ["#00F8FF","#00F8FF"];
+                                    var option = options.normalBarChart(color, v.label, v.value, that.fontSizeNum);
+                                    var echartObj = new EchartObj("test18", option);
+                                    echartObj.setOp();
+                                    break;
+                                //渠道商上线指标 TOP5
+                                case "channel_start_terminal_total_top5":
+                                    var color = ["rgba(216,103,248, 1)","rgba(216,103,248, 0)"];
+                                    var option = options.normalBarChart_1(color, v.label, v.value, that.fontSizeNum);
+                                    var echartObj = new EchartObj("test19", option);
+                                    echartObj.setOp();
+                                    break;
+                                //渠道商上线指标 Last5
+                                case "channel_start_terminal_total_last_top5":
+                                    var color = ["rgba(81,215,255, 1)","rgba(81,215,255, 0)"];
+                                    v.label.reverse();
+                                    v.value.reverse();
+                                    var option = options.normalBarChart_1(color, v.label, v.value, that.fontSizeNum);
+                                    var echartObj = new EchartObj("test20", option);
+                                    echartObj.setOp();
+                                    break;
+                            }
+                        })
+                    }
+                        
+                },"json");
+                var mySwiper = new Swiper ('.swiper1', {
+                    // direction: 'vertical', // 垂直切换选项
+                    direction: 'horizontal', // 横向切换选项
+                    // loop: true, // 循环模式选项
+                    speed:1000,
+                    autoplay: {
+                        delay: 8000,//时间 毫秒
+                        disableOnInteraction: false,//用户操作之后是否停止自动轮播默认true
+                    },
+                    // speed:3000
+                })
+                var mySwiper = new Swiper ('.swiper2', {
+                    // direction: 'vertical', // 垂直切换选项
+                    direction: 'horizontal', // 横向切换选项
+                    // loop: true, // 循环模式选项
+                    speed:1000,
+                    autoplay: {
+                        delay: 13000,//时间 毫秒
+                        disableOnInteraction: false,//用户操作之后是否停止自动轮播默认true
+                    },
+                    // speed:3000
+                })
+                var mySwiper = new Swiper ('.swiper3', {
+                    // direction: 'vertical', // 垂直切换选项
+                    direction: 'horizontal', // 横向切换选项
+                    // loop: true, // 循环模式选项
+                    speed:1000,
+                    autoplay: {
+                        delay: 7000,//时间 毫秒
+                        disableOnInteraction: false,//用户操作之后是否停止自动轮播默认true
+                    },
+                    // speed:3000
+                })
+                var mySwiper = new Swiper ('.swiper4', {
+                    // direction: 'vertical', // 垂直切换选项
+                    direction: 'horizontal', // 横向切换选项
+                    // loop: true, // 循环模式选项
+                    speed:1000,
+                    autoplay: {
+                        delay: 7000,//时间 毫秒
+                        disableOnInteraction: false,//用户操作之后是否停止自动轮播默认true
+                    },
+                    // speed:3000
+                })
+            },
+            realTimeData:function(){
+                queryNumHearts();
+                setInterval(function(){
+                    queryNumHearts();
+                },1000*10);
+                function queryNumHearts() {
+                    var realTimeData = $.cookie('realTimeData')
+                    if(realTimeData){
+                        $.post(GPATH.terminalHeartBeat_data,{"currentTotal":realTimeData},function(data){
+                            if(data.res){
+                                var newNum = parseInt(data.msg);
+                                var date = new Date();
+                                var minutes = 120;
+                                date.setTime(date.getTime()+(minutes * 60 * 1000));
+                                $.cookie('realTimeData', newNum,{expires: date});
+                                var html="";
+                                var newNum_arr = newNum.toString().split("");
+                                $.each(newNum_arr,function(i,v){
+                                    html+="<div class='number'>"+v+"</div>";
+                                })
+                                // console.log(html)
+                                $('#termNumCounter').html(html);
+                            }
+                        },"json");
+                    }else{
+                        $.ajax({
+                            url: GPATH.terminalInitCollect,
+                            type: "GET",
+                            dataType:"json"
+                        }).then(function(data){
+                            if(data){
+                                var date = new Date();
+                                var minutes = 120;
+                                date.setTime(date.getTime()+(minutes * 60 * 1000));
+                                $.cookie('realTimeData', data.num, {expires: date});
+                                var html="";
+                                var newNum_arr = newNum.toString().split("");
+                                $.each(newNum_arr,function(i,v){
+                                    html+="<div class='num_bg'>"+v+"</div>";
+                                })
+                                // console.log(html)
+                                $('#termNumCounter').html(html);
+                            }
+                        },function(err){
+                            //错误的回调函数
+                            console.log(err);
+                        });
+                    }
+                }
+                function toThousands(num) {
+                    var num = (num || 0).toString(), result = '';
+                    while (num.length > 3) {
+                        result = ',' + num.slice(-3) + result;
+                        num = num.slice(0, num.length - 3);
+                    }
+                    if (num) { result = num + result; }
+                    return result;
+                }
+            },
+            // 热力图图展示，接口有terminalHeatData
+            heatMapShow:function () {
+                var that = this;
+                var option= options.heatMapChart([],that.fontSizeNum);
+                that.myChartMap = echarts.init(document.getElementById('china_map'));
+                that.myChartMap.setOption(option);
+                $.post(GPATH.terminalHeatData,function(data){
+                    if(data.res){
+                        var heatBox = data.msg;
+                        var option= options.heatMapChart(heatBox,that.fontSizeNum);
+                        that.myChartMap.setOption(option);
+                    }
+                },"json");
+            },
+            //// 酒店房间实时数据展示，接口terminal_all_new_room
+            hotelDataShow:function () {
+                var that = this;
+                var duration = 300;
+                $.post(GPATH.terminalAllNewRoom, {"duration":duration},function(data){
+                    if(data.res){
+                        var dataBox = data.msg;
+                        var newBox = [];
+                        newBox = dataBox.slice(0,300);
+                        var cnew = newBox.length;
+                        // var timeBox = random(50,duration);
+                        var timeBox=[];
+                        for(var i=0;i<300;i++){
+                            if(i%3==0){
+                                timeBox.push(i);
+                            }
+                        }
+                        // timeBox[0] = 1;
+                        if(cnew > 0){
+                            var tmp = 0;
+                            var now = Date.now();
+                            for(var i=0;i<cnew;i++){
+                                var now = Date.now();
+                                var key = now + timeBox[i]*1000;
+                                var item = newBox[i];
+                                var ihtml =  "<li key='"+key+"' lat='"+item['lat']/100000000+"' lng='"+item['lng']/100000000+"' title='"
+                                    +item['hotel']+"'>酒店:"+item['hotel']+",房间号:"+item['room_number']+"</li>";
+                                $("#scroll_hotels").prepend(ihtml);
+                                tmp = timeBox[i];
+                            }
+                        }
+                    }
+                },"json");
+                function random(number,duration) {
+                    var arr = [];
+                    while (arr.length < number) {   //原数组长度为0，每次成功添加一个元素后长度加1，当数组添加最后一个数字之前长度为number即可
+                        var num = Math.floor(Math.random() * duration);   //生成一个0-300的随机整数
+                        if (arr.length === 0) {   //如果数组长度为0则直接添加到arr数组
+                            arr.push(num);
+                        } else {
+                            for (var i = 0; i < arr.length; i++) {   //当新生成的数字与数组中的元素不重合时则添加到arr数组
+                                if (arr.join(',').indexOf(num) < 0) {
+                                    arr.push(num);
+                                }
+                            }
+                        }
+                    }
+                    return arr.sort(sortNumber);
+                }
+                function randomBox(num,duration){
+                    var timeBox = [];
+                    for(var i=0;i<num;i++){
+                        var random = Math.floor(Math.random()*(duration));
+                        timeBox[i] = random;
+                    }
+                    return timeBox.sort(sortNumber);
+                }
+                function sortNumber(a,b){
+                    return a - b
+                }
+                var interCr;
+                clearInterval(interCr);
+                var interCr = setInterval(function(){
+                    getCurrentRoom();
+                },1000);
+                function getCurrentRoom(){
+                    var now = Date.now();
+                    $("#scroll_hotels li").each(function(i,v){
+                        if($(this).attr('key') <= now && $(this).is(":hidden")){
+                            $(this).show();
+                            var lat = $(this).attr('lat');
+                            var lng = $(this).attr('lng');
+                            var hotel = $(this).attr('title');
+                            if(that.markPoint.length>=5){
+                                that.markPoint.splice(0,1);
+                                that.markPoint.push({name:hotel,value:[lng,lat]})
+                            }else{
+                                that.markPoint.push({name:hotel,value:[lng,lat]})
+                            }
+                            addMarkPoint(that.markPoint)
+                            // const msg = new SpeechSynthesisUtterance("有人下单了");
+                            // window.speechSynthesis.speak(msg);
+                        }
+                    });
+                }
+                function addMarkPoint(itemData){
+
+                    var option = that.myChartMap.getOption();
+                    option.series[2] = {
+                        type: 'effectScatter',
+                        coordinateSystem: 'geo',
+                        data: itemData,
+                        symbolSize:that.fontSizeNum?that.fontSizeNum/4.6:14,//闪烁点大小
+                        showEffectOn: 'render',
+                        rippleEffect: {
+                            brushType: 'stroke'
+                        },
+                        hoverAnimation: true,
+                        itemStyle: {
+                            normal: {
+                                color: '#F4E925',
+                                shadowBlur: 10,
+                                shadowColor: '#333'
+                            }
+                        },
+                        zlevel: 1
+                    };
+                    that.myChartMap.clear();
+                    that.myChartMap = echarts.init(document.getElementById('china_map'));
+                    that.myChartMap.setOption(option);
+                }
+            },
+            //柱状图背景色数据函数
+            bgData:function (data) {
+                var max = 0,bgData = [];
+                $.each(data,function (i,v) {
+                    if (max < Number(v)) max = v;
+                })
+                $.each(data,function (i,v) {
+                    bgData.push(max)
+                })
+                return bgData;
+            },
+            //活跃终端数量，接口terminal_active_data
+            queryNumbersChannel:function(){
+                $.ajax({
+                    url: GPATH.queryNumbersChannel,
+                    type: "GET",
+                    dataType:"json"
+                }).then(function(data){
+                    if(data.code==200){
+                        console.log(data.msg)
+                        var data =data.msg;
+                        $.each(data,function (i,v) {
+                            // console.log(v.label)
+                            if($("#"+v.label)){
+                                //判断是不是 平均每日开机时长，是的话加上MIN
+                                if(v.label=="total_screen"){
+                                    var html = "";
+                                    var newNum_arr = v.value.toString().split("");
+                                    console.log(newNum_arr)
+                                    $.each(newNum_arr, function (h, k) {
+                                        html += "<div class='number'>" + k + "</div>";
+                                    })
+                                    $("#"+v.label).html(html);
+                                }else if(v.label == "num_city_screen"){
+                                    $("#" + v.label).html(v.value+"%");
+                                    $("#shucha").html((v.value*1000-10*1000)/1000+"%");
+                                }else if(v.label == "sum_num_open"){
+                                     $("#sum_num_open").html((v.value / data[1].value).toFixed(2));
+                                }else if(v.label == "sum_time_open"){
+                                    $("#sum_time_open").html((v.value / data[1].value).toFixed(2));
+                                }else if(v.label =="year_terminal_channel_start_total"){
+                                    $("#"+v.label).html(parseInt(v.value));
+                                    $("#past_all").html(parseInt(v.value));
+                                    $("#real_all").html(parseInt(v.value));
+                                }else{
+                                    $("#"+v.label).html(parseInt(v.value));
+                                }
+                                
+                            }
+                        })
+                        $("#huadong_balance").html($("#huadong_target").html()-$("#num_2020_huadong").html());
+                        $("#huabei_balance").html($("#huabei_target").html()-$("#num_2020_huabei").html());
+                        $("#xinan_balance").html($("#xinan_target").html()-$("#num_2020_xinan").html());
+                        $("#zhongnan_balance").html($("#zhongnan_target").html()-$("#num_2020_zhongnan").html());
+                    }
+                },function(err){
+                    //错误的回调函数
+                    console.log(err);
+                });
+                function toThousands(num) {
+                    var num = (num || 0).toString(), result = '';
+                    while (num.length > 3) {
+                        result = ',' + num.slice(-3) + result;
+                        num = num.slice(0, num.length - 3);
+                    }
+                    if (num) { result = num + result; }
+                    return result;
+                }
+            },
+
+        };
+        $(function() {
+            terminalNumber.init();
+        });
+    
+</script>
+</body>
+</html>
