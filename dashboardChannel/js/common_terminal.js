@@ -1674,7 +1674,7 @@ var options = {
                     axisLabel: {
                         textStyle:{
                             color:'#fff',  //坐标的字体颜色
-                            fontSize:num?num/this.rate*0.8:14,
+                            fontSize:num?num/this.rate*0.7:14,
                         },
                         interval:0,
                         formatter : function(params){

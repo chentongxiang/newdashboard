@@ -101,7 +101,7 @@
     text-align: center;
     line-height: .8rem;
     font-size: 0.42rem;
-    color: #fff;
+    color: #00F8FF;
     letter-spacing: .05rem;
     font-weight: bold;
     font-family: number_font;
@@ -157,119 +157,6 @@
         background-size: 100% 100%;
         background-position: center;
       }
-
-      // .left-middle{
-      //   width:100%;
-      //   height: 32%;
-      //   background-color: @chart-bg-color;
-      //   background-image: url(../images/border.png);
-      //   background-repeat: no-repeat;
-      //   background-size:100% 100%;
-      //   background-position:center;
-      //   .swiper2-wrapper{
-      //     width:100%;
-      //     height: 99%;
-      //     .swiper2-slide{
-      //       width:100%;
-      //       height: 100%;
-      //       .title{
-      //         width:100%;
-      //         height: 17%;
-      //         color: @blue;
-      //         font-size: .22rem;
-      //         padding: .15rem 0 0 .2rem;
-      //         // border:1px solid yellow;
-      //       }
-      //       #news-container1{
-      //         width: 90%;
-      //         height: 89%;
-      //         margin:0 auto;
-      //         overflow: hidden; 
-      //         position: relative; 
-      //         // border:1px solid yellow;
-      //         ul{
-      //           width: 100%;
-      //           height: 100%;
-      //           position: absolute; 
-      //           margin: 0pt; 
-      //           padding: 0pt; 
-      //           top: 0px;
-      //           font-size:.22rem;
-      //           color: @blue;
-      //           li{
-      //             width: 100%;
-      //             height: 17%;
-      //             // border:1px solid red;
-      //             padding:0;
-      //             margin: 0;
-      //             .swiperSmall-slide{
-      //               width: 100%;
-      //               height: 100%;
-      //               // border:1px solid orange;
-      //               display: flex;
-      //               justify-content: space-around;
-      //               align-items: center;
-      //               // border:1px solid red;
-      //               font-size: .2rem;
-      //               color:@blue;
-      //               .img{
-      //                 width:.3rem;
-      //                 height:.3rem;
-      //                 margin-right:.1rem;
-      //                 // border:1px solid red;
-      //                 text-align: center;
-      //                 font-size: .16rem;
-      //               }
-      //               .content-box{
-      //                 width:100%;
-      //                 height: 100%;
-      //                 display: flex;
-      //                 flex-direction: column;
-      //                 justify-content: center;
-      //                 // border:1px solid purple;
-      //                 .text{
-      //                   width:80%;
-      //                   height: .3rem;
-      //                   font-size: .2rem;
-      //                   // padding-top: .03rem;
-      //                   // border:1px solid red;
-      //                   overflow: hidden;
-      //                 }
-      //                 .bar-box{
-      //                   width:100%;
-      //                   height:.16rem;
-      //                   // border:1px solid yellow;
-      //                   display: flex;
-      //                   justify-content: space-between;
-      //                   .bar{
-      //                     width: 70%;
-      //                     height:.1rem;
-      //                     display: inline-block;
-      //                     background-image: linear-gradient(to right,"#fff", "#fdfdfd");
-      //                     // border:1px solid yellow;
-      //                   }
-      //                   .value{
-      //                     display: inline-block;
-      //                     font-size: .16rem;
-      //                     line-height: .1rem;
-      //                     color:@yellow
-      //                   }
-      //                 }
-      //               }
-      //             }
-      //           }
-
-      //         }
-      //       }
-      //       #news-container2{
-      //         #news-container1;
-      //       }
-      //       #news-container3{
-      //         #news-container1;
-      //       }
-      //     }
-      //   }
-      // }
 
       .left-middle {
         width: 100%;
@@ -402,25 +289,55 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-
       .center-top {
         width: 100%;
-        height: 17%;
-        // border:1px solid red;
-        margin-top: .2rem;
+        height: 25%;
+        // margin-top: .2rem;
+        .total-turnover-title{
+          font-size: .4rem;
+          color:#00F8FF;
+          text-align: center;
+        }
+        .total-turnover{
+          width:90%;
+          height:1rem;
+          // border:1px solid blue;
+          margin:0 auto;
+          font-size: .7rem;
+          display: flex;
+          justify-content: center;
+          .number{
+            width:.8rem;
+            height:1rem;
+            // border:1px solid red;
+            color:#FFFF00;
+            text-align: center;
+            margin: .05rem;
+            background-image: url(../images/number_border.png);
+            background-repeat: no-repeat;
+            background-size:100% 100%;
+            background-position:center;
+          }
+        }
 
         .money-room-box {
           width: 100%;
-          height: 100%;
+          height: 1.5rem;
           margin: 0 auto;
           // border:1px solid red;
+          margin-top:.2rem;
           display: flex;
           justify-content: space-around;
 
           .month-money {
-            width: 28%;
-            height: 100%;
+            width: 32%;
+            height: 1.3rem;
             text-align: center;
+            background-image: url(../images/top_box_border.png);
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            background-position: center;
+            // border:1px solid red;
 
             div:first-child {
               width: 100%;
@@ -428,36 +345,27 @@
               color: #03FCF9;
               font-size: .2rem;
               line-height: .45rem;
-              background-image: url(../images/text_border.png);
-              background-repeat: no-repeat;
-              background-size: 100% 100%;
-              background-position: center;
             }
 
             div:nth-child(2) {
               width: 100%;
               height: .7rem;
               margin-top: .1rem;
-              background-image: url(../images/number_border.png);
-              background-repeat: no-repeat;
-              background-size: 100% 100%;
-              background-position: center;
               color: #FDCE00;
               font-size: .36rem;
               letter-spacing: .05rem;
               line-height: .7rem;
-              // font-family: main_number_font;
             }
           }
 
           .rooms {
             .month-money;
-            width: 28%;
+            width: 32%;
           }
 
           .day-money {
             .month-money;
-            width: 28%;
+            width: 32%;
           }
         }
 
@@ -501,8 +409,14 @@
       }
 
       .center-middle {
-        width: 100%;
-        height: 50%;
+        width: 80%;
+        height: 3.5rem;
+        margin-top:0.6rem;
+        background-image: url(../images/border.png);
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        background-position: center;
+        background-color: #0A112B;
       }
 
       .center-bottom {
@@ -572,39 +486,6 @@
         .fengtingxun {
           .aiqiyi;
         }
-
-        // .bottom-left{
-        //   width: 100%;
-        //   height: 100%;
-        //   display: flex;
-        //   justify-content:left;
-        //   //border:1px solid red;
-        //   .room-num{
-        //     width:auto;
-        //     display:inline-block;
-        //     margin:0 .3rem;   
-        //     height:90%;
-        //     font-size: .2rem;
-        //     color: white;
-        //     text-align: center;
-        //     display: flex;
-        //     flex-direction: column;
-        //     justify-content: center;
-        //     //border:1px solid yellow;
-
-        //     .num-text{
-        //       color:#08DFDF;
-        //       font-size:.4rem;
-        //       font-weight: bold;
-        //       font-style:italic;
-        //       font-family: main_number_font;
-        //       letter-spacing: .05rem;
-        //     }
-        //   }
-        //   .hotel-num{
-        //     .room-num;
-        //   }
-        // }
       }
     }
 
@@ -623,55 +504,99 @@
         justify-content: center;
         align-items: center;
         // border:1px solid red;
-
-        .box-top {
-          width: 95%;
-          height: 43%;
-          margin-bottom: .1rem;
-          display: flex;
-          justify-content: space-around;
-          align-items: center;
-
-          // border:1px solid red;
-          .current {
+        background-image: url(../images/border.png);
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        background-position: center;
+        .swiper-box-1{
+          .title-box{
+            width:100%;
+            height: 20%;
+            // border:1px solid red;
+            font-size: .22rem;
+            color:#00F8FF;
+            line-height: .6rem;
+            padding-left: .2rem;
+          }
+          .small-box{
+            // background-color: #201A69;
             width: 100%;
-            height: 100%;
+            height:80%;
+            // border:1px solid red;
             display: flex;
             justify-content: space-around;
-            // border:1px solid orange;
-
-            .current-month {
-              width: 45%;
-              height: 100%;
+            align-items: center;
+            &:before,
+            &:after {
+              content: '';
+              display: block;
+            }
+            .item{
+              width:30%;
+              height:90%;
+              background-image: url(../images/item_border.png);
+              background-repeat: no-repeat;
+              background-size:100% 100%;
+              background-position:center;
               display: flex;
               flex-direction: column;
-              justify-content: center;
-              background-image: url(../images/right-top-four.png);
-              background-repeat: no-repeat;
-              background-size: 100% 100%;
-              background-position: center;
-              text-align: center;
-
-              >div:first-child {
-                color: @blue;
-                font-size: .2rem;
-                margin-bottom: .1rem;
+              justify-content: space-around;
+              align-items: center;
+              font-size: 0.24rem;
+                color:#fff;
+              .item-chilren{
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                align-items: center;
+                .text-1{
+                  color:#00F8FF;
+                  margin-bottom:0.1rem;
+                  font-size: .2rem;
+                  font-weight:bold;
+                }
+                .data-1{
+                  color: #FED000;
+                  font-size: .3rem;
+                }
+                .text-2{
+                  font-size: .2rem;
+                }
+                .data-2{
+                  display: flex;
+                  justify-content: space-around;
+                  align-items: center;
+                  .arrow-up{
+                    // float: left;
+                    width: 0.16rem;
+                    height:0.19rem;
+                    background-image: url(../images/up.png);
+                    background-repeat: no-repeat;
+                    background-size: 100% 100%;
+                    background-position: center;
+                    margin:.0 0.1rem 0 0;
+                  }
+                  .arrow-down{
+                    // float: left;;
+                    width: 0.16rem;
+                    height:0.19rem;
+                    background-image: url(../images/down.png);
+                    background-repeat: no-repeat;
+                    background-size: 100% 100%;
+                    background-position: center;
+                    margin:.0 0.1rem 0 0;
+                  }
+                  .data-up{
+                    color: #2EB75B;
+                  }
+                  .data-down{
+                    color: #FF3636;
+                  }
+                }
               }
-
-              >div:nth-child(2) {
-                color: @yellow;
-                font-size: .28rem;
-              }
-            }
-
-            .current-week {
-              .current-month;
+              
             }
           }
-        }
-
-        .box-bottom {
-          .box-top;
         }
       }
 

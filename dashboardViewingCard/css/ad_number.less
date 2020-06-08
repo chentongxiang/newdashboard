@@ -287,58 +287,92 @@
         margin:0 auto;
       }
       .center-bottom{
-        width: 100%;
-        height:15%;
-
-        .bottom-left{
-          width: 100%;
-          height: 80%;
-          display: flex;
-          justify-content:center;
-          .all-num{
-            width:20%;
-            display:inline-block;
-            height:90%;
-            font-size: .16rem;
-            color: #eeeeda;
-            text-align: center;
-            margin-top:.1rem;
+        width: 85%;
+        height:18%;
+        .wrapper-box{
+          width:100%;
+          height:100%;
+          // margin:0 auto;
+          // border:1px solid red;
+          .bottom-box{
+            width: 100%;
+            height: 70%;
+            margin:0 auto;
+            // border:1px solid blue;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            .num-text{
-              color:#ff9639;
-              font-size:.32rem;
-              font-weight: bold;
-              font-style:italic;
-              font-family: main_number_font;
-              letter-spacing: .05rem;
-              // border:1px solid red;
-
+            justify-content:center;
+            .all-num{
+              width:25%;
+              display:inline-block;
+              height:90%;
+              font-size: .16rem;
+              color: #eeeeda;
+              text-align: center;
+              // margin-top:.1rem;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              .num-text{
+                color:#EBEF6B;
+                font-size:.23rem;
+              }
+              .data-box{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                .data-box-text{
+                  margin-right: 0.05rem;
+                }
+                .arrow-up{
+                  // float: left;
+                  width: 0.16rem;
+                  height:0.19rem;
+                  background-image: url(../images/up.png);
+                  background-repeat: no-repeat;
+                  background-size: 100% 100%;
+                  background-position: center;
+                  margin:.0 0.05rem 0 0;
+                }
+                .arrow-down{
+                  // float: left;;
+                  width: 0.16rem;
+                  height:0.19rem;
+                  background-image: url(../images/down.png);
+                  background-repeat: no-repeat;
+                  background-size: 100% 100%;
+                  background-position: center;
+                  margin:.0 0.05rem 0 0;
+                }
+                .data-up{
+                  color: #2EB75B;
+                }
+                .data-down{
+                  color: #FF3636;
+                }
+              }
             }
-          }
-          .sell-num{
-            .all-num;
-            width:20%;
-          }
-          .already-num{
-            .all-num;
-            width:20%;
-            margin-top:0rem;
-            div:first-child{
-              width:70%;
+            .sell-num{
+              .all-num;
+              width:25%;
             }
-          }
-          .unready-num{
-            .all-num;
-            width:20%;
-            margin-top:0rem;
-            div:first-child{
-              width:70%;
+            .already-num{
+              .all-num;
+              width:25%;
+              div:first-child{
+                width:70%;
+              }
+            }
+            .unready-num{
+              .all-num;
+              width:25%;
+              div:first-child{
+                width:70%;
+              }
             }
           }
         }
+        
       }
     }
     .right-box{

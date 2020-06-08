@@ -246,7 +246,7 @@
                         </div>
                     </div>
                     <div class="chart-box swiper-slide">
-                        <div class="title">|&nbsp;&nbsp;各集团酒店广告播出数据</div>
+                        <div class="title">|&nbsp;&nbsp;各集团酒店广告播出数据(万次)</div>
                         <div class="chart" id="advs_month_group">
                         </div>
                     </div>
@@ -484,14 +484,18 @@
                             //各集团酒店广告播出数据
                              case "advs_month_group":
                                 var color = ["#c100fd", "#c100fd"];
-                                var new_value = that.bgData(v.value.reverse());
-                                var option = options.normalBarChartOther(color, v.label, new_value, that.fontSizeNum, v.value);
+                                var new_value = [];
+                                $.each(v.value,function(i,k){
+                                    new_value.push(parseInt(k/10000))
+                                })
+                                var bg_value = that.bgData(new_value.reverse());
+                                var option = options.normalBarChartOther(color, v.label, bg_value, that.fontSizeNum, new_value);
                                 for (i = 0, arr = []; i < new_value.length; i++) {
                                     arr.push({
                                         symbol: "circle",
                                         symbolSize: that.fontSizeNum * 0.15,
                                         symbolOffset: [0, "35%"],
-                                        coord: [i, v.value[i]],
+                                        coord: [i, new_value[i]],
                                         itemStyle: {
                                             color: "#f2f2f2"
                                         }
@@ -542,7 +546,7 @@
                                 }
                             break;
                             case "real_time_start_terminal":
-                            $("#real_today").html(v.value[0]);
+                                $("#real_today").html(v.value[0]);
                                 $("#real_week").html(v.value[1]);
                                 $("#real_month").html(v.value[2]);
                                 if(v.value[3]>=0){

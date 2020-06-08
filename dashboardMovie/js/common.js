@@ -693,6 +693,202 @@ var options = {
         }
         return option;
     },
+    multipleLineChart_1:function (color,legendData,lineLabel,lineData,num) {
+        var option = {
+            color:color,
+            legend: {
+                x : '5%',
+                y : '15%',
+                type: 'scroll',
+                orient: 'horizontal',
+                textStyle: {
+                    fontSize: num?num/this.rate/1.2:14,
+                    color:"#9CD1FF",
+                    fontFamily: "Microsoft YaHei",
+                },
+                itemGap:1,
+                itemWidth:num?num/this.rate*0.8:14,
+                itemHeight:num?num/this.rate:14,
+                data:legendData
+            },
+            title: {
+                show:true,
+                text: '',
+                textStyle: {//主标题文本样式{"fontSize": 18,"fontWeight": "bolder","color": "#333"}
+                    // fontFamily: 'monospace',
+                    fontSize: num?num/this.titleRate:14,
+                    fontStyle: 'normal',
+                    fontWeight: 'normal',
+                    color:this.styleColor
+                },
+                x: "5%",
+                y: "5%"
+            },
+            tooltip : {
+                trigger: 'axis',
+                axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                    type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                }
+            },
+            grid: {
+                left: '7%',
+                right: '10%',
+                top: "27%",
+                bottom: '8%',
+                containLabel: true
+            },
+            xAxis : {
+                    nameLocation:"center",
+                    type : 'category',
+                    data : lineLabel,
+                    axisTick: {
+                        alignWithLabel: true
+                    },
+                    axisLabel: {
+                        textStyle:{
+                            color:this.styleColor,  //坐标的字体颜色
+                            fontSize:num?num/this.rate:14,
+                        },
+                    },
+                    axisLine: {
+                        lineStyle:{
+                            color:'#07556B',  //坐标的字体颜色
+                        },
+                    },
+                    splitLine: {
+                        show: true,
+                        lineStyle:{
+                            color: this.lineColor,
+                            width: 1,
+                            type: 'solid'
+                        }
+                    },
+                    axisTick: {
+                        show: true
+                    },
+                    boundaryGap: false,
+                },
+            yAxis : {
+                    nameLocation:"center",
+                    type : 'value',
+                    axisLabel: {
+                        textStyle:{
+                            color:this.styleColor,  //坐标的字体颜色
+                            fontSize:num?num/this.rate:14,
+                        },
+                    },
+                    splitLine: {
+                        show: true,
+                        lineStyle:{
+                            color: this.lineColor,
+                            width: 1,
+                            type: 'solid'
+                        }
+                    },
+                    axisLine: {
+                        lineStyle:{
+                            color:'#07556B',  //坐标的字体颜色
+                        },
+                    },
+                    axisTick: {
+                        show: true
+                    },
+                },
+            series : [
+                {
+                    name:legendData[0],
+                    type:'line',
+                    data:lineData[0],
+                    smooth: true,
+                    symbol:"circle",
+                    itemStyle: {
+                        emphasis:{
+                            barBorderRadius:2,
+                        },
+                        normal: {
+                            lineStyle:{
+                                width:1
+                            }
+                        }
+                    },
+                },
+                {
+                    name:legendData[1],
+                    type:'line',
+                    data:lineData[1],
+                    smooth: true,
+                    symbol:"circle",
+                    itemStyle: {
+                        emphasis:{
+                            barBorderRadius:2,
+                        },
+                        normal: {
+                            lineStyle:{
+                                width:1
+                            }
+                        }
+                    },
+                    
+                },
+                {
+                    name:legendData[2],
+                    type:'line',
+                    data:lineData[2],
+                    smooth: true,
+                    symbol:"circle",
+                    itemStyle: {
+                        emphasis:{
+                            barBorderRadius:2,
+                        },
+                        normal: {
+                            lineStyle:{
+                                width:1
+                            }
+                        }
+                    },
+                   
+                },
+                {
+                    name:legendData[3],
+                    type:'line',
+                    data:lineData[3],
+                    smooth: true,
+                    symbol:"circle",
+                    itemStyle: {
+                        emphasis:{
+                            barBorderRadius:2,
+                        },
+                        normal: {
+                            lineStyle:{
+                                width:1
+                            }
+                        }
+                    },
+                   
+                },
+                {
+                    name:legendData[4],
+                    type:'line',
+                    data:lineData[4],
+                    smooth: true,
+                    symbol:"circle",
+                    itemStyle: {
+                        emphasis:{
+                            barBorderRadius:2,
+                        },
+                        normal: {
+                            lineStyle:{
+                                width:1
+                            }
+                        }
+                    },
+                    
+                },
+            ],
+            
+        }
+        return option;
+    },
     //柱状图-多柱状横向
     stackedBarChart:function (color,barLabel,barData,num) {
         var option = {

@@ -30,7 +30,7 @@
                         </div>
                         <div class="box2">
                             <div class="text">2020目标屏幕数</div>
-                            <div class="number" id="huadong_target">100000</div>
+                            <div class="number" id="huadong_target">200000</div>
                         </div>
                         <div class="box3">
                             <div class="text">差距数</div>
@@ -51,7 +51,7 @@
                         </div>
                         <div class="box2">
                             <div class="text">2020目标屏幕数</div>
-                            <div class="number" id="huabei_target">100000</div>
+                            <div class="number" id="huabei_target">200000</div>
                         </div>
                         <div class="box3">
                             <div class="text">差距数</div>
@@ -71,7 +71,7 @@
                         </div>
                         <div class="box2">
                             <div class="text">2020目标屏幕数</div>
-                            <div class="number" id="xinan_target">100000</div>
+                            <div class="number" id="xinan_target">200000</div>
                         </div>
                         <div class="box3">
                             <div class="text">差距数</div>
@@ -91,7 +91,7 @@
                         </div>
                         <div class="box2">
                             <div class="text">2020目标屏幕数</div>
-                            <div class="number" id="zhongnan_target">100000</div>
+                            <div class="number" id="zhongnan_target">200000</div>
                         </div>
                         <div class="box3">
                             <div class="text">差距数</div>
@@ -521,7 +521,7 @@
                         </div>
                         <div class="box1">
                             <div class="text">2020年总指标</div>
-                            <div class="number">400000</div>
+                            <div class="number">200000</div>
                         </div>
                         <div class="box2">
                             <div class="text">已完成数字</div>
@@ -1091,6 +1091,7 @@
                                         $("#past_gather_beforeMonth_arrow").removeClass("up-arrow").addClass("down-arrow")
                                         $("#past_gather_beforeMonth").html(-1*v.value[5]+"%").removeClass("number-up").addClass("number-down")
                                     }
+
                                 break;
                                 //左一板块  实时聚屏KA
                                 case "channel_poly_screen_real_time_start_terminal":
@@ -1242,7 +1243,7 @@
                 var mySwiper = new Swiper ('.swiper3', {
                     // direction: 'vertical', // 垂直切换选项
                     direction: 'horizontal', // 横向切换选项
-                    loop: true, // 循环模式选项
+                    // loop: true, // 循环模式选项
                     speed:1000,
                     autoplay: {
                         delay: 7000,//时间 毫秒
@@ -1491,7 +1492,15 @@
                                     $("#"+v.label).html(parseInt(v.value));
                                     $("#past_all").html(parseInt(v.value));
                                     $("#real_all").html(parseInt(v.value));
-                                    $("#channel_all_difference").html(400000-v.value)
+                                    $("#channel_all_difference").html(200000-v.value)
+                                }else if(v.label=="channel_child_front_end_year_total"){
+                                    //两个是一样的，同个数据
+                                    $("#past_front_all").html(parseInt(v.value));
+                                    $("#front_all").html(parseInt(v.value));
+                                }else if(v.label=="channel_child_poly_screen_year_total"){
+                                    //两个是一样的，同个数据
+                                    $("#past_gather_all").html(parseInt(v.value));
+                                    $("#gather_all").html(parseInt(v.value));
                                 }else{
                                     $("#"+v.label).html(parseInt(v.value));
                                 }

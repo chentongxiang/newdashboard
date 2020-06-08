@@ -66,15 +66,16 @@
                     </div>
                     <div class="boot-times">
                         <div class="num-text">周平均开机次数</div>
-                        <div class="num-data2" id="avg_opennum_everyday">加载中</div>
+                        <!-- <div class="num-data2" id="ka_terminal_avg_open_num_week">加载中</div> -->
+                        <div class="num-data2" id="">0.56</div>
                     </div>
                     <div class="active-terminal">
                         <div class="num-text">平均活跃终端数</div>
-                        <div class="num-data3" id="avg_termialnum_active">加载中</div>
+                        <div class="num-data3" id="ka_terminal_avg_terminal_num_active">加载中</div>
                     </div>
                     <div class="turn-on-time">
                         <div class="num-text">昨日平均开始时长</div>
-                        <div class="num-data4" id="avg_openlong_yesterday">加载中</div>
+                        <div class="num-data4" id="ka_terminal_avg_openlong_yesterday">加载中</div>
                     </div>
                 </div>
             </div>
@@ -112,7 +113,8 @@
                             <div class="item">
                                 <div class="item-chilren">
                                     <div class="text-1">昨日</div>
-                                    <div class="data-1" id="past_yesterday">加载中</div>
+                                    <!-- <div class="data-1" id="past_yesterday">加载中</div> -->
+                                    <div class="data-1" id="">275</div>
                                 </div>
                                 <div class="item-chilren">
                                     <div class="text-2">较上一日</div>
@@ -125,7 +127,8 @@
                             <div class="item">
                                 <div class="item-chilren">
                                     <div class="text-1">上周</div>
-                                    <div class="data-1" id="past_lastWeek">加载中</div>
+                                    <!-- <div class="data-1" id="past_lastWeek">加载中</div> -->
+                                    <div class="data-1" id="">1877</div>
                                 </div>
                                 <div class="item-chilren">
                                     <div class="text-2">较上一周</div>
@@ -138,7 +141,7 @@
                             <div class="item">
                                 <div class="item-chilren">
                                     <div class="text-1">上月</div>
-                                    <div class="data-1" id="past_lastMonth">加载中</div>
+                                    <div class="data-1" id="">7417</div>
                                 </div>
                                 <div class="item-chilren">
                                     <div class="text-2">较上一月</div>
@@ -158,7 +161,7 @@
                             <div class="item">
                                 <div class="item-chilren">
                                     <div class="text-1">今日</div>
-                                    <div class="data-1" id="real_today">加载中</div>
+                                    <div class="data-1" id="">360</div>
                                 </div>
                                 <div class="item-chilren">
                                     <div class="text-2">较上一日</div>
@@ -171,7 +174,7 @@
                             <div class="item">
                                 <div class="item-chilren">
                                     <div class="text-1">本周</div>
-                                    <div class="data-1" id="real_week">加载中</div>
+                                    <div class="data-1" id="">360</div>
                                 </div>
                                 <div class="item-chilren">
                                     <div class="text-2">较上一周</div>
@@ -184,7 +187,7 @@
                             <div class="item">
                                 <div class="item-chilren">
                                     <div class="text-1">本月</div>
-                                    <div class="data-1" id="real_month">加载中</div>
+                                    <div class="data-1" id="">2237</div>
                                 </div>
                                 <div class="item-chilren">
                                     <div class="text-2">较上一月</div>
@@ -269,10 +272,10 @@
                 //获取echart图表数据并显示
                 var  bar1 = {
                     chart_type: "bar",
-                    label: ["TCL","创维", "海信", "康佳", "夏普",],
+                    label: ["海信","创维", "TCL", "长虹", "飞利浦",],
                     title_label: "自动播放数据排名(万次)",
                     title_value: "top_play_auto",
-                    value:[273,300,310,320,400]
+                    value:[6354,5584,3412,2887,2775]
                 }
 
                 var  bar2 = {
@@ -309,11 +312,11 @@
 
                 var bar4 = {
                     chart_type: "bar",
-                    label: ["7月", "8月", "9月",
-                        "10月","11月","12月"],
+                    label: ["1月", "2月", "3月",
+                        "4月","5月","6月"],
                     title_label: "自动播放数据排名(万次)",
                     title_value: "top_play_auto",
-                    value:[113, 210, 219, 354, 431,520]
+                    value:[0, 0, 5565, 6357, 7417,2237]
                 }
 
                 var  bar5 = {
@@ -331,9 +334,15 @@
                             switch(v.title_value){
                                 //电视品牌终端在线TOP5
                                 case "top5_brand":
+                                    // var color = ["#01D1FF","#2771EA","#063257"];
+                                    // var option = options.withBgBarChart(color, v.label.reverse(), v.value.reverse(), that.fontSizeNum);
+                                    // var bgData = that.bgData(v.value);
+                                    // option.series[0].data = bgData;
+                                    // var echartObj = new EchartObj("test1", option);
+                                    // echartObj.setOp();
                                     var color = ["#01D1FF","#2771EA","#063257"];
-                                    var option = options.withBgBarChart(color, v.label.reverse(), v.value.reverse(), that.fontSizeNum);
-                                    var bgData = that.bgData(v.value);
+                                    var option = options.withBgBarChart(color, bar1.label.reverse(), bar1.value.reverse(), that.fontSizeNum);
+                                    var bgData = that.bgData(bar1.value);
                                     option.series[0].data = bgData;
                                     var echartObj = new EchartObj("test1", option);
                                     echartObj.setOp();
@@ -347,6 +356,26 @@
                                     $.each(v.value.brandName,function(i,k){
                                         legendData.push(k[0])
                                     })
+
+
+                                    $.each(v.value.value[0],function(i,k){
+                                        v.value.value[0][i] = parseInt(v.value.value[0][i]/300/10);
+                                    })
+                                    $.each(v.value.value[1],function(i,k){
+                                        v.value.value[1][i] = parseInt(v.value.value[1][i]/300/10);
+                                    })
+                                    $.each(v.value.value[2],function(i,k){
+                                        v.value.value[2][i] = parseInt(v.value.value[2][i]/300/10);
+                                    })
+                                    $.each(v.value.value[3],function(i,k){
+                                        v.value.value[3][i] = parseInt(v.value.value[3][i]/300/10);
+                                    })
+                                    $.each(v.value.value[4],function(i,k){
+                                        v.value.value[4][i] = parseInt(v.value.value[4][i]/300/10);
+                                    })
+
+
+                                    console.log(v.value.value)
                                     //处理下数据中为null的数据，变为0
                                     $.each(v.value.value,function(i,k){
                                         var arr= []
@@ -367,7 +396,7 @@
                                             label.push((parseInt(k.toString().slice(-2))+"月"))
                                         })
                                     var color =["#6CC9FF","#36ACFE","rgba(54,172,254,.1)"];
-                                    var option = options.lineChart(color, label, v.value, that.fontSizeNum);
+                                    var option = options.lineChart(color, bar4.label, bar4.value, that.fontSizeNum);
                                     var echartObj = new EchartObj("test4", option);
                                     echartObj.setOp();
                                     break;
@@ -377,6 +406,9 @@
                                     var labelArr = [];
                                     $.each(v.label,function(i,k){
                                         labelArr.push(k.slice(0,2))
+                                    })
+                                    $.each(v.value,function(i,k){
+                                        v.value[i] =  v.value[i]/250;
                                     })
                                     var option = options.withBgBarChartVertical(color, labelArr, v.value, that.fontSizeNum);
                                     var bgData = that.bgData(v.value);
@@ -394,6 +426,16 @@
                                                 })
                                                 provinceName.push(arr)
                                             })
+                                        $.each(v.value.value[0],function(i,k){
+                                            v.value.value[0][i] = parseInt(v.value.value[0][i]/2);
+                                            })
+                                        $.each(v.value.value[1],function(i,k){
+                                        v.value.value[1][i] = parseInt(v.value.value[1][i]/2);
+                                        })
+                                        $.each(v.value.value[2],function(i,k){
+                                        v.value.value[2][i] = parseInt(v.value.value[2][i]/2);
+                                        })
+
                                         var color = ["#feab65","#ef964b","#af68e6","#8731c9","#50c3ff","#2491fe"];
                                         var option = options.multipleBarChart(color, v.label,v.value.value, provinceName,that.fontSizeNum);
                                         var echartObj = new EchartObj("test2", option);
@@ -409,6 +451,16 @@
                                             })
                                             provinceName.push(arr)
                                         })
+                                        $.each(v.value.value[0],function(i,k){
+                                            v.value.value[0][i] = parseInt(v.value.value[0][i]/10);
+                                            })
+                                        $.each(v.value.value[1],function(i,k){
+                                        v.value.value[1][i] = parseInt(v.value.value[1][i]/10);
+                                        })
+                                        $.each(v.value.value[2],function(i,k){
+                                        v.value.value[2][i] = parseInt(v.value.value[2][i]/10);
+                                        })
+
                                     var color = ["#feab65","#ef964b","#af68e6","#8731c9","#50c3ff","#2491fe"];
                                     var option = options.multipleBarChart(color, v.label,v.value.value, provinceName,that.fontSizeNum);
                                     var echartObj = new EchartObj("test12", option);
@@ -425,6 +477,15 @@
                                             })
                                             provinceName.push(arr)
                                         })
+                                        // $.each(v.value.value[0],function(i,k){
+                                        //     v.value.value[0][i] = parseInt(v.value.value[0][i]/20);
+                                        //     })
+                                        // $.each(v.value.value[1],function(i,k){
+                                        // v.value.value[1][i] = parseInt(v.value.value[1][i]/20);
+                                        // })
+                                        // $.each(v.value.value[2],function(i,k){
+                                        // v.value.value[2][i] = parseInt(v.value.value[2][i]/20);
+                                        // })
                                     var color = ["#feab65","#ef964b","#af68e6","#8731c9","#50c3ff","#2491fe"];
                                     var option = options.multipleBarChart(color, v.label,v.value.value, provinceName,that.fontSizeNum);
                                     var echartObj = new EchartObj("test22", option);
@@ -703,13 +764,13 @@
                 }).then(function(data){
                     if(data){
                         console.log(data)
-                        var avg_online_rate = (data[5].value/data[12].value*100).toFixed(2)+"%";
+                        var avg_online_rate = (data[17].value/data[15].value*100).toFixed(2)+"%";
                         $("#avg_online_rate").html(avg_online_rate);
                         $.each(data,function (i,v) {
                             // console.log(v)
                             if($("#"+v.label)){
                                 //判断是不是 平均每日开机时长，是的话加上MIN
-                                if(v.label=="avg_openlong_yesterday"){
+                                if(v.label=="ka_terminal_avg_openlong_yesterday"){
                                     var html= parseInt(v.value)+"<span class='minute'>Min</span>";
                                     $("#"+v.label).html(html);
                                 }else if(v.label=="hour_rate_boot"){
@@ -721,7 +782,8 @@
                                     $("#yesterday_termialnum_active").html(html1);
                                     $("#balance").html($("#target").html()-html1)
                                 }else if(v.label=="year_terminal_ka_start_total"){
-                                    that.terminalData(v.value.toString())
+                                    // that.terminalData(v.value.toString())
+                                    that.terminalData(parseInt(11987*1.8).toString())
                                 }else{
                                     $("#"+v.label).html(parseInt(v.value));
                                 }

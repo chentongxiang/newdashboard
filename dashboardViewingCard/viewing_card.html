@@ -19,7 +19,7 @@
                 <div class="carousel1 swiper-wrapper">
                     <div class="carousel-chart1 swiper-slide" id="test1"></div>
                     <div class="carousel-chart2 swiper-slide" id="test2"></div>
-                    <div class="carousel-chart1 swiper-slide" id="test3"></div>
+                    <!-- <div class="carousel-chart1 swiper-slide" id="test3"></div> -->
                 </div>
             </div>
             <div class="left-middle swiper-container swiper2">
@@ -68,25 +68,86 @@
                 </div>
             </div>
             <div class="center-middle" id="china_map"></div>
-            <div class="center-bottom">
-                <div class="bottom-left">
-                    <div class="all-num">
-                        <div>总门店数</div>
-                        <div class="num-text" id="all-num">45600</div>
+            <div class="center-bottom swiper-container swiper7">
+                <div class="swiper-wrapper wrapper-box">
+                    <div class="bottom-box swiper-slide">
+                        <div class="all-num">
+                            <div class="title">总门店数</div>
+                            <div class="num-text" id="all_num">45600</div>
+                            <div class="data-box">
+                                <div class="data-box-text">较上一周</div>
+                                <div class="arrow-up"></div>
+                                <div class="data-up" id="week_before_all_num">243</div>
+                            </div>
+                        </div>
+                        <div class="sell-num">
+                            <div class="title">运营门店数</div>
+                            <div class="num-text" id="operate_rooms">25713</div>
+                            <div class="data-box">
+                                <div class="data-box-text">较上一周</div>
+                                <div class="arrow-up"></div>
+                                <div class="data-up" id="week_before_operate_rooms">243</div>
+                            </div>
+                        </div>
+                        <div class="already-num">
+                            <div class="title">在线互联门店数</div>
+                            <div class="num-text" id="online_rooms">15260</div>
+                            <div class="data-box">
+                                <div class="data-box-text">较上一周</div>
+                                <div class="arrow-up"></div>
+                                <div class="data-up" id="week_before_online_rooms">243</div>
+                            </div>
+                        </div>
+                        <div class="unready-num">
+                            <div class="title">本地缓存门店数</div>
+                            <div class="num-text" id="local-rooms">12560</div>
+                            <div class="data-box">
+                                <div class="data-box-text">较上一周</div>
+                                <div class="arrow-down"></div>
+                                <div class="data-down" class="week_before_local-rooms">243</div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="sell-num">
-                        <div>有销量门店数</div>
-                        <div class="num-text" id="covered-rooms">25713</div>
-                    </div>
-                    <div class="already-num">
-                        <div>已刷机未装服务器门店数</div>
-                        <div class="num-text" id="already-num">15260</div>
-                    </div>
-                    <div class="unready-num">
-                        <div>未刷机未装服务器门店数</div>
-                        <div class="num-text" id="unready-num">12560</div>
+                    <div class="bottom-box swiper-slide">
+                        <div class="all-num">
+                            <div class="title">总门店数</div>
+                            <div class="num-text" id="all_num">45600</div>
+                            <div class="data-box">
+                                <div class="data-box-text">较上一月</div>
+                                <div class="arrow-up"></div>
+                                <div class="data-up" id="month_before_all_num">243</div>
+                            </div>
+                        </div>
+                        <div class="sell-num">
+                            <div class="title">门店销售额</div>
+                            <div class="num-text" id="operate_rooms">25713</div>
+                            <div class="data-box">
+                                <div class="data-box-text">较上一月</div>
+                                <div class="arrow-up"></div>
+                                <div class="data-up" id="week_before_operate_rooms">243</div>
+                            </div>
+                        </div>
+                        <div class="already-num">
+                            <div class="title">在线互联门店数</div>
+                            <div class="num-text" id="online_rooms">15260</div>
+                            <div class="data-box">
+                                <div class="data-box-text">较上一月</div>
+                                <div class="arrow-up"></div>
+                                <div class="data-up" id="month_before_online_rooms">243</div>
+                            </div>
+                        </div>
+                        <div class="unready-num">
+                            <div class="title">本地缓存门店数</div>
+                            <div class="num-text" id="local-rooms">12560</div>
+                            <div class="data-box">
+                                <div class="data-box-text">较上一月</div>
+                                <div class="arrow-down"></div>
+                                <div class="data-down" class="week_before_local-rooms">243</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+               
             </div>
         </div>
         <div class="right-box">
@@ -111,8 +172,8 @@
             <div class="right-bottom swiper-container swiper6">
                 <div class="carousel2 swiper-wrapper">
                     <div class="carousel-chart3 swiper-slide" id="test13"></div>
-                    <!--<div class="carousel-chart3 swiper-slide" id="test15"></div>-->
                     <div class="carousel-chart3 swiper-slide" id="test14"></div>
+                    <div class="carousel-chart3 swiper-slide" id="test15"></div>
                 </div>
             </div>
         </div>
@@ -163,18 +224,18 @@
             var bar1 = {
                 chart_type: "bar",
                 label: ["南昌前湖大道南昌大学店", "嘉兴中山东路八佰伴店", "成都双流国际机场店",
-                    "寸里广路浔峰岗地铁站店",   "兰州城关大桥店",  "武汉高铁店"],
+                    "寸里广路浔峰岗地铁站店",   "兰州城关大桥店"],
                 title_label: "自动播放数据排名(万次)",
                 title_value: "top_play_auto",
-                value:[200, 300, 400, 450, 500,600]
+                value:[200, 300, 400, 450, 500]
             }
             var bar2 = {
                 chart_type: "bar",
                 label: ["南昌前湖大道南昌大学店", "嘉兴中山东路八佰伴店", "成都双流国际机场店",
-                    "寸里广路浔峰岗地铁站店",   "兰州城关大桥店",  "武汉高铁店"],
+                    "寸里广路浔峰岗地铁站店",   "兰州城关大桥店"],
                 title_label: "自动播放数据排名(万次)",
                 title_value: "top_play_auto",
-                value:[300, 335, 366, 499, 600,788]
+                value:[300, 335, 366, 499, 600]
             }
 
             var bar3 = {
@@ -278,6 +339,15 @@
                 value:[113, 210, 219, 354, 431,520]
             }
 
+            var bar15 = {
+                chart_type: "bar",
+                label: ["丽影卡", "携旅卡", "腾讯VIP月卡",
+                    "腾讯VIP年卡","希岸卡"],
+                title_label: "自动播放数据排名(万次)",
+                title_value: "top_play_auto",
+                value:[113, 210, 219, 354, 431]
+            }
+
             var pie1 = {
                 chart_type: "pie",
                 label: ["男", "女"],
@@ -296,30 +366,25 @@
 
                     var color = ["#e9cd8d", "#fff5b5"];
                     var option = options.noBgBarChart(color, bar1.label, bar1.value, that.fontSizeNum);
-                    option.title.text = "本月有服务器门店订单数TOP6";
+                    option.title.text = "在线互联门店TOP5";
                     var echartObj = new EchartObj("test1", option);
                     echartObj.setOp();
 
                     var color = ["#eb904f", "#f3cf99"];
                     var option = options.noBgBarChart(color, bar2.label, bar2.value, that.fontSizeNum);
-                    option.title.text = "本月已刷机未装服务器门店订单数TOP6";
+                    option.title.text = "本地缓存门店TOP5";
                     var echartObj = new EchartObj("test2", option);
                     echartObj.setOp();
 
-                    var color = ["#d2a087", "#e3cec1"];
-                    var option = options.noBgBarChart(color, bar3.label, bar3.value, that.fontSizeNum);
-                    option.title.text = "本月未刷机未装服务器门店订单数TOP6";
-                    var echartObj = new EchartObj("test3", option);
-                    echartObj.setOp();
 
-                    var color = ["#e9cd8c", "#fff5b5"];
-                    var option = options.normalBarChart(color, bar4.label, bar4.value, that.fontSizeNum);
+                    var color =["#fef4b4","#A76423","rgba(224,176,5,.1)"];
+                    var option = options.lineChart(color, bar4.label, bar4.value, that.fontSizeNum);
                     option.title.text = "观影卡月度使用率";
                     var echartObj = new EchartObj("test4", option);
                     echartObj.setOp();
 
-                    var color = ["#eb904f", "#f3cf99"];
-                    var option = options.normalBarChart(color, bar5.label, bar5.value, that.fontSizeNum);
+                    var color =["#fef4b4","#FF9639","rgba(224,176,5,.1)"];
+                    var option = options.lineChart(color, bar5.label, bar5.value, that.fontSizeNum);
                     option.title.text = "观影卡月度使用率";
                     var echartObj = new EchartObj("test5", option);
                     echartObj.setOp();
@@ -383,6 +448,13 @@
                     option.title.text = "月度日均订单数";
                     option.series[0].itemStyle.normal.barBorderRadius="0";
                     var echartObj = new EchartObj("test14", option);
+                    echartObj.setOp();
+
+                    var color = ["#eb904f", "#f3cf99"];
+                    var option = options.normalBarChart(color, bar15.label, bar15.value, that.fontSizeNum);
+                    option.title.text = "观影卡销售排名TOP5";
+                    option.series[0].itemStyle.normal.barBorderRadius="0";
+                    var echartObj = new EchartObj("test15", option);
                     echartObj.setOp();
 
 
@@ -629,6 +701,17 @@
                 // speed:3000
             })
             var mySwiper = new Swiper('.swiper6', {
+                // direction: 'vertical', // 垂直切换选项
+                direction: 'vertical', // 横向切换选项
+                // loop: true, // 循环模式选项
+                speed: 1000,
+                autoplay: {
+                    delay: 17000,//时间 毫秒
+                    disableOnInteraction: false,//用户操作之后是否停止自动轮播默认true
+                },
+                // speed:3000
+            })
+            var mySwiper = new Swiper('.swiper7', {
                 // direction: 'vertical', // 垂直切换选项
                 direction: 'vertical', // 横向切换选项
                 // loop: true, // 循环模式选项

@@ -72,7 +72,7 @@
       </div>
       <div class="center-box">
         <div class="center-top">
-          <div class="history-text">年度总营业额</div>
+          <div class="history-text">2020年度总营业额</div>
           <div class="data-box" id="yearMoney">
             <!-- <div>￥</div>
                         <div class="sell-number">168585858</div> -->
@@ -122,8 +122,8 @@
           </div>
         </div>
         <div class="right-box">
-          <div class="right-top">
-            <div class="history-num">
+          <div class="right-top swiper-container swiper5">
+            <!-- <div class="history-num">
               <div class="visitor-box1">
                 <div class="day-visitor" id="day_visitor">当日访客数</div>
                 <div class="week-visitor" id="week_visitor">本周访客数</div>
@@ -133,10 +133,7 @@
                 <div class="week-num-text" id="week_visitor_data">7212</div>
               </div>
             </div>
-            <!--<div class="week-visitor">-->
-            <!--<div>本周访客数</div>-->
-            <!--<div class="num-text" >121212</div>-->
-            <!--</div>-->
+          
             <div class="mouth-num">
               <div class="visitor-box1">
                 <div class="day-visitor" id="month_visitor">本月访客数</div>
@@ -146,11 +143,286 @@
                 <div class="num-text" id="month_visitor_data">32423</div>
                 <div class="week-num-text" id="year_visitor_data">132424</div>
               </div>
+            </div> -->
+            <div class="swiper-wrapper">
+              <div class="swiper-slide swiper-box-1">
+                <div class="title-box">
+                  日均浏览性能
+                </div>
+                <div class="small-box">
+                    <div class="item">
+                        <div class="item-chilren">
+                            <div class="text-1">PV<span class="unit">(万次)</span></div>
+                            <div class="data-1" id="day_browse">加载中</div>
+                        </div>
+                        <div class="item-chilren">
+                            <div class="text-2">较上一日</div>
+                            <div class="data-2">
+                                <div class="arrow-up" id="day_browse_before_arrow"></div>
+                                <div class="data-up" id="day_browse_before">加载中</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="item-chilren">
+                            <div class="text-1">在线时长<span class="unit">(分钟)</span></div>
+                            <div class="data-1" id="day_online">加载中</div>
+                        </div>
+                        <div class="item-chilren">
+                            <div class="text-2">较上一日</div>
+                            <div class="data-2">
+                                <div class="arrow-up" id="day_online_before_arrow"></div>
+                                <div class="data-up" id="day_online_before">加载中</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="item-chilren">
+                            <div class="text-1">在线率</div>
+                            <div class="data-1" id="day_rate">加载中</div>
+                        </div>
+                        <div class="item-chilren">
+                            <div class="text-2">较上一日</div>
+                            <div class="data-2">
+                                <div class="arrow-up" id="day_rate_before_arrow"></div>
+                                <div class="data-up" id="day_rate_before">加载中</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+              <div class="swiper-slide swiper-box-1">
+                <div class="title-box">
+                  日均转换性能
+                </div>
+                <div class="small-box">
+                    <div class="item">
+                        <div class="item-chilren">
+                            <div class="text-1">订单数</div>
+                            <div class="data-1" id="day_order">加载中</div>
+                        </div>
+                        <div class="item-chilren">
+                            <div class="text-2">较上一日</div>
+                            <div class="data-2">
+                                <div class="arrow-up" id="day_order_before_arrow"></div>
+                                <div class="data-up" id="day_order_before">加载中</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="item-chilren">
+                            <div class="text-1">收益<span class="unit">(元)</span></div>
+                            <div class="data-1" id="day_profit">加载中</div>
+                        </div>
+                        <div class="item-chilren">
+                            <div class="text-2">较上一日</div>
+                            <div class="data-2">
+                                <div class="arrow-up" id="day_profit_before_arrow"></div>
+                                <div class="data-up" id="day_profit_before">加载中</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="item-chilren">
+                            <div class="text-1">转换率</div>
+                            <div class="data-1" id="day_changeRate">加载中</div>
+                        </div>
+                        <div class="item-chilren">
+                            <div class="text-2">较上一日</div>
+                            <div class="data-2">
+                                <div class="arrow-up" id="day_changeRate_before_arrow"></div>
+                                <div class="data-up" id="day_changeRate_before">加载中</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+              <div class="swiper-slide swiper-box-1">
+                <div class="title-box">
+                  周均浏览性能
+                </div>
+                <div class="small-box">
+                    <div class="item">
+                        <div class="item-chilren">
+                            <div class="text-1">PV<span class="unit">(万次)</span></div>
+                            <div class="data-1" id="week_browse">加载中</div>
+                        </div>
+                        <div class="item-chilren">
+                            <div class="text-2">较上一周</div>
+                            <div class="data-2">
+                                <div class="arrow-up" id="week_browse_before_arrow"></div>
+                                <div class="data-up" id="week_browse_before">加载中</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="item-chilren">
+                            <div class="text-1">在线时长<span class="unit">(分钟)</span></div>
+                            <div class="data-1" id="week_online">加载中</div>
+                        </div>
+                        <div class="item-chilren">
+                            <div class="text-2">较上一周</div>
+                            <div class="data-2">
+                                <div class="arrow-up" id="week_online_before_arrow"></div>
+                                <div class="data-up" id="week_online_before">加载中</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="item-chilren">
+                            <div class="text-1">在线率</div>
+                            <div class="data-1" id="week_rate">加载中</div>
+                        </div>
+                        <div class="item-chilren">
+                            <div class="text-2">较上一周</div>
+                            <div class="data-2">
+                                <div class="arrow-up" id="week_rate_before_arrow"></div>
+                                <div class="data-up" id="week_rate_before">加载中</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+              <div class="swiper-slide swiper-box-1">
+                <div class="title-box">
+                  周均转换性能
+                </div>
+                <div class="small-box">
+                    <div class="item">
+                        <div class="item-chilren">
+                            <div class="text-1">订单数</div>
+                            <div class="data-1" id="week_order">加载中</div>
+                        </div>
+                        <div class="item-chilren">
+                            <div class="text-2">较上一周</div>
+                            <div class="data-2">
+                                <div class="arrow-up" id="week_order_before_arrow"></div>
+                                <div class="data-up" id="week_order_before">加载中</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="item-chilren">
+                            <div class="text-1">收益<span class="unit">(元)</span></div>
+                            <div class="data-1" id="week_profit">加载中</div>
+                        </div>
+                        <div class="item-chilren">
+                            <div class="text-2">较上一周</div>
+                            <div class="data-2">
+                                <div class="arrow-up" id="week_profit_before_arrow"></div>
+                                <div class="data-up" id="week_profit_before">加载中</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="item-chilren">
+                            <div class="text-1">转换率</div>
+                            <div class="data-1" id="week_changeRate">加载中</div>
+                        </div>
+                        <div class="item-chilren">
+                            <div class="text-2">较上一周</div>
+                            <div class="data-2">
+                                <div class="arrow-up" id="week_changeRate_before_arrow"></div>
+                                <div class="data-up" id="week_changeRate_before">加载中</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+              <div class="swiper-slide swiper-box-1">
+                <div class="title-box">
+                  月均浏览性能
+                </div>
+                <div class="small-box">
+                    <div class="item">
+                        <div class="item-chilren">
+                            <div class="text-1">PV<span class="unit">(万次)</span></div>
+                            <div class="data-1" id="month_browse">加载中</div>
+                        </div>
+                        <div class="item-chilren">
+                            <div class="text-2">较上一月</div>
+                            <div class="data-2">
+                                <div class="arrow-up" id="month_browse_before_arrow"></div>
+                                <div class="data-up" id="month_browse_before">加载中</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="item-chilren">
+                            <div class="text-1">在线时长<span class="unit">(分钟)</span></div>
+                            <div class="data-1" id="month_online">加载中</div>
+                        </div>
+                        <div class="item-chilren">
+                            <div class="text-2">较上一月</div>
+                            <div class="data-2">
+                                <div class="arrow-up" id="month_online_before_arrow"></div>
+                                <div class="data-up" id="month_online_before">加载中</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="item-chilren">
+                            <div class="text-1">在线率</div>
+                            <div class="data-1" id="month_rate">加载中</div>
+                        </div>
+                        <div class="item-chilren">
+                            <div class="text-2">较上一月</div>
+                            <div class="data-2">
+                                <div class="arrow-up" id="month_rate_before_arrow"></div>
+                                <div class="data-up" id="month_rate_before">加载中</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+              <div class="swiper-slide swiper-box-1">
+                <div class="title-box">
+                  月均转换性能
+                </div>
+                <div class="small-box">
+                    <div class="item">
+                        <div class="item-chilren">
+                            <div class="text-1">订单数</div>
+                            <div class="data-1" id="month_order">加载中</div>
+                        </div>
+                        <div class="item-chilren">
+                            <div class="text-2">较上一月</div>
+                            <div class="data-2">
+                                <div class="arrow-up" id="month_order_before_arrow"></div>
+                                <div class="data-up" id="month_order_before">加载中</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="item-chilren">
+                            <div class="text-1">收益<span class="unit">(元)</span></div>
+                            <div class="data-1" id="month_profit">加载中</div>
+                        </div>
+                        <div class="item-chilren">
+                            <div class="text-2">较上一月</div>
+                            <div class="data-2">
+                                <div class="arrow-up" id="month_profit_before_arrow"></div>
+                                <div class="data-up" id="month_profit_before">加载中</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="item-chilren">
+                            <div class="text-1">转换率</div>
+                            <div class="data-1" id="month_changeRate">加载中</div>
+                        </div>
+                        <div class="item-chilren">
+                            <div class="text-2">较上一月</div>
+                            <div class="data-2">
+                                <div class="arrow-up" id="month_changeRate_before_arrow"></div>
+                                <div class="data-up" id="month_changeRate_before">加载中</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
             </div>
-            <!--<div class="year-visitor">-->
-            <!--<div>本年访客数</div>-->
-            <!--<div class="num-text">12121212</div>-->
-            <!--</div>-->
+            
           </div>
           <div class="right-middle swiper-container swiper4">
             <div class="carousel2 swiper-wrapper">
@@ -493,6 +765,90 @@
                 var domID = v.title_value;
                 // console.log(v.title_value)
                 switch (v.title_value) {
+                  case "average_browsing_performance_day":
+                    var idObj={
+                      name1:"day_browse",
+                      name2:"day_online",
+                      name3:"day_rate",
+                      name4:"day_browse_before_arrow",
+                      name5:"day_browse_before",
+                      name6:"day_online_before_arrow",
+                      name7:"day_online_before",
+                      name8:"day_rate_before_arrow",
+                      name9:"day_rate_before"
+                    }
+                    that.performanceFun(idObj,v.value);
+                  break;
+                  case "average_conversion_performance_day":
+                    var idObj={
+                      name1:"day_order",
+                      name2:"day_profit",
+                      name3:"day_changeRate",
+                      name4:"day_order_before_arrow",
+                      name5:"day_order_before",
+                      name6:"day_profit_before_arrow",
+                      name7:"day_profit_before",
+                      name8:"day_changeRate_before_arrow",
+                      name9:"day_changeRate_before"
+                    }
+                    that.performanceFun(idObj,v.value);
+                  break;
+                  case "average_browsing_performance_week":
+                    var idObj={
+                      name1:"week_browse",
+                      name2:"week_online",
+                      name3:"week_rate",
+                      name4:"week_browse_before_arrow",
+                      name5:"week_browse_before",
+                      name6:"week_online_before_arrow",
+                      name7:"week_online_before",
+                      name8:"week_rate_before_arrow",
+                      name9:"week_rate_before"
+                    }
+                    that.performanceFun(idObj,v.value);
+                  break;
+                  case "average_conversion_performance_week":
+                    var idObj={
+                      name1:"week_order",
+                      name2:"week_profit",
+                      name3:"week_changeRate",
+                      name4:"week_order_before_arrow",
+                      name5:"week_order_before",
+                      name6:"week_profit_before_arrow",
+                      name7:"week_profit_before",
+                      name8:"week_changeRate_before_arrow",
+                      name9:"week_changeRate_before"
+                    }
+                    that.performanceFun(idObj,v.value);
+                  break;
+                  case "average_browsing_performance_month":
+                    var idObj={
+                      name1:"month_browse",
+                      name2:"month_online",
+                      name3:"month_rate",
+                      name4:"month_browse_before_arrow",
+                      name5:"month_browse_before",
+                      name6:"month_online_before_arrow",
+                      name7:"month_online_before",
+                      name8:"month_rate_before_arrow",
+                      name9:"month_rate_before"
+                    }
+                    that.performanceFun(idObj,v.value);
+                  break;
+                  case "average_conversion_performance_month":
+                    var idObj={
+                      name1:"month_order",
+                      name2:"month_profit",
+                      name3:"month_changeRate",
+                      name4:"month_order_before_arrow",
+                      name5:"month_order_before",
+                      name6:"month_profit_before_arrow",
+                      name7:"month_profit_before",
+                      name8:"month_changeRate_before_arrow",
+                      name9:"month_changeRate_before"
+                    }
+                    that.performanceFun(idObj,v.value);
+                  break;
                   case "tab_display_day":
                     // v.value.reverse();
                     // v.label.reverse();
@@ -503,6 +859,8 @@
                     })
                     var option = options.normalBarChart(color, v.label, newValue, that.fontSizeNum);
                     option.title.text = "当日各栏目浏览量";
+                    option.yAxis[0].axisLabel.show= false;
+                    
                     var echartObj = new EchartObj("test1", option);
                     echartObj.setOp();
                     break;
@@ -514,6 +872,7 @@
                     })
                     var option = options.normalBarChart(color, v.label, v.value, that.fontSizeNum);
                     option.title.text = "本月各栏目浏览量";
+                    option.yAxis[0].axisLabel.show= false;
                     var echartObj = new EchartObj("test2", option);
                     echartObj.setOp();
                     break;
@@ -863,6 +1222,45 @@
             },
             // speed:3000
           })
+          var mySwiper = new Swiper('.swiper5', {
+            // direction: 'vertical', // 垂直切换选项
+            direction: 'horizontal', // 横向切换选项
+            // loop: true, // 循环模式选项
+            speed: 1000,
+            autoplay: {
+              delay: 7000,//时间 毫秒
+              disableOnInteraction: false,//用户操作之后是否停止自动轮播默认true
+            },
+            // speed:3000
+          })
+          
+        },
+        
+        performanceFun(idObj,value){
+          $("#"+idObj.name1).html(value[0]);
+          $("#"+idObj.name2).html(value[1]);
+          $("#"+idObj.name3).html(value[2]+"%");
+          if(value[3]>=0){
+              $("#"+idObj.name4).removeClass("arrow-down").addClass("arrow-up")
+              $("#"+idObj.name5).html(value[3]+"%").removeClass("data-down").addClass("data-up")
+          }else{
+              $("#"+idObj.name4).removeClass("arrow-up").addClass("arrow-down")
+              $("#"+idObj.name5).html(-1*value[3]+"%").removeClass("data-up").addClass("data-down")
+          }
+          if(value[4]>=0){
+              $("#"+idObj.name6).removeClass("arrow-down").addClass("arrow-up")
+              $("#"+idObj.name7).html(value[4]+"%").removeClass("data-down").addClass("data-up")
+          }else{
+              $("#"+idObj.name6).removeClass("arrow-up").addClass("arrow-down")
+              $("#"+idObj.name7).html(-1*value[4]+"%").removeClass("data-up").addClass("data-down")
+          }
+          if(value[5]>=0){
+              $("#"+idObj.name8).removeClass("arrow-down").addClass("arrow-up")
+              $("#"+idObj.name9).html(value[5]+"%").removeClass("data-down").addClass("data-up")
+          }else{
+              $("#"+idObj.name8).removeClass("arrow-up").addClass("arrow-down")
+              $("#"+idObj.name9).html(-1*value[5]+"%").removeClass("data-up").addClass("data-down")
+          }
         },
         avdDataShow: function () {
           var that = this;

@@ -440,7 +440,8 @@
   font-size: 0.25rem;
   color: #fff;
   text-align: center;
-  letter-spacing: 0.05rem;
+  letter-spacing: 0.02rem;
+  margin-left: -0.1rem;
 }
 .big-box .content .center-box .center-top .data-box {
   width: 100%;
@@ -675,11 +676,11 @@
 }
 .big-box .content .right-box .right-top {
   width: 100%;
-  height: 24%;
-  background-image: url("../images/rightone_bg.png");
+  height: 30%;
+  background-image: url(../images/border_bg.png);
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  -moz-background-size: 100% 100%;
+  background-position: center;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -689,124 +690,94 @@
   content: '';
   display: block;
 }
-.big-box .content .right-box .right-top .history-num {
-  width: 40%;
-  height: 65%;
-  text-align: center;
-  background-image: url("../images/border_new.jpg");
+.big-box .content .right-box .right-top .swiper-box-1 .title-box {
+  width: 100%;
+  height: 15%;
+  font-size: 0.2rem;
+  color: #fff;
+  line-height: 0.4rem;
+  padding-left: 0.2rem;
+}
+.big-box .content .right-box .right-top .swiper-box-1 .small-box {
+  width: 100%;
+  height: 85%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.big-box .content .right-box .right-top .swiper-box-1 .small-box:before,
+.big-box .content .right-box .right-top .swiper-box-1 .small-box:after {
+  content: '';
+  display: block;
+}
+.big-box .content .right-box .right-top .swiper-box-1 .small-box .item {
+  width: 30%;
+  height: 90%;
+  background-image: url(../images/item_border.jpg);
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  -moz-background-size: 100% 100%;
-  color: #fff;
-  font-size: 0.22rem;
+  background-position: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-}
-.big-box .content .right-box .right-top .history-num > div:first-child {
-  width: 100%;
-  height: 0.6rem;
-  line-height: 0.5rem;
-}
-.big-box .content .right-box .right-top .history-num .num-text {
-  color: #3eb0ff;
-  font-size: 0.3rem;
-}
-.big-box .content .right-box .right-top .history-num .visitor-box1 {
-  position: relative;
-}
-.big-box .content .right-box .right-top .history-num .visitor-box1 .week-visitor {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 20%;
-  font-size: 0.22rem;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 0.24rem;
   color: #fff;
-  text-align: center;
-  opacity: 0;
 }
-.big-box .content .right-box .right-top .history-num .visitor-box2 {
-  position: relative;
+.big-box .content .right-box .right-top .swiper-box-1 .small-box .item .item-chilren {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 }
-.big-box .content .right-box .right-top .history-num .visitor-box2 .week-num-text {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 20%;
+.big-box .content .right-box .right-top .swiper-box-1 .small-box .item .item-chilren .unit {
+  font-size: 0.16rem;
+  color: #fff;
+}
+.big-box .content .right-box .right-top .swiper-box-1 .small-box .item .item-chilren .text-1 {
+  color: #fff;
+  margin-bottom: 0.1rem;
+  font-size: 0.2rem;
+}
+.big-box .content .right-box .right-top .swiper-box-1 .small-box .item .item-chilren .data-1 {
+  color: #3EB0FF;
   font-size: 0.3rem;
-  color: #3eb0ff;
-  text-align: center;
-  opacity: 0;
 }
-.big-box .content .right-box .right-top .mouth-num {
-  width: 40%;
-  height: 65%;
-  text-align: center;
-  background-image: url("../images/border_new.jpg");
+.big-box .content .right-box .right-top .swiper-box-1 .small-box .item .item-chilren .text-2 {
+  font-size: 0.2rem;
+}
+.big-box .content .right-box .right-top .swiper-box-1 .small-box .item .item-chilren .data-2 {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.big-box .content .right-box .right-top .swiper-box-1 .small-box .item .item-chilren .data-2 .arrow-up {
+  width: 0.16rem;
+  height: 0.19rem;
+  background-image: url(../images/up.png);
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  -moz-background-size: 100% 100%;
-  color: #fff;
-  font-size: 0.22rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  background-position: center;
+  margin: 0 0.1rem 0 0;
 }
-.big-box .content .right-box .right-top .mouth-num > div:first-child {
-  width: 100%;
-  height: 0.6rem;
-  line-height: 0.5rem;
+.big-box .content .right-box .right-top .swiper-box-1 .small-box .item .item-chilren .data-2 .arrow-down {
+  width: 0.16rem;
+  height: 0.19rem;
+  background-image: url(../images/down.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
+  margin: 0 0.1rem 0 0;
 }
-.big-box .content .right-box .right-top .mouth-num .num-text {
-  color: #3eb0ff;
-  font-size: 0.3rem;
+.big-box .content .right-box .right-top .swiper-box-1 .small-box .item .item-chilren .data-2 .data-up {
+  color: #2EB75B;
 }
-.big-box .content .right-box .right-top .mouth-num .visitor-box1 {
-  position: relative;
-}
-.big-box .content .right-box .right-top .mouth-num .visitor-box1 .week-visitor {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 20%;
-  font-size: 0.22rem;
-  color: #fff;
-  text-align: center;
-  opacity: 0;
-}
-.big-box .content .right-box .right-top .mouth-num .visitor-box2 {
-  position: relative;
-}
-.big-box .content .right-box .right-top .mouth-num .visitor-box2 .week-num-text {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 20%;
-  font-size: 0.3rem;
-  color: #3eb0ff;
-  text-align: center;
-  opacity: 0;
-}
-.big-box .content .right-box .right-top .year-visitor {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 20%;
-  font-size: 0.25rem;
-  color: #fff;
-  text-align: center;
-  line-height: 0.5rem;
-  letter-spacing: 0.05rem;
-  opacity: 0;
+.big-box .content .right-box .right-top .swiper-box-1 .small-box .item .item-chilren .data-2 .data-down {
+  color: #FF3636;
 }
 .big-box .content .right-box .right-middle {
   width: 100%;
-  height: 36%;
+  height: 32%;
   background-image: url(../images/border_bg.png);
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -1024,7 +995,7 @@
 }
 .big-box .content .right-box .right-bottom {
   width: 100%;
-  height: 36%;
+  height: 32%;
   background-image: url(../images/border_bg.png);
   background-repeat: no-repeat;
   background-size: 100% 100%;

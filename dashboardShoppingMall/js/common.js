@@ -920,8 +920,8 @@ var options = {
             grid: {
                 left: '2%',
                 right: '2%',
-                top:"28%",
-                bottom: '8%',
+                top:"25%",
+                bottom: '5%',
                 containLabel: true
             },
             xAxis : [
@@ -939,7 +939,7 @@ var options = {
                     axisLabel: {
                         textStyle:{
                             color:'#d2cce0',  //坐标的字体颜色
-                            fontSize:num?num/this.rate*0.9:14,
+                            fontSize:num?num/this.rate*0.8:14,
                         },
                         interval:0,
                         formatter : function(params){
@@ -991,7 +991,7 @@ var options = {
                     axisLabel: {
                         textStyle:{
                             color:'#d2cce0',  //坐标的字体颜色
-                            fontSize:num?num/this.rate:14,
+                            fontSize:num?num/this.rate*0.8:14,
                         },
                     },
                     splitLine: {
