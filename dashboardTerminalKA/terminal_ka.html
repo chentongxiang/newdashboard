@@ -98,7 +98,7 @@
                         </div>
                         <div class="middle">
                             <div>实时终端数量</div>
-                            <div class="num-text" id="yesterday_termialnum_active">加载中</div>
+                            <div class="num-text" id="ka_terminal_yesterday_terminal_num_active">加载中</div>
                         </div>
                         <div class="right">
                             <div>指标任务差额</div>
@@ -773,17 +773,15 @@
                                 if(v.label=="ka_terminal_avg_openlong_yesterday"){
                                     var html= parseInt(v.value)+"<span class='minute'>Min</span>";
                                     $("#"+v.label).html(html);
-                                }else if(v.label=="hour_rate_boot"){
-                                    var date = new Date();
-                                    var hour = date.getHours();
-                                    var arr= eval("("+v.value+")");
-                                    //实时终端数量 = 客房涵盖数量*实时开机率
-                                    var html1 = parseInt(data[1].value*arr[hour]*1.5);
-                                    $("#yesterday_termialnum_active").html(html1);
-                                    $("#balance").html($("#target").html()-html1)
+                                }else if(v.label=="ka_terminal_yesterday_terminal_num_active"){
+
+                                    $("#ka_terminal_yesterday_terminal_num_active").html(v.value);
+                                    
                                 }else if(v.label=="year_terminal_ka_start_total"){
-                                    // that.terminalData(v.value.toString())
-                                    that.terminalData(parseInt(11987*1.8).toString())
+                                    that.terminalData(v.value.toString())
+                                    $("#balance").html($("#target").html()-v.value)
+
+                                    // that.terminalData(parseInt(11987*1.8).toString())
                                 }else{
                                     $("#"+v.label).html(parseInt(v.value));
                                 }
@@ -791,6 +789,7 @@
                             }
                         })
                     }
+                    
                 },function(err){
                     //错误的回调函数
                     console.log(err);
